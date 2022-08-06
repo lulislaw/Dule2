@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textexample_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#00FFFFFF"
+    tools:context=".HomeActivity">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Holo.ProgressBar"
+        android:layout_width="147dp"
+        android:layout_height="147dp"
+
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/switch_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gruppi">
+
+
+        <ImageButton
+            android:id="@+id/button_switch_left"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="#00FFFFFF"
+            android:clickable="true"
+            android:gravity="center"
+            android:scaleX="-1"
+            android:src="@drawable/ic_polygon_1"
+            tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+
+        <RelativeLayout
+            android:id="@+id/Button_settings_first"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/clicklayout"
+            android:clickable="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/number_day_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/name_settings_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_select_day_center"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/clicklayout"
+            android:clickable="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/number_day_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/name_month_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_select_day_right"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/clicklayout"
+            android:clickable="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_right"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/number_day_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="29"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/name_month_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/button_switch_right"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="#00FFFFFF"
+            android:clickable="true"
+            android:gravity="center"
+            android:src="@drawable/ic_polygon_1"
+            tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/ic_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/gruppi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/inter_bold_1"
+        android:text="ПИ 1-1"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_buttons">
+
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <RelativeLayout
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/backroung_alphagrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_search"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_search"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_search" />
+
+                    <TextView
+                        android:id="@+id/name_button_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Поиск"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_news"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_news"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_info" />
+
+                    <TextView
+                        android:id="@+id/name_button_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Новости"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_home"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_home"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_home"
+                        app:tint="@color/purple_500" />
+
+                    <TextView
+                        android:id="@+id/name_button_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Главная"
+                        android:textColor="@color/purple_500"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_note"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_note"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_note" />
+
+                    <TextView
+                        android:id="@+id/name_button_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Заметки"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_settings"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_settings"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_settings" />
+
+                    <TextView
+                        android:id="@+id/name_button_settings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Настройки"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

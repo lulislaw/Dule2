@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteActivity">
+
+    <RelativeLayout
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/backroung_alphagrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_search"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_search"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_search" />
+
+                    <TextView
+                        android:id="@+id/name_button_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Поиск"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_news"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_news"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_info"
+                        />
+
+                    <TextView
+                        android:id="@+id/name_button_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Новости"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_home"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_home"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_home"
+                        />
+
+                    <TextView
+                        android:id="@+id/name_button_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Главная"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_note"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_note"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_note"
+                        app:tint="@color/purple_500"
+                        />
+
+                    <TextView
+                        android:id="@+id/name_button_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="2dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Заметки"
+                        android:textColor="@color/purple_500"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/BotNavButton_settings"
+                android:layout_width="49dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/linearLayour_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView_settings"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_settings" />
+
+                    <TextView
+                        android:id="@+id/name_button_settings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/inter_bold_1"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:text="Настройки"
+                        android:textColor="#000000"
+                        android:textSize="8sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

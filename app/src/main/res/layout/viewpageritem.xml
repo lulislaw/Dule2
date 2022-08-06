@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="5dp"
+        android:text="Понедельник, 1 апреля"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:text="Четная неделя"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="24dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Week">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/block_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/strokecorners"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Time_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Время"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Name_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Предмет"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Type_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Тип"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Teacher_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Преподователь"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Room_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Аудитория"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/block_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/strokecorners"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Time_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Время"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Name_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Предмет"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Type_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Тип"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Teacher_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Преподователь"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Room_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Аудитория"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/block_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/strokecorners"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Time_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Время"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Name_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Предмет"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Type_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Тип"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Teacher_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Преподователь"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/Room_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Аудитория"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/block_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:background="@drawable/strokecorners"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Time_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_semibold"
+                    android:text="Время"
+                    android:textColor="#000000"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/Name_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Предмет"
+                    android:textColor="#000000"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/Type_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Тип"
+                    android:textColor="#000000"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/Teacher_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Преподователь"
+                    android:textColor="#000000"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/Room_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/inter_regular"
+                    android:text="Аудитория"
+                    android:textColor="#000000"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="100dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

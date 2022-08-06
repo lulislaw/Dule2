@@ -4,6 +4,44 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Dule2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/backroung_alphagrey.xml" value="0.192" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/click_poligon.xml" value="0.192" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/clicklayout.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_calendar.xml" value="0.192" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_home.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_info.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_search.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners.xml" value="0.1925" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners_gray.xml" value="0.1925" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main1.xml" value="0.333786231884058" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main2.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_mainscreen.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_navigation.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_news.xml" value="0.5" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_note.xml" value="0.30344202898550726" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_search.xml" value="0.30344202898550726" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_settings.xml" value="0.4119827053736875" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/content_main.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_dashboard.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_gallery.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_home.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_notifications.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_search.xml" value="0.30344202898550726" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_set_group.xml" value="0.33" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/fragment_slideshow.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/nav_header_main.xml" value="0.30885416666666665" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/viewpageritem.xml" value="0.36666666666666664" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/menu/activity_main_drawer.xml" value="0.18802083333333333" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/menu/main_activity2.xml" value="0.18802083333333333" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/menu/top_nav_menu.xml" value="0.3078125" />
       </map>
     </option>
   </component>
