@@ -38,6 +38,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private final static String FILE_NAME_SELECTION = "selection.txt";
+
     ViewPager2 viewPager2;
     ArrayList<ViewPagerItem> viewPagerItemArrayList;
     AsyncHttpClient client;
@@ -46,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
     XSSFWorkbook workbook;
     ContentValues contentValues = new ContentValues();
     ProgressBar progressBar;
+    Integer id_workbook, id_sheet,id_collumn;
+    String text;
+    String[] urls = new String[4];
     String[] weekeven = new String[50];
     String[] times_1 = new String[12];
     String[] times_2 = new String[12];
@@ -77,7 +82,11 @@ public class HomeActivity extends AppCompatActivity {
             setContentView(R.layout.activity_home);
             progressBar = findViewById(R.id.progressBar);
 
-            {
+
+
+
+
+
                 RelativeLayout[] buttons_menu = new RelativeLayout[4];
                 Intent[] intents = new Intent[4];
                 buttons_menu[0] = findViewById(R.id.BotNavButton_search);
@@ -102,12 +111,42 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
+
+            FileInputStream fin = null;
+            try {
+
+                fin = openFileInput(FILE_NAME_SELECTION);
+                byte[] bytes = new byte[fin.available()];
+                fin.read(bytes);
+                text = new String(bytes);
+                if(text.length() >= 5) {
+                    String[] split_text = text.split("x");
+                    id_workbook = Integer.parseInt(split_text[0]);
+                    id_sheet = Integer.parseInt(split_text[1]);
+                    id_collumn = Integer.parseInt(split_text[2]);
+                }
+                else
+                    buttons_menu[3].callOnClick();
+
+
+
+            } catch (Exception e) {
+                buttons_menu[3].callOnClick();
+                e.printStackTrace();
             }
 
 
+            urls[0] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak1.xlsx?raw=true";
+            urls[1] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak2.xlsx?raw=true";
+            urls[2] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak3.xlsx?raw=true";
+            urls[3] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak4.xlsx?raw=true";
+            try {
+                dowloaddata(urls[id_workbook]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-
-            //dowloaddata("https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak1.xlsx?raw=true", 5);
 
 
 
@@ -124,7 +163,7 @@ public class HomeActivity extends AppCompatActivity {
 
         }
 
-        private void loaddate(){
+        private void loaddata(){
 
             viewPager2 = findViewById(R.id.viewpager);
             SQLiteDatabase database2 = dbHelper.getWritableDatabase();
@@ -183,7 +222,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // download excel -> convert to dbSQL save
-        private void dowloaddata(String url_file, Integer id_group){
+        private void dowloaddata(String url_file){
             progressBar.setVisibility(View.VISIBLE);
             client = new AsyncHttpClient();
             client.get(url_file, new FileAsyncHttpResponseHandler(this) {
@@ -211,7 +250,7 @@ public class HomeActivity extends AppCompatActivity {
                                 ZipSecureFile.setMinInflateRatio(0);
                                 fis = new FileInputStream(file);
                                 workbook = new XSSFWorkbook(fis);
-                                XSSFSheet sheet = workbook.getSheetAt(0);
+                                XSSFSheet sheet = workbook.getSheetAt(id_sheet);
                                 int lenmergedregion = sheet.getMergedRegions().size();
                                 int[] CellStart = new int[lenmergedregion];
                                 int[] CellEnd = new int[lenmergedregion];
@@ -249,9 +288,9 @@ public class HomeActivity extends AppCompatActivity {
                                 database.delete(DBHelper.TABLE_CONTACTS, null, null);
 
 
-                                for (int i = 8; i < 56; i++) {
+                                for (int i = 0; i < 48; i++) {
 
-                                    String name = sheet.getRow(i).getCell(id_group).toString();
+                                    String name = sheet.getRow(i+8).getCell(id_collumn+4).toString();
                                     String week = sheet.getRow(i).getCell(3).toString();
                                     String time = sheet.getRow(i).getCell(2).toString();
 
@@ -270,7 +309,7 @@ public class HomeActivity extends AppCompatActivity {
                                 contentValues.put(DBHelper.KEY_WEEK, "");
                                 database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
                                 Log.d("mylog", "success save");
-                                loaddate();
+                                loaddata();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

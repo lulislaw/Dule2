@@ -41,6 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
     RelativeLayout back_rl;
     FileInputStream fis;
     XSSFWorkbook workbook;
+    String text;
     Sheet SHEET;
     Sheet[] sheets;
     String name_menu[] = new String[4];
@@ -55,7 +56,12 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-            RelativeLayout[] buttons_menu = new RelativeLayout[4];
+
+
+
+
+
+        RelativeLayout[] buttons_menu = new RelativeLayout[4];
             Intent[] intents = new Intent[4];
             buttons_menu[0] = findViewById(R.id.BotNavButton_search);
             buttons_menu[1] = findViewById(R.id.BotNavButton_news);
@@ -132,7 +138,24 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+        FileInputStream fin = null;
+        try {
 
+            fin = openFileInput(FILE_NAME_SELECTION);
+            byte[] bytes = new byte[fin.available()];
+            fin.read(bytes);
+            text = new String(bytes);
+            if(text.length() < 5)
+                button_menu[0].callOnClick();
+
+
+
+
+
+        } catch (Exception e) {
+            button_menu[0].callOnClick();
+            e.printStackTrace();
+        }
         //////////////////////////////////////////////////////////////////firstmenu
         SPINNER_SELECT_COURSE = findViewById(R.id.SPINNER_SELECT_COURSE);
         SPINNER_SELECT_GROUP = findViewById(R.id.SPINNER_SELECT_GROUP);
@@ -301,7 +324,7 @@ public class SettingsActivity extends AppCompatActivity {
                 FileOutputStream fos = null;
                 try {
 
-                    String text =""+ WORKBOOK_COURSE_ID + SHEET_INSTITUTE_ID + COLLUMN_GROUP_ID;
+                    String text = WORKBOOK_COURSE_ID +"x" +  SHEET_INSTITUTE_ID +"x" +  COLLUMN_GROUP_ID;
                     fos = openFileOutput(FILE_NAME_SELECTION, MODE_PRIVATE);
                     fos.write(text.getBytes());
                     buttons_menu[3].callOnClick();

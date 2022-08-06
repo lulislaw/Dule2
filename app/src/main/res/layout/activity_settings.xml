@@ -107,7 +107,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="10dp"
-                android:clickable="true"
+                android:clickable="false"
                 android:scrollbarStyle="insideOverlay"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -128,7 +128,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="10dp"
-                android:clickable="true"
+                android:clickable="false"
                 android:scrollbarStyle="insideOverlay"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -138,6 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:enabled="false"
                 android:fontFamily="@font/inter_semibold"
                 android:text="Сохранить"
                 android:textSize="18sp" />
