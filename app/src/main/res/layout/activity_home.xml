@@ -35,38 +35,24 @@
         app:layout_constraintTop_toBottomOf="@id/gruppi">
 
 
-        <ImageButton
-            android:id="@+id/button_switch_left"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="#00FFFFFF"
-            android:clickable="true"
-            android:gravity="center"
-            android:scaleX="-1"
-            android:src="@drawable/ic_polygon_1"
-            tools:ignore="SpeakableTextPresentCheck"></ImageButton>
-
         <RelativeLayout
-            android:id="@+id/Button_settings_first"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:id="@+id/button_select_day_monday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="6dp"
             android:background="@drawable/clicklayout"
             android:clickable="true"
             android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/linearLayour_first"
+                android:id="@+id/linearLayour_monday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/number_day_left"
+                    android:id="@+id/day_monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -79,7 +65,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/name_settings_first"
+                    android:id="@+id/month_monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -96,24 +82,24 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/button_select_day_center"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:id="@+id/button_select_day_tuesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
             android:background="@drawable/clicklayout"
             android:clickable="true"
             android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/linearLayour_center"
+                android:id="@+id/linearLayour_tuesday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/number_day_center"
+                    android:id="@+id/day_tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -126,7 +112,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/name_month_center"
+                    android:id="@+id/month_tuesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -143,24 +129,24 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/button_select_day_right"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
+            android:id="@+id/button_select_day_wednesday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
             android:background="@drawable/clicklayout"
             android:clickable="true"
             android:gravity="center">
 
             <LinearLayout
-                android:id="@+id/linearLayour_right"
+                android:id="@+id/linearLayour_wednesday"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/number_day_right"
+                    android:id="@+id/day_wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -173,7 +159,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/name_month_right"
+                    android:id="@+id/month_wednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -189,17 +175,145 @@
 
         </RelativeLayout>
 
-        <ImageButton
-            android:id="@+id/button_switch_right"
-            android:layout_width="49dp"
-            android:layout_height="49dp"
+        <RelativeLayout
+            android:id="@+id/button_select_day_thursday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginStart="6dp"
             android:layout_marginEnd="6dp"
-            android:background="#00FFFFFF"
+            android:background="@drawable/clicklayout"
             android:clickable="true"
-            android:gravity="center"
-            android:src="@drawable/ic_polygon_1"
-            tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/day_thursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/month_thursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_select_day_friday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/clicklayout"
+            android:clickable="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_friday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/day_friday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/month_friday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_select_day_saturday"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/clicklayout"
+            android:clickable="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/linearLayour_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/day_saturday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="29"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/month_saturday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:fontFamily="@font/inter_bold_1"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Апреля"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -237,7 +351,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_buttons">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
 
     </androidx.viewpager2.widget.ViewPager2>
@@ -483,6 +597,16 @@
 
         </LinearLayout>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:text="Четная"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_buttons" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

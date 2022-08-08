@@ -34,40 +34,63 @@ public class VPAdapder extends RecyclerView.Adapter<VPAdapder.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewPagerItem viewPagerItem = viewPagerItemArrayList.get(position);
 
-        holder.tcweek.setText(viewPagerItem.week);
-        holder.tcdate.setText(viewPagerItem.date);
-        holder.tctime_1.setText(viewPagerItem.time_1);
-        holder.tctime_2.setText(viewPagerItem.time_2);
-        holder.tctime_3.setText(viewPagerItem.time_3);
-        holder.tctime_4.setText(viewPagerItem.time_4);
-        holder.tcname_1.setText(viewPagerItem.name_1);
-        holder.tcname_2.setText(viewPagerItem.name_2);
-        holder.tcname_3.setText(viewPagerItem.name_3);
-        holder.tcname_4.setText(viewPagerItem.name_4);
-        holder.tctype_1.setText(viewPagerItem.type_1);
-        holder.tctype_2.setText(viewPagerItem.type_2);
-        holder.tctype_3.setText(viewPagerItem.type_3);
-        holder.tctype_4.setText(viewPagerItem.type_4);
-        holder.tcteacher_1.setText(viewPagerItem.teacher_1);
-        holder.tcteacher_2.setText(viewPagerItem.teacher_2);
-        holder.tcteacher_3.setText(viewPagerItem.teacher_3);
-        holder.tcteacher_4.setText(viewPagerItem.teacher_4);
-        holder.tcroom_1.setText(viewPagerItem.room_1);
-        holder.tcroom_2.setText(viewPagerItem.room_2);
-        holder.tcroom_3.setText(viewPagerItem.room_3);
-        holder.tcroom_4.setText(viewPagerItem.room_4);
+
+        int _limitchars = 10;
 
 
-
-
-        if(viewPagerItem.name_1.length() < 2)
+        if(viewPagerItem.name_1 != null) {
+            if (viewPagerItem.name_1.length() < _limitchars)
+                holder.tcblock_1.setVisibility(View.GONE);
+            else
+            {
+                holder.tctime_1.setText(viewPagerItem.name_1.split("x")[0]);
+                holder.tcname_1.setText(viewPagerItem.name_1.split("x")[2]);
+                holder.tcdate.setText(viewPagerItem.name_1.split("x")[3]);
+            }
+        }else
             holder.tcblock_1.setVisibility(View.GONE);
-        if(viewPagerItem.name_2.length() < 2)
+
+
+        if(viewPagerItem.name_2 != null) {
+            if (viewPagerItem.name_2.length() < _limitchars)
+                holder.tcblock_2.setVisibility(View.GONE);
+            else
+            {
+                holder.tctime_2.setText(viewPagerItem.name_2.split("x")[0]);
+                holder.tcname_2.setText(viewPagerItem.name_2.split("x")[2]);
+                holder.tcdate.setText(viewPagerItem.name_1.split("x")[3]);
+            }
+        }else
             holder.tcblock_2.setVisibility(View.GONE);
-        if(viewPagerItem.name_3.length() < 2)
+
+
+        if(viewPagerItem.name_3 != null) {
+            if (viewPagerItem.name_3.length() < _limitchars)
+                holder.tcblock_3.setVisibility(View.GONE);
+            else
+            {
+                holder.tctime_3.setText(viewPagerItem.name_3.split("x")[0]);
+                holder.tcname_3.setText(viewPagerItem.name_3.split("x")[2]);
+                holder.tcdate.setText(viewPagerItem.name_1.split("x")[3]);
+            }
+        }else
             holder.tcblock_3.setVisibility(View.GONE);
-        if(viewPagerItem.name_4.length() < 2)
+
+
+        if(viewPagerItem.name_4 != null) {
+            if (viewPagerItem.name_4.length() < _limitchars)
+                holder.tcblock_4.setVisibility(View.GONE);
+            else
+            {
+                holder.tctime_4.setText(viewPagerItem.name_4.split("x")[0]);
+                holder.tcname_4.setText(viewPagerItem.name_4.split("x")[2]);
+                holder.tcdate.setText(viewPagerItem.name_1.split("x")[3]);
+            }
+        }else
             holder.tcblock_4.setVisibility(View.GONE);
+
+
+
 
 
 
@@ -88,7 +111,7 @@ public class VPAdapder extends RecyclerView.Adapter<VPAdapder.ViewHolder> {
             TextView tcteacher_1,tcteacher_2,tcteacher_3,tcteacher_4;
             TextView tcroom_1,tcroom_2,tcroom_3,tcroom_4;
             LinearLayout tcblock_1,tcblock_2,tcblock_3,tcblock_4;
-            TextView tcweek, tcdate;
+            TextView tcdate;
 
 
 
@@ -96,7 +119,7 @@ public class VPAdapder extends RecyclerView.Adapter<VPAdapder.ViewHolder> {
         {
 
             super(itemView);
-            tcweek = itemView.findViewById(R.id.Week);
+
             tcdate = itemView.findViewById(R.id.Date);
             tcblock_1 = itemView.findViewById(R.id.block_1);
             tcblock_2 = itemView.findViewById(R.id.block_2);

@@ -2,7 +2,9 @@ package com.example.dule2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,44 +14,48 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
 import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import cz.msebera.android.httpclient.entity.mime.Header;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.time.LocalDate;
 
 public class SettingsActivity extends AppCompatActivity {
     private final static String FILE_NAME_SELECTION = "selection.txt";
+    AsyncHttpClient client;
+    DBHelper dbHelper = new DBHelper(SettingsActivity.this);
+    FileInputStream fis;
+    XSSFWorkbook workbook;
+    ContentValues contentValues = new ContentValues();
     Button BUTTON_SAVE_SELECTION;
     RelativeLayout[] button_menu = new RelativeLayout[4];
     RelativeLayout[] menu_settings = new RelativeLayout[4];
     RelativeLayout back_rl;
-    FileInputStream fis;
-    XSSFWorkbook workbook;
     String text;
     Sheet SHEET;
+    LocalDate date_start, date_end, date_current;
+    File file_workbook;
+    String sizefile;
     Sheet[] sheets;
+    int diff_date_int;
     String name_menu[] = new String[4];
+    RelativeLayout[] buttons_menu = new RelativeLayout[4];
     TextView back_name;
     Spinner SPINNER_SELECT_COURSE, SPINNER_SELECT_GROUP, SPINNER_SELECT_INSTITUTE;
     String[] url = new String[5];
     int URL_ID, WORKBOOK_COURSE_ID, SHEET_INSTITUTE_ID, COLLUMN_GROUP_ID;
-    AsyncHttpClient client;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,34 +63,31 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
 
+        date_start = LocalDate.of(2022, 2, 7);
+        date_end = LocalDate.of(2022, 5, 30);
+        date_current = LocalDate.now();
+        diff_date_int = (int) (date_end.toEpochDay() - date_start.toEpochDay());
 
 
-
-
-        RelativeLayout[] buttons_menu = new RelativeLayout[4];
-            Intent[] intents = new Intent[4];
-            buttons_menu[0] = findViewById(R.id.BotNavButton_search);
-            buttons_menu[1] = findViewById(R.id.BotNavButton_news);
-            buttons_menu[2] = findViewById(R.id.BotNavButton_note);
-            buttons_menu[3] = findViewById(R.id.BotNavButton_home);
-            intents[0] = new Intent(this, SearchActivity.class);
-            intents[1] = new Intent(this, NewsActivity.class);
-            intents[2] = new Intent(this, NoteActivity.class);
-            intents[3] = new Intent(this, HomeActivity.class);
-            for(int i = 0;i<4;i++){
-                int finalI = i;
-                buttons_menu[i].setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(intents[finalI]);
-                        overridePendingTransition(0,0);
-                    }
-                });
-            }
-
-
-
-
+        Intent[] intents = new Intent[4];
+        buttons_menu[0] = findViewById(R.id.BotNavButton_search);
+        buttons_menu[1] = findViewById(R.id.BotNavButton_news);
+        buttons_menu[2] = findViewById(R.id.BotNavButton_note);
+        buttons_menu[3] = findViewById(R.id.BotNavButton_home);
+        intents[0] = new Intent(this, SearchActivity.class);
+        intents[1] = new Intent(this, NewsActivity.class);
+        intents[2] = new Intent(this, NoteActivity.class);
+        intents[3] = new Intent(this, HomeActivity.class);
+        for (int i = 0; i < 4; i++) {
+            int finalI = i;
+            buttons_menu[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(intents[finalI]);
+                    overridePendingTransition(0, 0);
+                }
+            });
+        }
 
 
         name_menu[0] = "Группа";
@@ -92,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
         name_menu[2] = "Помощь";
         name_menu[3] = "FAQ";
         back_name = findViewById(R.id.back_name);
-        button_menu[0] = findViewById(R.id.Button_settings_first);
+        button_menu[0] = findViewById(R.id.Button_select_day_first);
         button_menu[1] = findViewById(R.id.Button_settings_second);
         button_menu[2] = findViewById(R.id.Button_settings_third);
         button_menu[3] = findViewById(R.id.Button_settings_four);
@@ -103,18 +106,18 @@ public class SettingsActivity extends AppCompatActivity {
         back_rl = findViewById(R.id.back_relativeLayout);
 
 
-        for(int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
             int finalI = i;
             button_menu[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    for(int m = 0; m < 4; m++)
-                    {
+                    for (int m = 0; m < 4; m++) {
                         button_menu[m].setVisibility(View.GONE);
                         menu_settings[m].setVisibility(View.GONE);
 
                     }
+                    if (finalI == 0)
+                        firstmenu_create();
                     menu_settings[finalI].setVisibility(View.VISIBLE);
                     back_rl.setVisibility(View.VISIBLE);
                     back_name.setText(name_menu[finalI]);
@@ -125,8 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
         back_rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int m = 0; m < 4; m++)
-                {
+                for (int m = 0; m < 4; m++) {
                     button_menu[m].setVisibility(View.VISIBLE);
                     menu_settings[m].setVisibility(View.GONE);
 
@@ -137,7 +139,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
-
         FileInputStream fin = null;
         try {
 
@@ -145,18 +146,19 @@ public class SettingsActivity extends AppCompatActivity {
             byte[] bytes = new byte[fin.available()];
             fin.read(bytes);
             text = new String(bytes);
-            if(text.length() < 5)
+            if (text.length() < 5)
                 button_menu[0].callOnClick();
-
-
-
 
 
         } catch (Exception e) {
             button_menu[0].callOnClick();
             e.printStackTrace();
         }
-        //////////////////////////////////////////////////////////////////firstmenu
+
+
+    }
+
+    private void firstmenu_create() {
         SPINNER_SELECT_COURSE = findViewById(R.id.SPINNER_SELECT_COURSE);
         SPINNER_SELECT_GROUP = findViewById(R.id.SPINNER_SELECT_GROUP);
         SPINNER_SELECT_INSTITUTE = findViewById(R.id.SPINNER_SELECT_INSTITUTE);
@@ -167,11 +169,9 @@ public class SettingsActivity extends AppCompatActivity {
         url[3] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak4.xlsx?raw=true";
 
 
-
-
         String[] ARRAYSPINNER_1 = new String[]
                 {
-                        "1 Курс","2 Курс","3 Курс", "4 Курс"
+                        "1 Курс", "2 Курс", "3 Курс", "4 Курс"
                 };
         ArrayAdapter<String> ADAPTER_1 = new ArrayAdapter<String>(SettingsActivity.this, android.R.layout.simple_spinner_item, ARRAYSPINNER_1);
         ADAPTER_1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -194,8 +194,15 @@ public class SettingsActivity extends AppCompatActivity {
 
                         SPINNER_SELECT_INSTITUTE.setClickable(true);
 
-                        if(file != null) {
-
+                        if (file != null) {
+                            file_workbook = file;
+                            sizefile = "";
+                            try {
+                                BasicFileAttributes attr = Files.readAttributes(Paths.get(file.getPath()), BasicFileAttributes.class);
+                                sizefile = attr.size() + "";
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             try {
                                 ZipSecureFile.setMinInflateRatio(0);
                                 fis = new FileInputStream(file);
@@ -203,13 +210,12 @@ public class SettingsActivity extends AppCompatActivity {
 
                                 String[] ARRAYSPINNER_2;
 
-                                    String[] sheetsname = new String[workbook.getNumberOfSheets()];
-                                    for(int i = 0; i<workbook.getNumberOfSheets(); i++)
-                                    {
+                                String[] sheetsname = new String[workbook.getNumberOfSheets()];
+                                for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
 
-                                        sheetsname[i] = workbook.getSheetName(i);
-                                    }
-                                    ARRAYSPINNER_2 = sheetsname;
+                                    sheetsname[i] = workbook.getSheetName(i);
+                                }
+                                ARRAYSPINNER_2 = sheetsname;
 
                                 ArrayAdapter<String> ADAPTER_2 = new ArrayAdapter<String>(SettingsActivity.this, android.R.layout.simple_spinner_item, ARRAYSPINNER_2);
                                 ADAPTER_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -271,22 +277,19 @@ public class SettingsActivity extends AppCompatActivity {
 
 
                 int a = 0;
-                for(int i = 0; i< 100; i++) {
-                    if(SHEET.getRow(5).getCell(i+4) != null)
-                    a++;
+                for (int i = 0; i < 100; i++) {
+                    if (SHEET.getRow(5).getCell(i + 4) != null)
+                        a++;
                     else
                         break;
                 }
 
                 String[] GROUPS = new String[a];
-                for(int i = 0;i <a;i++)
-                {
-                        String numtos = SHEET.getRow(6).getCell(i+4).toString();
-                    GROUPS[i] =  numtos + " | "
-                            + SHEET.getRow(5).getCell(i+4).toString();
+                for (int i = 0; i < a; i++) {
+                    String numtos = SHEET.getRow(6).getCell(i + 4).toString();
+                    GROUPS[i] = numtos + " | "
+                            + SHEET.getRow(5).getCell(i + 4).toString();
                 }
-
-
 
 
                 String[] ARRAYSPINNER_3 = GROUPS;
@@ -324,9 +327,72 @@ public class SettingsActivity extends AppCompatActivity {
                 FileOutputStream fos = null;
                 try {
 
-                    String text = WORKBOOK_COURSE_ID +"x" +  SHEET_INSTITUTE_ID +"x" +  COLLUMN_GROUP_ID;
+                    String text = WORKBOOK_COURSE_ID + "x" + SHEET_INSTITUTE_ID + "x" + COLLUMN_GROUP_ID;
                     fos = openFileOutput(FILE_NAME_SELECTION, MODE_PRIVATE);
                     fos.write(text.getBytes());
+
+
+                    //////////////////////////////////////
+
+
+                    SQLiteDatabase database = dbHelper.getWritableDatabase();
+                    database.delete(DBHelper.TABLE_CONTACTS, null, null);
+
+                    for (int d = 0; d < diff_date_int; d++) {
+
+
+                        for (int s = 0; s < 8; s++) {
+
+                            int i = s + 8 * (d % 7);
+                            String name = "null";
+
+                            String day = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth() + "" + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek();
+                            String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
+                            String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
+                            String week = "null";
+                            String time = "null";
+
+
+                            try {
+                                name = SHEET.getRow(i + 8).getCell(COLLUMN_GROUP_ID + 4).toString();
+                                week = SHEET.getRow(i + 8).getCell(3).toString();
+                                time = SHEET.getRow(i + 8).getCell(2).toString();
+                            } catch (Exception e) {
+                                name = "null";
+                                week = "null";
+                                time = "null";
+
+                                e.printStackTrace();
+                            }
+
+
+                            ContentValues contentValues = new ContentValues();
+                            contentValues.put(DBHelper.KEY_DAY, day);
+                            contentValues.put(DBHelper.KEY_MONTH, month);
+                            contentValues.put(DBHelper.KEY_YEAR, year);
+                            contentValues.put(DBHelper.KEY_NAME, name);
+                            contentValues.put(DBHelper.KEY_TIME, time);
+                            contentValues.put(DBHelper.KEY_WEEK, week);
+                            database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
+
+
+                        }
+                    }
+                    String name = sizefile;
+
+                    contentValues.put(DBHelper.KEY_DAY, "0");
+                    contentValues.put(DBHelper.KEY_MONTH, "0");
+                    contentValues.put(DBHelper.KEY_YEAR, "0");
+                    contentValues.put(DBHelper.KEY_NAME, name);
+                    contentValues.put(DBHelper.KEY_TIME, "0");
+                    contentValues.put(DBHelper.KEY_WEEK, "0");
+                    database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
+                    Log.d("mylog", "success save");
+
+
+                    //////////////////////////////////////
+
+
                     buttons_menu[3].callOnClick();
 
                 } catch (IOException ex) {
@@ -341,33 +407,11 @@ public class SettingsActivity extends AppCompatActivity {
                 }
 
 
-
             }
         });
 
 
-
-
-
-
-
-
-
-        //////////////////////////////////////////////////////////////////firstmenu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
 }

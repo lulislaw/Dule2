@@ -8,6 +8,7 @@
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/backroung_alphagrey.xml" value="0.192" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/click_poligon.xml" value="0.192" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/clicklayout.xml" value="0.285" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/clicklayout_grey.xml" value="0.192" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_calendar.xml" value="0.192" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.285" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_home.xml" value="0.285" />
@@ -17,8 +18,10 @@
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.285" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/ic_search.xml" value="0.285" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners.xml" value="0.1925" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners_cor_grey.xml" value="0.192" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners_gray.xml" value="0.1925" />
-        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/drawable/strokecorners_grey.xml" value="0.192" />
+        <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_home.xml" value="0.5" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main1.xml" value="0.333786231884058" />
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/layout/activity_main2.xml" value="0.30885416666666665" />
