@@ -348,7 +348,7 @@ public class SettingsActivity extends AppCompatActivity {
                             int i = s + 8 * (d % 7);
                             String name = "null";
 
-                            String day = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek().getValue() - 1];
+                            String day = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek().getValue() - 1] + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth();
                             String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
                             String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
                             String week = "null";
@@ -380,15 +380,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                         }
                     }
-                    String name = sizefile;
-
-                    contentValues.put(DBHelper.KEY_DAY, "0");
-                    contentValues.put(DBHelper.KEY_MONTH, "0");
-                    contentValues.put(DBHelper.KEY_YEAR, "0");
-                    contentValues.put(DBHelper.KEY_NAME, name);
-                    contentValues.put(DBHelper.KEY_TIME, "0");
-                    contentValues.put(DBHelper.KEY_WEEK, "0");
-                    database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
                     Log.d("mylog", "success save");
 
 

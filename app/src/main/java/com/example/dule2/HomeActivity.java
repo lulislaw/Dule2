@@ -1,5 +1,6 @@
 package com.example.dule2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,6 +18,7 @@ import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,27 +43,22 @@ public class HomeActivity extends AppCompatActivity {
     private final static String FILE_NAME_SELECTION = "selection.txt";
 
     ViewPager2 viewPager2_mainpage;
-
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
 
     AsyncHttpClient client;
-
     DBHelper dbHelper = new DBHelper(HomeActivity.this);
-
     FileInputStream fis;
-
     XSSFWorkbook workbook;
-
     ContentValues contentValues = new ContentValues();
 
     ProgressBar progressBar;
-
     Integer id_workbook, id_sheet, id_collumn, diff_date_int;
 
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
+    RelativeLayout calendarButton, disableCalendar;
+    CalendarView calendarView;
 
     TextView current_week_textview;
-
     LocalDate date_start, date_end, date_current;
 
     Intent[] intents = new Intent[4];
@@ -80,8 +77,8 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
 
-                                                                                                         // date start(y,m,d) 2022,02,06
-                                                                                                        // date end(y,m,d) 2022,05,29
+        // date start(y,m,d) 2022,02,06
+        // date end(y,m,d) 2022,05,29
         date_start = LocalDate.of(2022, 2, 7);
         date_end = LocalDate.of(2022, 5, 30);
         date_current = LocalDate.now();
@@ -94,8 +91,11 @@ public class HomeActivity extends AppCompatActivity {
         names_4 = new String[14 * diff_date_int];
         date_vp = new String[14 * diff_date_int];
         nameseven = new String[58 * diff_date_int];
-        current_week_textview = findViewById(R.id.current_week_textview);
 
+        current_week_textview = findViewById(R.id.current_week_textview);
+        calendarButton = findViewById(R.id.calendar_button);
+        calendarView = findViewById(R.id.calendarView);
+        disableCalendar = findViewById(R.id.disableCalendar);
         buttons_menu[0] = findViewById(R.id.BotNavButton_search);
         buttons_menu[1] = findViewById(R.id.BotNavButton_news);
         buttons_menu[2] = findViewById(R.id.BotNavButton_note);
@@ -104,6 +104,8 @@ public class HomeActivity extends AppCompatActivity {
         intents[1] = new Intent(this, NewsActivity.class);
         intents[2] = new Intent(this, NoteActivity.class);
         intents[3] = new Intent(this, SettingsActivity.class);
+
+
         for (int i = 0; i < 4; i++) {
             int finalI = i;
             buttons_menu[i].setOnClickListener(new View.OnClickListener() {
@@ -173,10 +175,40 @@ public class HomeActivity extends AppCompatActivity {
                 super.onPageSelected(position);
             }
         });
+        disableCalendar.setVisibility(View.GONE);
+        calendarView.setVisibility(View.GONE);
+        calendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendarView.setVisibility(View.VISIBLE);
+                disableCalendar.setVisibility(View.VISIBLE);
+            }
+        });
 
+        disableCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disableCalendar.setVisibility(View.GONE);
+                calendarView.setVisibility(View.GONE);
+            }
+        });
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int dayOfMonth) {
+
+                int _month = month + 1;
+                LocalDate tempLocalDate = LocalDate.of(year, _month, dayOfMonth);
+                int tempdiff = (int) (diff_date_int - ((date_end.toEpochDay() - tempLocalDate.toEpochDay())));
+                if (tempdiff >= 0 && tempdiff <= diff_date_int)
+                    viewPager2_mainpage.setCurrentItem(tempdiff);
+
+            }
+        });
 
     }
 
+    
 
     private void loaddata() {
         viewPager2_mainpage = findViewById(R.id.viewpagermain);
@@ -188,11 +220,19 @@ public class HomeActivity extends AppCompatActivity {
             int TimeIndex = cursor.getColumnIndex(DBHelper.KEY_TIME);
             int WeekIndex = cursor.getColumnIndex(DBHelper.KEY_WEEK);
             int DayIndex = cursor.getColumnIndex(DBHelper.KEY_DAY);
+            int MonthIndex = cursor.getColumnIndex(DBHelper.KEY_MONTH);
+            int YearIndex = cursor.getColumnIndex(DBHelper.KEY_YEAR);
             int i = 0;
 
             do {
 
-                nameseven[i] = cursor.getString(TimeIndex) + "x" + cursor.getString(WeekIndex) + "x" + cursor.getString(NameIndex) + "x" + cursor.getString(DayIndex);
+                nameseven[i] =
+                        cursor.getString(TimeIndex) + "x"
+                                + cursor.getString(WeekIndex) + "x"
+                                + cursor.getString(NameIndex) + "x"
+                                + cursor.getString(DayIndex) + " "
+                                + _monthru[Integer.parseInt(cursor.getString(MonthIndex)) - 1] + " "
+                                + cursor.getString(YearIndex);
                 i++;
 
             }
@@ -259,105 +299,105 @@ public class HomeActivity extends AppCompatActivity {
                     int NameIndex1 = cursor1.getColumnIndex(DBHelper.KEY_NAME);
 
 
-                        try {
-                            ZipSecureFile.setMinInflateRatio(0);
-                            fis = new FileInputStream(file);
-                            workbook = new XSSFWorkbook(fis);
-                            XSSFSheet sheet = workbook.getSheetAt(id_sheet);
-                            int lenmergedregion = sheet.getMergedRegions().size();
-                            int[] CellStart = new int[lenmergedregion];
-                            int[] CellEnd = new int[lenmergedregion];
-                            int[] RowStart = new int[lenmergedregion];
-                            int[] RowEnd = new int[lenmergedregion];
-                            for (int i = 0; i < lenmergedregion; i++) {
-                                CellStart[i] = sheet.getMergedRegions().get(i).getFirstColumn();
-                                RowStart[i] = sheet.getMergedRegions().get(i).getFirstRow();
-                                CellEnd[i] = sheet.getMergedRegions().get(i).getLastColumn();
-                                RowEnd[i] = sheet.getMergedRegions().get(i).getLastRow();
-                            }
-
-                            for (int i = 0; i < lenmergedregion; i++) {
-                                String mergedstring = "";
-                                for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
-
-                                    for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
-                                        if (sheet.getRow(r).getCell(c).toString().length() > 1) {
-                                            mergedstring = sheet.getRow(r).getCell(c).toString();
-                                        }
-
-                                    }
-
-                                }
-                                for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
-
-                                    for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
-                                        sheet.getRow(r).getCell(c).setCellValue(mergedstring);
-                                    }
-                                }
-                            }
-
-
-                            SQLiteDatabase database = dbHelper.getWritableDatabase();
-                            database.delete(DBHelper.TABLE_CONTACTS, null, null);
-
-                            for (int d = 0; d < diff_date_int; d++) {
-
-
-                                for (int s = 0; s < 8; s++) {
-
-                                    int i = s + 8 * (d % 7);
-                                    String name = "null";
-
-                                    String day = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth() + "" + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek();
-                                    String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
-                                    String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
-                                    String week = "null";
-                                    String time = "null";
-
-
-                                    try {
-                                        name = sheet.getRow(i + 8).getCell(id_collumn + 4).toString();
-                                        week = sheet.getRow(i + 8).getCell(3).toString();
-                                        time = sheet.getRow(i + 8).getCell(2).toString();
-                                    } catch (Exception e) {
-                                        name = "null";
-                                        week = "null";
-                                        time = "null";
-
-                                        e.printStackTrace();
-                                    }
-
-
-                                    ContentValues contentValues = new ContentValues();
-                                    contentValues.put(DBHelper.KEY_DAY, day);
-                                    contentValues.put(DBHelper.KEY_MONTH, month);
-                                    contentValues.put(DBHelper.KEY_YEAR, year);
-                                    contentValues.put(DBHelper.KEY_NAME, name);
-                                    contentValues.put(DBHelper.KEY_TIME, time);
-                                    contentValues.put(DBHelper.KEY_WEEK, week);
-                                    database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-
-
-                                }
-                            }
-                            String name = sizefile;
-
-                            contentValues.put(DBHelper.KEY_DAY, "0");
-                            contentValues.put(DBHelper.KEY_MONTH, "0");
-                            contentValues.put(DBHelper.KEY_YEAR, "0");
-                            contentValues.put(DBHelper.KEY_NAME, name);
-                            contentValues.put(DBHelper.KEY_TIME, "0");
-                            contentValues.put(DBHelper.KEY_WEEK, "0");
-                            database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-
-                            loaddata();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                    try {
+                        ZipSecureFile.setMinInflateRatio(0);
+                        fis = new FileInputStream(file);
+                        workbook = new XSSFWorkbook(fis);
+                        XSSFSheet sheet = workbook.getSheetAt(id_sheet);
+                        int lenmergedregion = sheet.getMergedRegions().size();
+                        int[] CellStart = new int[lenmergedregion];
+                        int[] CellEnd = new int[lenmergedregion];
+                        int[] RowStart = new int[lenmergedregion];
+                        int[] RowEnd = new int[lenmergedregion];
+                        for (int i = 0; i < lenmergedregion; i++) {
+                            CellStart[i] = sheet.getMergedRegions().get(i).getFirstColumn();
+                            RowStart[i] = sheet.getMergedRegions().get(i).getFirstRow();
+                            CellEnd[i] = sheet.getMergedRegions().get(i).getLastColumn();
+                            RowEnd[i] = sheet.getMergedRegions().get(i).getLastRow();
                         }
+
+                        for (int i = 0; i < lenmergedregion; i++) {
+                            String mergedstring = "";
+                            for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
+
+                                for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
+                                    if (sheet.getRow(r).getCell(c).toString().length() > 1) {
+                                        mergedstring = sheet.getRow(r).getCell(c).toString();
+                                    }
+
+                                }
+
+                            }
+                            for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
+
+                                for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
+                                    sheet.getRow(r).getCell(c).setCellValue(mergedstring);
+                                }
+                            }
+                        }
+
+
+                        SQLiteDatabase database = dbHelper.getWritableDatabase();
+                        database.delete(DBHelper.TABLE_CONTACTS, null, null);
+
+                        for (int d = 0; d < diff_date_int; d++) {
+
+
+                            for (int s = 0; s < 8; s++) {
+
+                                int i = s + 8 * (d % 7);
+                                String name = "null";
+
+                                String day = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth() + "" + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek();
+                                String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
+                                String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
+                                String week = "null";
+                                String time = "null";
+
+
+                                try {
+                                    name = sheet.getRow(i + 8).getCell(id_collumn + 4).toString();
+                                    week = sheet.getRow(i + 8).getCell(3).toString();
+                                    time = sheet.getRow(i + 8).getCell(2).toString();
+                                } catch (Exception e) {
+                                    name = "null";
+                                    week = "null";
+                                    time = "null";
+
+                                    e.printStackTrace();
+                                }
+
+
+                                ContentValues contentValues = new ContentValues();
+                                contentValues.put(DBHelper.KEY_DAY, day);
+                                contentValues.put(DBHelper.KEY_MONTH, month);
+                                contentValues.put(DBHelper.KEY_YEAR, year);
+                                contentValues.put(DBHelper.KEY_NAME, name);
+                                contentValues.put(DBHelper.KEY_TIME, time);
+                                contentValues.put(DBHelper.KEY_WEEK, week);
+                                database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
+
+
+                            }
+                        }
+                        String name = sizefile;
+
+                        contentValues.put(DBHelper.KEY_DAY, "0");
+                        contentValues.put(DBHelper.KEY_MONTH, "0");
+                        contentValues.put(DBHelper.KEY_YEAR, "0");
+                        contentValues.put(DBHelper.KEY_NAME, name);
+                        contentValues.put(DBHelper.KEY_TIME, "0");
+                        contentValues.put(DBHelper.KEY_WEEK, "0");
+                        database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
+
+                        loaddata();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-
-
                 }
+
+
+            }
 
         });
 

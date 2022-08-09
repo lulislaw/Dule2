@@ -5,8 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.ViewHolder> {
@@ -39,9 +41,24 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             if (viewPagerItemMainPage.name_1.split("x")[2].length() < _limitchars)
                 holder.tcblock_1.setVisibility(View.GONE);
             else {
+
                 holder.tctime_1.setText(viewPagerItemMainPage.name_1.split("x")[0]);
-                holder.tcname_1.setText(viewPagerItemMainPage.name_1.split("x")[2]);
+                holder.tcname_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[0]);
+                holder.tctype_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[1]);
+                holder.tcteacher_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[2]);
+                holder.tcroom_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[3]);
                 holder.tcblock_1.setVisibility(View.VISIBLE);
+                holder.tctype_1.setVisibility(View.VISIBLE);
+                holder.tcteacher_1.setVisibility(View.VISIBLE);
+                holder.tcroom_1.setVisibility(View.VISIBLE);
+                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[1].length() < 3)
+                    holder.tctype_1.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[2].length() < 3)
+                    holder.tcteacher_1.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[3].length() < 3)
+                    holder.tcroom_1.setVisibility(View.GONE);
+
+
             }
         } else
             holder.tcblock_1.setVisibility(View.GONE);
@@ -53,8 +70,20 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 holder.tcblock_2.setVisibility(View.GONE);
             else {
                 holder.tctime_2.setText(viewPagerItemMainPage.name_2.split("x")[0]);
-                holder.tcname_2.setText(viewPagerItemMainPage.name_2.split("x")[2]);
+                holder.tcname_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[0]);
+                holder.tctype_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[1]);
+                holder.tcteacher_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[2]);
+                holder.tcroom_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[3]);
                 holder.tcblock_2.setVisibility(View.VISIBLE);
+                holder.tctype_2.setVisibility(View.VISIBLE);
+                holder.tcteacher_2.setVisibility(View.VISIBLE);
+                holder.tcroom_2.setVisibility(View.VISIBLE);
+                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[1].length() < 3)
+                    holder.tctype_2.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[2].length() < 3)
+                    holder.tcteacher_2.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[3].length() < 3)
+                    holder.tcroom_2.setVisibility(View.GONE);
             }
         } else
             holder.tcblock_2.setVisibility(View.GONE);
@@ -66,8 +95,20 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 holder.tcblock_3.setVisibility(View.GONE);
             else {
                 holder.tctime_3.setText(viewPagerItemMainPage.name_3.split("x")[0]);
-                holder.tcname_3.setText(viewPagerItemMainPage.name_3.split("x")[2]);
+                holder.tcname_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[0]);
+                holder.tctype_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[1]);
+                holder.tcteacher_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[2]);
+                holder.tcroom_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[3]);
                 holder.tcblock_3.setVisibility(View.VISIBLE);
+                holder.tctype_3.setVisibility(View.VISIBLE);
+                holder.tcteacher_3.setVisibility(View.VISIBLE);
+                holder.tcroom_3.setVisibility(View.VISIBLE);
+                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[1].length() < 3)
+                    holder.tctype_3.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[2].length() < 3)
+                    holder.tcteacher_3.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[3].length() < 3)
+                    holder.tcroom_3.setVisibility(View.GONE);
             }
         } else
             holder.tcblock_3.setVisibility(View.GONE);
@@ -79,8 +120,20 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 holder.tcblock_4.setVisibility(View.GONE);
             else {
                 holder.tctime_4.setText(viewPagerItemMainPage.name_4.split("x")[0]);
-                holder.tcname_4.setText(viewPagerItemMainPage.name_4.split("x")[2]);
+                holder.tcname_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[0]);
+                holder.tctype_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[1]);
+                holder.tcteacher_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[2]);
+                holder.tcroom_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[3]);
                 holder.tcblock_4.setVisibility(View.VISIBLE);
+                holder.tctype_4.setVisibility(View.VISIBLE);
+                holder.tcteacher_4.setVisibility(View.VISIBLE);
+                holder.tcroom_4.setVisibility(View.VISIBLE);
+                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[1].length() < 3)
+                    holder.tctype_4.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[2].length() < 3)
+                    holder.tcteacher_4.setVisibility(View.GONE);
+                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[3].length() < 3)
+                    holder.tcroom_4.setVisibility(View.GONE);
             }
         } else {
             holder.tcblock_4.setVisibility(View.GONE);
@@ -140,6 +193,71 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         }
 
 
+    }
+
+
+    private String[] decomposition(String SPLIT) {
+
+        String[] tempstring = new String[4];
+        /*
+         *  tempstring[0] - Название
+         *  tempstring[1] - Тип
+         *  tempstring[2] - Препод
+         *  tempstring[3] - Аудитория
+         */
+        if (SPLIT.contains("(ЛЗ"))
+            tempstring[1] = "Лабораторное занятие";
+        else if (SPLIT.contains("(ПЗ"))
+            tempstring[1] = "Практическое занятие";
+        else if (SPLIT.contains("(Л "))
+            tempstring[1] = "Лекция";
+        else
+            tempstring[1] = "";
+
+        for (int le = 0; le < SPLIT.length(); le++) {
+            if (SPLIT.charAt(le) == '(') {
+                tempstring[0] = SPLIT.substring(0, le - 1);
+                break;
+            }
+        }
+
+        int tempsc = 0;
+
+        for (int le = 0; le < SPLIT.length(); le++) {
+            if (SPLIT.charAt(le) == ')') {
+                tempsc = le + 2;
+                break;
+            }
+        }
+        tempstring[3] = "";
+        tempstring[2] = "";
+        try {
+
+            if (SPLIT.contains("ЛК-")) {
+                tempstring[3] = SPLIT.substring(SPLIT.length() - 6, SPLIT.length());
+                tempstring[2] = SPLIT.substring(tempsc, SPLIT.length() - 7);
+            } else if (SPLIT.contains("У-") || SPLIT.contains("А-") || SPLIT.contains("ПА-")) {
+                tempstring[3] = SPLIT.substring(SPLIT.length() - 5, SPLIT.length());
+                tempstring[2] = SPLIT.substring(tempsc, SPLIT.length() - 6);
+            } else if (SPLIT.contains("этаж")) {
+                tempstring[3] = SPLIT.substring(SPLIT.length() - 9, SPLIT.length());
+
+            } else if (SPLIT.contains("Спортивный комплекс")) {
+                tempstring[3] = SPLIT.substring(SPLIT.length() - 19, SPLIT.length());
+            } else
+                tempstring[3] = "";
+
+
+            if(tempstring[2].contains("\n"))
+            {
+                tempstring[2] = tempstring[2].substring(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return tempstring;
     }
 
 }
