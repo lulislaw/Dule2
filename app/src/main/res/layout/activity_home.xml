@@ -18,307 +18,10 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/switch_buttons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gruppi">
-
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_monday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_monday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_monday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_monday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_tuesday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_tuesday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_tuesday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_tuesday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_wednesday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_wednesday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_wednesday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="29"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_wednesday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_thursday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_thursday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_thursday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_thursday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_friday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_friday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_friday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_friday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_select_day_saturday"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/clicklayout"
-            android:clickable="true"
-            android:gravity="center">
-
-            <LinearLayout
-                android:id="@+id/linearLayour_saturday"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/day_saturday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="29"
-                    android:textColor="#000000"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/month_saturday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:clickable="false"
-                    android:fontFamily="@font/inter_bold_1"
-                    android:foregroundGravity="center"
-                    android:gravity="center"
-                    android:text="Апреля"
-                    android:textColor="#000000"
-                    android:textSize="10sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/current_week_textview" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/calendar_button"
         android:layout_width="49dp"
         android:layout_height="49dp"
         android:layout_marginTop="8dp"
@@ -343,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager"
+        android:id="@+id/viewpagermain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="15dp"
@@ -351,7 +54,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/current_week_textview">
 
 
     </androidx.viewpager2.widget.ViewPager2>
@@ -599,14 +302,14 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/current_week_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="Четная"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch_buttons" />
+        app:layout_constraintTop_toBottomOf="@+id/gruppi" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

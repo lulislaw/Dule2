@@ -47,14 +47,16 @@ public class SettingsActivity extends AppCompatActivity {
     LocalDate date_start, date_end, date_current;
     File file_workbook;
     String sizefile;
-    Sheet[] sheets;
     int diff_date_int;
     String name_menu[] = new String[4];
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
     TextView back_name;
     Spinner SPINNER_SELECT_COURSE, SPINNER_SELECT_GROUP, SPINNER_SELECT_INSTITUTE;
     String[] url = new String[5];
-    int URL_ID, WORKBOOK_COURSE_ID, SHEET_INSTITUTE_ID, COLLUMN_GROUP_ID;
+    String[] daysofweeks_string = {
+            "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"
+    };
+    int WORKBOOK_COURSE_ID, SHEET_INSTITUTE_ID, COLLUMN_GROUP_ID;
 
 
     @Override
@@ -346,7 +348,7 @@ public class SettingsActivity extends AppCompatActivity {
                             int i = s + 8 * (d % 7);
                             String name = "null";
 
-                            String day = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth() + "" + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek();
+                            String day = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek().getValue() - 1];
                             String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
                             String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
                             String week = "null";

@@ -35,221 +35,260 @@
                 android:id="@+id/block_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/strokecorners"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="@drawable/background_block"
+                android:orientation="vertical"
+                android:tag="block_1_tag">
 
                 <TextView
                     android:id="@+id/Time_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/time_top_margin_block"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Время"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Name_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Предмет"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Type_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Тип"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Teacher_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Преподователь"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Room_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Аудитория"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/block_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/strokecorners"
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="@drawable/background_block"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/Time_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/time_top_margin_block"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Время"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Name_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Предмет"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Type_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Тип"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Teacher_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Преподователь"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Room_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Аудитория"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/block_3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/strokecorners"
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="@drawable/background_block"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/Time_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/time_top_margin_block"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Время"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Name_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Предмет"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Type_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Тип"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Teacher_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Преподователь"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Room_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Аудитория"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/block_4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/strokecorners"
+                android:background="@drawable/background_block"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/Time_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/time_top_margin_block"
                     android:fontFamily="@font/inter_semibold"
                     android:text="Время"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Name_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Предмет"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Type_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Тип"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Teacher_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Преподователь"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/Room_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/other_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block"
                     android:fontFamily="@font/inter_regular"
                     android:text="Аудитория"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <Space

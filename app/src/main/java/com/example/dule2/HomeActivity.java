@@ -1,6 +1,7 @@
 package com.example.dule2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
@@ -14,9 +15,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,27 +40,35 @@ public class HomeActivity extends AppCompatActivity {
 
     private final static String FILE_NAME_SELECTION = "selection.txt";
 
-    ViewPager2 viewPager2;
-    ArrayList<ViewPagerItem> viewPagerItemArrayList;
+    ViewPager2 viewPager2_mainpage;
+
+    ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
+
     AsyncHttpClient client;
+
     DBHelper dbHelper = new DBHelper(HomeActivity.this);
+
     FileInputStream fis;
+
     XSSFWorkbook workbook;
+
     ContentValues contentValues = new ContentValues();
+
     ProgressBar progressBar;
+
     Integer id_workbook, id_sheet, id_collumn, diff_date_int;
-    String text;
+
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
-    RelativeLayout[] set_day_buttons_selector = new RelativeLayout[6];
-    TextView[] set_day_buttons_selector_day_text = new TextView[6];
-    TextView[] set_day_buttons_selector_month_text = new TextView[6];
-    Intent[] intents = new Intent[4];
-    String[] urls = new String[4];
 
-    String[] names_1, names_2, names_3, names_4, date_vp, nameseven;
-
+    TextView current_week_textview;
 
     LocalDate date_start, date_end, date_current;
+
+    Intent[] intents = new Intent[4];
+
+    String text;
+    String[] urls = new String[4];
+    String[] names_1, names_2, names_3, names_4, date_vp, nameseven;
     String[] _monthru = {
             "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"
     };
@@ -72,39 +80,22 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
 
-// date start(y,m,d) 2022,02,06
-// date end(y,m,d) 2022,05,29
+                                                                                                         // date start(y,m,d) 2022,02,06
+                                                                                                        // date end(y,m,d) 2022,05,29
         date_start = LocalDate.of(2022, 2, 7);
         date_end = LocalDate.of(2022, 5, 30);
         date_current = LocalDate.now();
         diff_date_int = (int) (date_end.toEpochDay() - date_start.toEpochDay());
         int current_epoch_day = (int) (diff_date_int - ((date_end).toEpochDay() - date_current.toEpochDay()));
 
-        Log.d("mylog", diff_date_int + " diff " + current_epoch_day + " today");
         names_1 = new String[14 * diff_date_int];
         names_2 = new String[14 * diff_date_int];
         names_3 = new String[14 * diff_date_int];
         names_4 = new String[14 * diff_date_int];
         date_vp = new String[14 * diff_date_int];
         nameseven = new String[58 * diff_date_int];
-        set_day_buttons_selector_day_text[0] = findViewById(R.id.day_monday);
-        set_day_buttons_selector_day_text[1] = findViewById(R.id.day_tuesday);
-        set_day_buttons_selector_day_text[2] = findViewById(R.id.day_wednesday);
-        set_day_buttons_selector_day_text[3] = findViewById(R.id.day_thursday);
-        set_day_buttons_selector_day_text[4] = findViewById(R.id.day_friday);
-        set_day_buttons_selector_day_text[5] = findViewById(R.id.day_saturday);
-        set_day_buttons_selector_month_text[0] = findViewById(R.id.month_monday);
-        set_day_buttons_selector_month_text[1] = findViewById(R.id.month_tuesday);
-        set_day_buttons_selector_month_text[2] = findViewById(R.id.month_wednesday);
-        set_day_buttons_selector_month_text[3] = findViewById(R.id.month_thursday);
-        set_day_buttons_selector_month_text[4] = findViewById(R.id.month_friday);
-        set_day_buttons_selector_month_text[5] = findViewById(R.id.month_saturday);
-        set_day_buttons_selector[0] = findViewById(R.id.button_select_day_monday);
-        set_day_buttons_selector[1] = findViewById(R.id.button_select_day_tuesday);
-        set_day_buttons_selector[2] = findViewById(R.id.button_select_day_wednesday);
-        set_day_buttons_selector[3] = findViewById(R.id.button_select_day_thursday);
-        set_day_buttons_selector[4] = findViewById(R.id.button_select_day_friday);
-        set_day_buttons_selector[5] = findViewById(R.id.button_select_day_saturday);
+        current_week_textview = findViewById(R.id.current_week_textview);
+
         buttons_menu[0] = findViewById(R.id.BotNavButton_search);
         buttons_menu[1] = findViewById(R.id.BotNavButton_news);
         buttons_menu[2] = findViewById(R.id.BotNavButton_note);
@@ -155,9 +146,9 @@ public class HomeActivity extends AppCompatActivity {
             //dowloaddata(urls[id_workbook]);
             loaddata();
             if (current_epoch_day < diff_date_int && current_epoch_day > 0)
-                viewPager2.setCurrentItem(current_epoch_day);
+                viewPager2_mainpage.setCurrentItem(current_epoch_day);
             else
-                viewPager2.setCurrentItem(0);
+                viewPager2_mainpage.setCurrentItem(0);
 
 
         } catch (Exception e) {
@@ -165,46 +156,20 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        viewPager2_mainpage.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
             @Override
             public void onPageSelected(int position) {
 
-                for(int i = 0;i <6;i++)
-                {
-                  //  set_day_buttons_selector[i].setEnabled(false);
-                    String day_text = LocalDate.ofEpochDay(date_start.toEpochDay() + ((position / 7) * 7) + i).getDayOfMonth() + "";
-                    String month_text = _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + ((position / 7) * 7) + i).getMonthValue()] + "";
-                    set_day_buttons_selector_day_text[i].setText(day_text);
-                    set_day_buttons_selector_month_text[i].setText(month_text);
+                for (int i = 0; i < 6; i++) {
+
+                    if ((position / 7) % 2 == 0)
+                        current_week_textview.setText("Нечетная (" + ((position / 7) + 1) + ")");
+                    else
+                        current_week_textview.setText("Четная (" + ((position / 7) + 1) + ")");
+
                 }
 
-
-
-/*
-                set_day_buttons_selector_day_text[0].setText(LocalDate.ofEpochDay(date_start.toEpochDay() + position - 1).getDayOfMonth() + "");
-                set_day_buttons_selector_month_text[0].setText(_monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + position - 1).getMonthValue() - 1] + "");
-                set_day_buttons_selector_day_text[0].setTextColor(getColor(R.color.grey));
-                set_day_buttons_selector_month_text[0].setTextColor(getColor(R.color.grey));
-                set_day_buttons_selector[0].setBackground(getDrawable(R.drawable.clicklayout_grey));
-                set_day_buttons_selector[0].setEnabled(true);
-
-
-                set_day_buttons_selector_day_text[1].setText(LocalDate.ofEpochDay(date_start.toEpochDay() + position).getDayOfMonth() + "");
-                set_day_buttons_selector_month_text[1].setText(_monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + position).getMonthValue() - 1] + "");
-                set_day_buttons_selector_day_text[1].setTextColor(getColor(R.color.black));
-                set_day_buttons_selector_month_text[1].setTextColor(getColor(R.color.black));
-                set_day_buttons_selector[1].setBackground(getDrawable(R.drawable.clicklayout));
-                set_day_buttons_selector[1].setEnabled(false);
-
-
-                set_day_buttons_selector_day_text[2].setText(LocalDate.ofEpochDay(date_start.toEpochDay() + position + 1).getDayOfMonth() + "");
-                set_day_buttons_selector_month_text[2].setText(_monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + position + 1).getMonthValue() - 1] + "");
-                set_day_buttons_selector[2].setBackground(getDrawable(R.drawable.clicklayout_grey));
-                set_day_buttons_selector[2].setEnabled(true);
-                set_day_buttons_selector_day_text[2].setTextColor(getColor(R.color.grey));
-                set_day_buttons_selector_month_text[2].setTextColor(getColor(R.color.grey));
-*/
                 super.onPageSelected(position);
             }
         });
@@ -214,24 +179,20 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void loaddata() {
-
-        viewPager2 = findViewById(R.id.viewpager);
+        viewPager2_mainpage = findViewById(R.id.viewpagermain);
         SQLiteDatabase database2 = dbHelper.getWritableDatabase();
         Cursor cursor = database2.query(DBHelper.TABLE_CONTACTS, null, null, null, null, null, null);
 
         if (cursor.moveToFirst()) {
-            int IdIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
             int NameIndex = cursor.getColumnIndex(DBHelper.KEY_NAME);
             int TimeIndex = cursor.getColumnIndex(DBHelper.KEY_TIME);
             int WeekIndex = cursor.getColumnIndex(DBHelper.KEY_WEEK);
             int DayIndex = cursor.getColumnIndex(DBHelper.KEY_DAY);
-            int MonthIndex = cursor.getColumnIndex(DBHelper.KEY_MONTH);
-            int YearIndex = cursor.getColumnIndex(DBHelper.KEY_YEAR);
             int i = 0;
 
             do {
 
-                nameseven[i] = cursor.getString(TimeIndex) + "x" + cursor.getString(WeekIndex) + "x" + cursor.getString(NameIndex) + "x" + cursor.getString(YearIndex) + "." + cursor.getString(MonthIndex) + "." + cursor.getString(DayIndex);
+                nameseven[i] = cursor.getString(TimeIndex) + "x" + cursor.getString(WeekIndex) + "x" + cursor.getString(NameIndex) + "x" + cursor.getString(DayIndex);
                 i++;
 
             }
@@ -257,25 +218,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
-        viewPagerItemArrayList = new ArrayList<>();
+        viewPagerItemMainPageArrayList = new ArrayList<>();
         for (int i = 0; i < names_1.length; i++) {
-            ViewPagerItem viewPagerItem = new ViewPagerItem(date_vp[i], names_1[i], names_2[i], names_3[i], names_4[i]);
-            viewPagerItemArrayList.add(viewPagerItem);
+            ViewPagerItemMainPage viewPagerItemMainPage = new ViewPagerItemMainPage(names_1[i], names_2[i], names_3[i], names_4[i]);
+            viewPagerItemMainPageArrayList.add(viewPagerItemMainPage);
         }
-        VPAdapder vpAdapder = new VPAdapder(viewPagerItemArrayList);
-        viewPager2.setAdapter(vpAdapder);
-        viewPager2.setClipToPadding(false);
-        viewPager2.setClipChildren(false);
-        viewPager2.setOffscreenPageLimit(2);
-        viewPager2.getChildAt(0).setOverScrollMode(viewPager2.OVER_SCROLL_NEVER);
+        VPAdapderMainPage vpAdapderMainPage = new VPAdapderMainPage(viewPagerItemMainPageArrayList);
+        viewPager2_mainpage.setAdapter(vpAdapderMainPage);
+        viewPager2_mainpage.setClipToPadding(false);
+        viewPager2_mainpage.setClipChildren(false);
+        viewPager2_mainpage.setOffscreenPageLimit(2);
+        viewPager2_mainpage.getChildAt(0).setOverScrollMode(viewPager2_mainpage.OVER_SCROLL_NEVER);
         progressBar.setVisibility(View.GONE);
 
 
     }
-
-
-    // download excel -> convert to dbSQL save
-
 
     private void dowloaddata(String url_file) {
         progressBar.setVisibility(View.VISIBLE);
@@ -301,7 +258,7 @@ public class HomeActivity extends AppCompatActivity {
                     cursor1.moveToLast();
                     int NameIndex1 = cursor1.getColumnIndex(DBHelper.KEY_NAME);
 
-                    if (1 != 0) { // добавить сравенение группы    Integer.parseInt(sizefile)
+
                         try {
                             ZipSecureFile.setMinInflateRatio(0);
                             fis = new FileInputStream(file);
@@ -392,21 +349,18 @@ public class HomeActivity extends AppCompatActivity {
                             contentValues.put(DBHelper.KEY_TIME, "0");
                             contentValues.put(DBHelper.KEY_WEEK, "0");
                             database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-                            Log.d("mylog", "success save");
+
                             loaddata();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-                    cursor1.close();
 
 
                 }
-            }
+
         });
 
-
     }
-
 
 }
