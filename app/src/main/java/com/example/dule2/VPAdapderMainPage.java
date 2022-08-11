@@ -41,7 +41,6 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             if (viewPagerItemMainPage.name_1.split("x")[2].length() < _limitchars)
                 holder.tcblock_1.setVisibility(View.GONE);
             else {
-
                 holder.tctime_1.setText(viewPagerItemMainPage.name_1.split("x")[0]);
                 holder.tcname_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[0]);
                 holder.tctype_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[1]);

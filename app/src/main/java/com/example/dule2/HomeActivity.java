@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
     RelativeLayout calendarButton, disableCalendar;
     CalendarView calendarView;
 
-    TextView current_week_textview;
+    TextView current_week_textview, current_group_textview;
     LocalDate date_start, date_end, date_current;
 
     Intent[] intents = new Intent[4];
@@ -91,7 +91,7 @@ public class HomeActivity extends AppCompatActivity {
         names_4 = new String[14 * diff_date_int];
         date_vp = new String[14 * diff_date_int];
         nameseven = new String[58 * diff_date_int];
-
+        current_group_textview = findViewById(R.id.gruppi);
         current_week_textview = findViewById(R.id.current_week_textview);
         calendarButton = findViewById(R.id.calendar_button);
         calendarView = findViewById(R.id.calendarView);
@@ -144,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
         urls[1] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak2.xlsx?raw=true";
         urls[2] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak3.xlsx?raw=true";
         urls[3] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak4.xlsx?raw=true";
+
         try {
             //dowloaddata(urls[id_workbook]);
             loaddata();
@@ -158,6 +159,10 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
+        if ((viewPager2_mainpage.getCurrentItem() / 7) % 2 == 0)
+            current_week_textview.setText("Нечетная (" + ((viewPager2_mainpage.getCurrentItem() / 7) + 1) + ")");
+        else
+            current_week_textview.setText("Четная (" + ((viewPager2_mainpage.getCurrentItem() / 7) + 1) + ")");
         viewPager2_mainpage.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @SuppressLint({"UseCompatLoadingForDrawables", "SetTextI18n"})
             @Override
@@ -208,7 +213,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    
+
 
     private void loaddata() {
         viewPager2_mainpage = findViewById(R.id.viewpagermain);
@@ -227,18 +232,21 @@ public class HomeActivity extends AppCompatActivity {
             do {
 
                 nameseven[i] =
-                        cursor.getString(TimeIndex) + "x"
-                                + cursor.getString(WeekIndex) + "x"
-                                + cursor.getString(NameIndex) + "x"
-                                + cursor.getString(DayIndex) + " "
-                                + _monthru[Integer.parseInt(cursor.getString(MonthIndex)) - 1] + " "
-                                + cursor.getString(YearIndex);
+                                cursor.getString(TimeIndex) + "x" +
+                                cursor.getString(WeekIndex) + "x" +
+                                cursor.getString(NameIndex) + "x" +
+                                cursor.getString(DayIndex) + " " +
+                                _monthru[Integer.parseInt(cursor.getString(MonthIndex)) - 1] + " " +
+                                cursor.getString(YearIndex);
                 i++;
 
             }
             while (cursor.moveToNext());
+            cursor.moveToLast();
+            current_group_textview.setText(cursor.getString(TimeIndex) + "");
 
         }
+
         cursor.close();
 
         for (int i = 0; i < diff_date_int / 7; i++) {

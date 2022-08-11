@@ -12,7 +12,7 @@
     <RelativeLayout
         android:id="@+id/disableCalendar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/alpha3"
         android:clickable="true"
         android:elevation="5dp"
@@ -40,15 +40,13 @@
         app:layout_constraintTop_toBottomOf="@+id/current_week_textview" />
 
 
-
-
-
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.Holo.ProgressBar"
         android:layout_width="147dp"
         android:layout_height="147dp"
 
+        android:theme="@style/CalenderViewCustom"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +56,12 @@
         android:id="@+id/calendar_button"
         android:layout_width="49dp"
         android:layout_height="49dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/clicklayout"
         android:clickable="true"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gruppi"
         tools:ignore="SpeakableTextPresentCheck">
 
         <ImageView
@@ -77,14 +74,16 @@
 
     <TextView
         android:id="@+id/gruppi"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="@font/inter_bold_1"
         android:text="ПИ 1-1"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +91,7 @@
         android:id="@+id/viewpagermain"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -349,11 +348,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/inter_bold_1"
         android:text="Четная"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gruppi" />
 

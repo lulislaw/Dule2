@@ -50,7 +50,8 @@ public class SettingsActivity extends AppCompatActivity {
     int diff_date_int;
     String name_menu[] = new String[4];
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
-    TextView back_name;
+    TextView back_name, notification;
+    RelativeLayout notification_rl;
     Spinner SPINNER_SELECT_COURSE, SPINNER_SELECT_GROUP, SPINNER_SELECT_INSTITUTE;
     String[] url = new String[5];
     String[] daysofweeks_string = {
@@ -106,6 +107,8 @@ public class SettingsActivity extends AppCompatActivity {
         menu_settings[2] = findViewById(R.id.menu_third);
         menu_settings[3] = findViewById(R.id.menu_four);
         back_rl = findViewById(R.id.back_relativeLayout);
+        notification = findViewById(R.id.notification);
+        notification_rl = findViewById(R.id.notification_rl);
 
 
         for (int i = 0; i < 4; i++) {
@@ -180,8 +183,10 @@ public class SettingsActivity extends AppCompatActivity {
         SPINNER_SELECT_COURSE.setAdapter(ADAPTER_1);
 
         SPINNER_SELECT_COURSE.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setNotification("Поиск институтов");
                 WORKBOOK_COURSE_ID = position;
                 client = new AsyncHttpClient();
                 client.get(url[position], new FileAsyncHttpResponseHandler(SettingsActivity.this) {
@@ -222,7 +227,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 ArrayAdapter<String> ADAPTER_2 = new ArrayAdapter<String>(SettingsActivity.this, android.R.layout.simple_spinner_item, ARRAYSPINNER_2);
                                 ADAPTER_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 SPINNER_SELECT_INSTITUTE.setAdapter(ADAPTER_2);
-
+                                setNotification("Поиск групп");
                             } catch (IOException e) {
                                 e.printStackTrace();
 
@@ -242,6 +247,7 @@ public class SettingsActivity extends AppCompatActivity {
         SPINNER_SELECT_INSTITUTE.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setNotification("Поиск групп");
                 SPINNER_SELECT_GROUP.setClickable(true);
                 SHEET_INSTITUTE_ID = position;
                 SHEET = workbook.getSheetAt(SHEET_INSTITUTE_ID);
@@ -299,7 +305,8 @@ public class SettingsActivity extends AppCompatActivity {
                 ADAPTER_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 SPINNER_SELECT_GROUP.setAdapter(ADAPTER_3);
 
-
+                setNotification("");
+                notification_rl.setVisibility(View.GONE);
             }
 
             @Override
@@ -325,7 +332,7 @@ public class SettingsActivity extends AppCompatActivity {
         BUTTON_SAVE_SELECTION.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setNotification("Сохранение данных");
                 FileOutputStream fos = null;
                 try {
 
@@ -379,13 +386,25 @@ public class SettingsActivity extends AppCompatActivity {
 
 
                         }
+
+
+
+
                     }
                     Log.d("mylog", "success save");
-
+                    contentValues.put(DBHelper.KEY_DAY, "1");
+                    contentValues.put(DBHelper.KEY_MONTH, "1");
+                    contentValues.put(DBHelper.KEY_YEAR, "1");
+                    contentValues.put(DBHelper.KEY_NAME, "1");
+                    contentValues.put(DBHelper.KEY_TIME,
+                            SHEET.getRow(6).getCell(COLLUMN_GROUP_ID+4).toString().substring(0,1).toString()  + " | " +
+                                    SHEET.getRow(5).getCell(COLLUMN_GROUP_ID + 4).toString());
+                    contentValues.put(DBHelper.KEY_WEEK, "1");
+                    database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
 
                     //////////////////////////////////////
-
-
+                    setNotification("");
+                    notification_rl.setVisibility(View.GONE);
                     buttons_menu[3].callOnClick();
 
                 } catch (IOException ex) {
@@ -404,6 +423,11 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
+    }
+    private void setNotification(String note)
+    {
+        notification_rl.setVisibility(View.VISIBLE);
+        notification.setText(note);
     }
 
 
