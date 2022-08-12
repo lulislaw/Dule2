@@ -45,14 +45,9 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager2 viewPager2_mainpage;
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
 
-    AsyncHttpClient client;
     DBHelper dbHelper = new DBHelper(HomeActivity.this);
-    FileInputStream fis;
-    XSSFWorkbook workbook;
-    ContentValues contentValues = new ContentValues();
-
     ProgressBar progressBar;
-    Integer id_workbook, id_sheet, id_collumn, diff_date_int;
+    Integer diff_date_int;
 
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
     RelativeLayout calendarButton, disableCalendar;
@@ -63,8 +58,6 @@ public class HomeActivity extends AppCompatActivity {
 
     Intent[] intents = new Intent[4];
 
-    String text;
-    String[] urls = new String[4];
     String[] names_1, names_2, names_3, names_4, date_vp, nameseven;
     String[] _monthru = {
             "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"
@@ -111,39 +104,19 @@ public class HomeActivity extends AppCompatActivity {
             buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(intents[finalI]);
-                    overridePendingTransition(0, 0);
+                    try{
+                        intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        overridePendingTransition(0,0);
+                        startActivityIfNeeded(intents[finalI], 0);
+                    } catch (Exception e) {
+                        startActivity(intents[finalI]);
+                        overridePendingTransition(0, 0);
+                        e.printStackTrace();
+                    }
                 }
             });
         }
 
-
-        FileInputStream fin = null;
-        try {
-
-            fin = openFileInput(FILE_NAME_SELECTION);
-            byte[] bytes = new byte[fin.available()];
-            fin.read(bytes);
-            text = new String(bytes);
-            if (text.length() >= 5) {
-                String[] split_text = text.split("x");
-                id_workbook = Integer.parseInt(split_text[0]);
-                id_sheet = Integer.parseInt(split_text[1]);
-                id_collumn = Integer.parseInt(split_text[2]);
-            } else
-                buttons_menu[3].callOnClick();
-
-
-        } catch (Exception e) {
-            buttons_menu[3].callOnClick();
-            e.printStackTrace();
-        }
-
-
-        urls[0] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak1.xlsx?raw=true";
-        urls[1] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak2.xlsx?raw=true";
-        urls[2] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak3.xlsx?raw=true";
-        urls[3] = "https://github.com/lulislaw/ExcelFilesForAnroidGUU/blob/main/bak4.xlsx?raw=true";
 
         try {
             //dowloaddata(urls[id_workbook]);
@@ -282,133 +255,5 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void dowloaddata(String url_file) {
-        progressBar.setVisibility(View.VISIBLE);
-        client = new AsyncHttpClient();
-        client.get(url_file, new FileAsyncHttpResponseHandler(this) {
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
-                progressBar.setVisibility(View.GONE);
-            }
-
-            public void onSuccess(int statusCode, Header[] headers, File file) {
-
-                if (file != null) {
-                    String sizefile = "";
-                    try {
-                        BasicFileAttributes attr = Files.readAttributes(Paths.get(file.getPath()), BasicFileAttributes.class);
-                        sizefile = attr.size() + "";
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    SQLiteDatabase database1 = dbHelper.getWritableDatabase();
-                    Cursor cursor1 = database1.query(DBHelper.TABLE_CONTACTS, null, null, null, null, null, null);
-                    cursor1.moveToLast();
-                    int NameIndex1 = cursor1.getColumnIndex(DBHelper.KEY_NAME);
-
-
-                    try {
-                        ZipSecureFile.setMinInflateRatio(0);
-                        fis = new FileInputStream(file);
-                        workbook = new XSSFWorkbook(fis);
-                        XSSFSheet sheet = workbook.getSheetAt(id_sheet);
-                        int lenmergedregion = sheet.getMergedRegions().size();
-                        int[] CellStart = new int[lenmergedregion];
-                        int[] CellEnd = new int[lenmergedregion];
-                        int[] RowStart = new int[lenmergedregion];
-                        int[] RowEnd = new int[lenmergedregion];
-                        for (int i = 0; i < lenmergedregion; i++) {
-                            CellStart[i] = sheet.getMergedRegions().get(i).getFirstColumn();
-                            RowStart[i] = sheet.getMergedRegions().get(i).getFirstRow();
-                            CellEnd[i] = sheet.getMergedRegions().get(i).getLastColumn();
-                            RowEnd[i] = sheet.getMergedRegions().get(i).getLastRow();
-                        }
-
-                        for (int i = 0; i < lenmergedregion; i++) {
-                            String mergedstring = "";
-                            for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
-
-                                for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
-                                    if (sheet.getRow(r).getCell(c).toString().length() > 1) {
-                                        mergedstring = sheet.getRow(r).getCell(c).toString();
-                                    }
-
-                                }
-
-                            }
-                            for (int r = RowStart[i]; r <= RowEnd[i]; r++) {
-
-                                for (int c = CellStart[i]; c <= CellEnd[i]; c++) {
-                                    sheet.getRow(r).getCell(c).setCellValue(mergedstring);
-                                }
-                            }
-                        }
-
-
-                        SQLiteDatabase database = dbHelper.getWritableDatabase();
-                        database.delete(DBHelper.TABLE_CONTACTS, null, null);
-
-                        for (int d = 0; d < diff_date_int; d++) {
-
-
-                            for (int s = 0; s < 8; s++) {
-
-                                int i = s + 8 * (d % 7);
-                                String name = "null";
-
-                                String day = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfMonth() + "" + LocalDate.ofEpochDay(date_start.toEpochDay() + d).getDayOfWeek();
-                                String month = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getMonth().getValue() + "";
-                                String year = LocalDate.ofEpochDay(date_start.toEpochDay() + d).getYear() + "";
-                                String week = "null";
-                                String time = "null";
-
-
-                                try {
-                                    name = sheet.getRow(i + 8).getCell(id_collumn + 4).toString();
-                                    week = sheet.getRow(i + 8).getCell(3).toString();
-                                    time = sheet.getRow(i + 8).getCell(2).toString();
-                                } catch (Exception e) {
-                                    name = "null";
-                                    week = "null";
-                                    time = "null";
-
-                                    e.printStackTrace();
-                                }
-
-
-                                ContentValues contentValues = new ContentValues();
-                                contentValues.put(DBHelper.KEY_DAY, day);
-                                contentValues.put(DBHelper.KEY_MONTH, month);
-                                contentValues.put(DBHelper.KEY_YEAR, year);
-                                contentValues.put(DBHelper.KEY_NAME, name);
-                                contentValues.put(DBHelper.KEY_TIME, time);
-                                contentValues.put(DBHelper.KEY_WEEK, week);
-                                database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-
-
-                            }
-                        }
-                        String name = sizefile;
-
-                        contentValues.put(DBHelper.KEY_DAY, "0");
-                        contentValues.put(DBHelper.KEY_MONTH, "0");
-                        contentValues.put(DBHelper.KEY_YEAR, "0");
-                        contentValues.put(DBHelper.KEY_NAME, name);
-                        contentValues.put(DBHelper.KEY_TIME, "0");
-                        contentValues.put(DBHelper.KEY_WEEK, "0");
-                        database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-
-                        loaddata();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-            }
-
-        });
-
-    }
 
 }

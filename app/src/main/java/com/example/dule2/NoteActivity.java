@@ -32,8 +32,16 @@ public class NoteActivity extends AppCompatActivity {
                 buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startActivity(intents[finalI]);
-                        overridePendingTransition(0,0);
+                        try{
+
+                            intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            overridePendingTransition(0,0);
+                            startActivityIfNeeded(intents[finalI], 0);
+                        } catch (Exception e) {
+                            startActivity(intents[finalI]);
+                            overridePendingTransition(0, 0);
+                            e.printStackTrace();
+                        }
                     }
                 });
             }
