@@ -204,7 +204,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             _tctimes[1] = itemView.findViewById(R.id.Time_2);
             _tctimes[2] = itemView.findViewById(R.id.Time_3);
             _tctimes[3] = itemView.findViewById(R.id.Time_4);
-            _tcnames[0] = itemView.findViewById(R.id.Name_1);
+            _tcnames[0] = itemView.findViewById(R.id.Name);
             _tcnames[1] = itemView.findViewById(R.id.Name_2);
             _tcnames[2] = itemView.findViewById(R.id.Name_3);
             _tcnames[3] = itemView.findViewById(R.id.Name_4);

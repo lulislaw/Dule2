@@ -44,7 +44,7 @@
                 android:tag="block_1_tag">
 
                 <LinearLayout
-                    android:id="@+id/b_time_1"
+                    android:id="@+id/b_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
@@ -74,7 +74,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/Name_1"
+                    android:id="@+id/Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"

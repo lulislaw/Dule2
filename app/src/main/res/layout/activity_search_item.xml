@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/top_margin_block"
+    android:background="@drawable/background_block"
+    android:gravity="left"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/name_top_margin_block"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/Course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_semibold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/DayOfWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/left_margin_block"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Понедельник"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/Time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/time_top_margin_block"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Время"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/name_top_margin_block"
+        android:fontFamily="@font/inter_regular"
+        android:text="Предмет"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/other_top_margin_block"
+        android:fontFamily="@font/inter_regular"
+        android:text="Тип"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/other_top_margin_block"
+        android:fontFamily="@font/inter_regular"
+        android:text="Преподователь"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_margin_block"
+        android:layout_marginTop="@dimen/other_top_margin_block"
+        android:layout_marginBottom="@dimen/room_bot_margin_block"
+        android:fontFamily="@font/inter_regular"
+        android:text="Аудитория"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+</LinearLayout>

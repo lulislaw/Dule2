@@ -1,20 +1,51 @@
 package com.example.dule2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
+import android.widget.TextView;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.FileAsyncHttpResponseHandler;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 
 public class SearchActivity extends AppCompatActivity {
+
+    String[] tmp_text;
+    String check_string = "";
+    RecyclerView recyclerView;
+    SearchView searchView;
+    private final List<SearchItem> SearchItems = new ArrayList<>();
+    private final RecyclerView.Adapter adapter = new SearchItemAdapter(this.SearchItems);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        downloadtxt();
+        searchView = findViewById(R.id.searchView);
+        recyclerView = findViewById(R.id.RecyclerView);
+        String[] items;
         {
             RelativeLayout[] buttons_menu = new RelativeLayout[4];
             Intent[] intents = new Intent[4];
@@ -26,15 +57,15 @@ public class SearchActivity extends AppCompatActivity {
             intents[1] = new Intent(this, NewsActivity.class);
             intents[2] = new Intent(this, NoteActivity.class);
             intents[3] = new Intent(this, SettingsActivity.class);
-            for(int i = 0;i<4;i++){
+            for (int i = 0; i < 4; i++) {
                 int finalI = i;
                 buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        try{
+                        try {
 
                             intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                            overridePendingTransition(0,0);
+                            overridePendingTransition(0, 0);
                             startActivityIfNeeded(intents[finalI], 0);
                         } catch (Exception e) {
                             startActivity(intents[finalI]);
@@ -46,12 +77,135 @@ public class SearchActivity extends AppCompatActivity {
             }
 
 
-
-
         }
 
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                if(s != check_string) {
+                    SearchItems.clear();
+                    recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+                    recyclerView.setAdapter(adapter);
+                    check_string = s;
+                    for (int i = 0; i < tmp_text.length; i++) {
+
+                        if (tmp_text[i].contains(s)) {
+                            SearchItems.add(new SearchItem(tmp_text[i]));
+                            adapter.notifyItemInserted(SearchItems.size() - 1);
+
+                        }
+
+                    }
+                }
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                return false;
+            }
+        });
 
 
     }
+
+
+    private static final class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+    {
+        private final List<SearchItem> SearchItems;
+
+        public SearchItemAdapter(List<SearchItem> SearchItems)
+        {
+
+            this.SearchItems = SearchItems;
+        }
+
+        @NonNull
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new RecyclerView.ViewHolder(
+                    LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_search_item, parent, false)
+            ) {};
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+            TextView name = holder.itemView.findViewById(R.id.Name);
+            TextView time = holder.itemView.findViewById(R.id.Time);
+            TextView type = holder.itemView.findViewById(R.id.Type);
+            TextView teacher = holder.itemView.findViewById(R.id.Teacher);
+            TextView room = holder.itemView.findViewById(R.id.Room);
+            TextView dayofweek = holder.itemView.findViewById(R.id.DayOfWeek);
+            TextView course = holder.itemView.findViewById(R.id.Course);
+            name.setText(this.SearchItems.get(position).getName());
+            time.setText(this.SearchItems.get(position).getTime());
+            type.setText(this.SearchItems.get(position).getTypeSubject());
+            teacher.setText(this.SearchItems.get(position).getTeacher());
+            room.setText(this.SearchItems.get(position).getRoom());
+            dayofweek.setText(this.SearchItems.get(position).getDayOfWeek());
+            course.setText(this.SearchItems.get(position).getCourse());
+        }
+
+        @Override
+        public int getItemCount() {
+            return this.SearchItems.size();
+        }
+
+
+    }
+
+
+
+
+
+    private void downloadtxt() {
+
+
+        final AsyncHttpClient[] client = {new AsyncHttpClient()};
+        client[0].get("https://github.com/lulislaw/excelfilesguu/blob/main/search.txt?raw=true", new FileAsyncHttpResponseHandler(this) {
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
+
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, File file) {
+
+                try {
+                    FileInputStream fin = new FileInputStream(file);
+                    FileReader tfr = new FileReader(file);
+                    String text = "";
+                    char[] buffer = new char[8096];
+                    int chars = tfr.read(buffer);
+                    while (chars != -1) {
+                        text = text + String.valueOf(buffer, 0, chars);
+                        chars = tfr.read(buffer);
+                    }
+
+                    tmp_text = text.split("X");
+
+
+                } catch (FileNotFoundException e) {
+
+                    e.printStackTrace();
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
+    }
+
+
 }

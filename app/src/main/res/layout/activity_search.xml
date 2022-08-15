@@ -6,6 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Back_SearchView" />
+
+    <RelativeLayout
+        android:id="@+id/Back_SearchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:background="@drawable/strokecorners">
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="49dp"
+                    android:iconifiedByDefault="false"
+                    android:inputType="text"
+                    android:searchHintIcon="@drawable/ic_search"
+                    android:searchIcon="@drawable/ic_search">
+
+                </SearchView>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
@@ -48,8 +97,8 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:tint="@color/purple_500"
-                        app:srcCompat="@drawable/ic_search" />
+                        app:srcCompat="@drawable/ic_search"
+                        app:tint="@color/purple_500" />
 
                     <TextView
                         android:id="@+id/name_button_search"
@@ -93,8 +142,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_info"
-                        />
+                        app:srcCompat="@drawable/ic_info" />
 
                     <TextView
                         android:id="@+id/name_button_news"
@@ -138,8 +186,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_home"
-                        />
+                        app:srcCompat="@drawable/ic_home" />
 
                     <TextView
                         android:id="@+id/name_button_home"
@@ -252,4 +299,5 @@
 
         </LinearLayout>
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
