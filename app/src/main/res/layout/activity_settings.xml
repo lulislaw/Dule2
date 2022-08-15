@@ -8,215 +8,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/notification_rl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:background="@drawable/strokecorners_bg_grey"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_semibold" />
-
-            <ProgressBar
-                android:id="@+id/notification_pb"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:theme="@style/CalenderViewCustom" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/back_relativeLayout"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/alpha3"
-        android:gravity="center_vertical"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="20dp"
-                app:srcCompat="@drawable/ic_union" />
-
-            <TextView
-                android:id="@+id/back_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/inter_bold_1"
-                android:text="Название"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/menu_first"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginRight="24dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/TEXTVIEW_COURSE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/inter_bold_1"
-                android:text="Курс"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/SPINNER_SELECT_COURSE"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="true"
-                android:scrollbarStyle="insideOverlay"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/TEXTVIEW_INSTITUTE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/inter_bold_1"
-                android:text="Институт"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/SPINNER_SELECT_INSTITUTE"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="false"
-                android:scrollbarStyle="insideOverlay"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/TEXTVIEW_GROUP"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/inter_bold_1"
-                android:text="Группа"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/SPINNER_SELECT_GROUP"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginBottom="10dp"
-                android:clickable="false"
-                android:scrollbarStyle="insideOverlay"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <Button
-                android:id="@+id/BUTTON_SAVE_SELECTION"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:enabled="false"
-                android:fontFamily="@font/inter_semibold"
-                android:text="Сохранить"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/BUTTON_BACK"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/inter_semibold"
-                android:text="Назад"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/menu_second"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/menu_third"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/menu_four"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/Button_select_day_first"
+        android:id="@+id/Button_settings_first"
         android:layout_width="98dp"
         android:layout_height="98dp"
         android:layout_marginStart="80dp"
@@ -244,7 +36,7 @@
                 app:srcCompat="@drawable/ic_settings" />
 
             <TextView
-                android:id="@+id/month_left"
+                android:id="@+id/name_settings_first"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -316,7 +108,7 @@
         android:gravity="center"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button_select_day_first"
+        app:layout_constraintTop_toBottomOf="@+id/Button_settings_first"
         tools:visibility="invisible">
 
         <LinearLayout
@@ -396,16 +188,10 @@
     </RelativeLayout>
 
 
-
-
-
-
     <RelativeLayout
         android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/backroung_alphagrey"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -487,15 +273,14 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_info"
-                        />
+                        app:srcCompat="@drawable/ic_info" />
 
                     <TextView
                         android:id="@+id/name_button_news"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="5dp"
                         android:clickable="false"
                         android:fontFamily="@font/inter_bold_1"
                         android:foregroundGravity="center"
@@ -532,8 +317,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_home"
-                        />
+                        app:srcCompat="@drawable/ic_home" />
 
                     <TextView
                         android:id="@+id/name_button_home"
@@ -624,8 +408,8 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:tint="@color/purple_500"
-                        app:srcCompat="@drawable/ic_settings" />
+                        app:srcCompat="@drawable/ic_settings"
+                        app:tint="@color/purple_500" />
 
                     <TextView
                         android:id="@+id/name_button_settings"

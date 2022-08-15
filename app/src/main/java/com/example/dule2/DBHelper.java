@@ -11,10 +11,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "duledb";
     public static final String TABLE_CONTACTS = "contacts";
     public static final String KEY_NAME = "name";
-    public static final String KEY_DAY = "day";
-    public static final String KEY_MONTH = "month";
-    public static final String KEY_YEAR = "year";
-    public static final String KEY_WEEK = "week";
     public static final String KEY_ID = "_id";
     public static final String KEY_TIME = "time";
 
@@ -27,12 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("create table " + TABLE_CONTACTS + "("
                 + KEY_ID + " integer primary key,"
-                + KEY_DAY + " text,"
-                + KEY_MONTH + " text,"
-                + KEY_YEAR + " text,"
                 + KEY_NAME + " text,"
-                + KEY_TIME + " text,"
-                + KEY_WEEK + " text" + ")");
+                + KEY_TIME + " text" + ")");
 
     }
 

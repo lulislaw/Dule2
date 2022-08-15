@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class NoteActivity extends AppCompatActivity {
 

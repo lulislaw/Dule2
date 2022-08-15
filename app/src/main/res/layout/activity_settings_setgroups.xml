@@ -4,14 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteActivity">
+    tools:context=".SettingsActivity_setgroups">
+
+    <RelativeLayout
+        android:id="@+id/menu_first"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/TEXTVIEW_COURSE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/inter_bold_1"
+                android:text="Курс"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/SPINNER_SELECT_COURSE"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:scrollbarStyle="insideOverlay"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/TEXTVIEW_INSTITUTE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/inter_bold_1"
+                android:text="Институт"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/SPINNER_SELECT_INSTITUTE"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="false"
+                android:scrollbarStyle="insideOverlay"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/TEXTVIEW_GROUP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/inter_bold_1"
+                android:text="Группа"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/SPINNER_SELECT_GROUP"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="false"
+                android:scrollbarStyle="insideOverlay"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/BUTTON_SAVE_SELECTION"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:enabled="false"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Сохранить"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/BUTTON_BACK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inter_semibold"
+                android:text="Назад"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/bottomNavigationView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/backroung_alphagrey"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -92,8 +200,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_info"
-                        />
+                        app:srcCompat="@drawable/ic_info" />
 
                     <TextView
                         android:id="@+id/name_button_news"
@@ -138,7 +245,7 @@
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_home"
-                        />
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/name_button_home"
@@ -151,7 +258,7 @@
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:text="Главная"
-                        android:textColor="#000000"
+                        android:textColor="@color/black"
                         android:textSize="8sp" />
 
                 </LinearLayout>
@@ -177,27 +284,25 @@
 
                     <ImageView
                         android:id="@+id/imageView_note"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_note"
-                        app:tint="@color/purple_500"
-                        />
+                        app:srcCompat="@drawable/ic_note" />
 
                     <TextView
                         android:id="@+id/name_button_note"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="5dp"
                         android:clickable="false"
                         android:fontFamily="@font/inter_bold_1"
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:text="Заметки"
-                        android:textColor="@color/purple_500"
+                        android:textColor="#000000"
                         android:textSize="8sp" />
 
                 </LinearLayout>
@@ -223,25 +328,26 @@
 
                     <ImageView
                         android:id="@+id/imageView_settings"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_settings" />
+                        app:srcCompat="@drawable/ic_settings"
+                        app:tint="@color/purple_500" />
 
                     <TextView
                         android:id="@+id/name_button_settings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         android:clickable="false"
                         android:fontFamily="@font/inter_bold_1"
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:text="Настройки"
-                        android:textColor="#000000"
+                        android:textColor="@color/purple_500"
                         android:textSize="8sp" />
 
                 </LinearLayout>

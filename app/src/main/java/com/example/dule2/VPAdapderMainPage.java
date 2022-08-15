@@ -1,24 +1,32 @@
 package com.example.dule2;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.ViewHolder> {
 
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
 
 
+
     public VPAdapderMainPage(ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList) {
         this.viewPagerItemMainPageArrayList = viewPagerItemMainPageArrayList;
+
+
     }
+
+
+
 
     @NonNull
     @Override
@@ -29,117 +37,137 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         return new ViewHolder(view);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewPagerItemMainPage viewPagerItemMainPage = viewPagerItemMainPageArrayList.get(position);
 
 
+        Date date = new Date();
+        String[] names = new String[4];
+        names[0] = viewPagerItemMainPage.name_1;
+        names[1] = viewPagerItemMainPage.name_2;
+        names[2] = viewPagerItemMainPage.name_3;
+        names[3] = viewPagerItemMainPage.name_4;
+        int[] thtime_hours = {
+                8, 9, 11, 13, 13, 15, 17, 18, 20
+        };
+        int[] thtime_min = {
+                15, 55, 35, 5, 45, 25, 5, 50, 30
+        };
+        String[] time_normal = {
+                "8:15 - 9:45", "9:55 - 11:25","11:35 - 13:05","13:15 - 14:45", "13:45 - 15:15", "15:25 - 16:55", "17:05 - 18:35","18:50 - 20:20", "20:30 - 22:00"
+        };
+        String[] timedef_dermo = {
+                "8.15", "9.55","11.35","13.15", "13.45", "15.25", "17.05","18.50", "20.30"
+        };
         int _limitchars = 5;
 
-        if (viewPagerItemMainPage.name_1 != null) {
-            holder.tcdate.setText(viewPagerItemMainPage.name_1.split("x")[3]);
-            if (viewPagerItemMainPage.name_1.split("x")[2].length() < _limitchars)
-                holder.tcblock_1.setVisibility(View.GONE);
-            else {
-                holder.tctime_1.setText(viewPagerItemMainPage.name_1.split("x")[0]);
-                holder.tcname_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[0]);
-                holder.tctype_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[1]);
-                holder.tcteacher_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[2]);
-                holder.tcroom_1.setText(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[3]);
-                holder.tcblock_1.setVisibility(View.VISIBLE);
-                holder.tctype_1.setVisibility(View.VISIBLE);
-                holder.tcteacher_1.setVisibility(View.VISIBLE);
-                holder.tcroom_1.setVisibility(View.VISIBLE);
-                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[1].length() < 3)
-                    holder.tctype_1.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[2].length() < 3)
-                    holder.tcteacher_1.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_1.split("x")[2])[3].length() < 3)
-                    holder.tcroom_1.setVisibility(View.GONE);
 
 
-            }
-        } else
-            holder.tcblock_1.setVisibility(View.GONE);
 
 
-        if (viewPagerItemMainPage.name_2 != null) {
-            holder.tcdate.setText(viewPagerItemMainPage.name_1.split("x")[3]);
-            if (viewPagerItemMainPage.name_2.split("x")[2].length() < _limitchars)
-                holder.tcblock_2.setVisibility(View.GONE);
-            else {
-                holder.tctime_2.setText(viewPagerItemMainPage.name_2.split("x")[0]);
-                holder.tcname_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[0]);
-                holder.tctype_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[1]);
-                holder.tcteacher_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[2]);
-                holder.tcroom_2.setText(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[3]);
-                holder.tcblock_2.setVisibility(View.VISIBLE);
-                holder.tctype_2.setVisibility(View.VISIBLE);
-                holder.tcteacher_2.setVisibility(View.VISIBLE);
-                holder.tcroom_2.setVisibility(View.VISIBLE);
-                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[1].length() < 3)
-                    holder.tctype_2.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[2].length() < 3)
-                    holder.tcteacher_2.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_2.split("x")[2])[3].length() < 3)
-                    holder.tcroom_2.setVisibility(View.GONE);
-            }
-        } else
-            holder.tcblock_2.setVisibility(View.GONE);
+        for (int i = 0; i < 4; i++) {
+            if (names[i] != null) {
+                holder.tcdate.setText(names[i].split("x")[2]);
+                if (names[i].split("x")[1].length() < _limitchars)
+                    holder._tcblocks[i].setVisibility(View.GONE);
+                else {
+
+                    try {
+                        holder._tc_th_times[i].setText(names[i].split("x")[3]);
+                    } catch (Exception e) {
+
+                    }
+
+                    holder._tctimes[i].setText(names[i].split("x")[0]);
+                    holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0]);
+                    holder._tctypes[i].setText(decomposition(names[i].split("x")[1])[1]);
+                    holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
+                    holder._tcrooms[i].setText(decomposition(names[i].split("x")[1])[3]);
+                    holder._tcblocks[i].setVisibility(View.VISIBLE);
+                    holder._tctypes[i].setVisibility(View.VISIBLE);
+                    holder._tcteachers[i].setVisibility(View.VISIBLE);
+                    holder._tcrooms[i].setVisibility(View.VISIBLE);
+                    if (decomposition(names[i].split("x")[1])[1].length() < 3)
+                        holder._tctypes[i].setVisibility(View.GONE);
+                    if (decomposition(names[i].split("x")[1])[2].length() < 3)
+                        holder._tcteachers[i].setVisibility(View.GONE);
+                    if (decomposition(names[i].split("x")[1])[3].length() < 3)
+                        holder._tcrooms[i].setVisibility(View.GONE);
 
 
-        if (viewPagerItemMainPage.name_3 != null) {
-            holder.tcdate.setText(viewPagerItemMainPage.name_1.split("x")[3]);
-            if (viewPagerItemMainPage.name_3.split("x")[2].length() < _limitchars)
-                holder.tcblock_3.setVisibility(View.GONE);
-            else {
-                holder.tctime_3.setText(viewPagerItemMainPage.name_3.split("x")[0]);
-                holder.tcname_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[0]);
-                holder.tctype_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[1]);
-                holder.tcteacher_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[2]);
-                holder.tcroom_3.setText(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[3]);
-                holder.tcblock_3.setVisibility(View.VISIBLE);
-                holder.tctype_3.setVisibility(View.VISIBLE);
-                holder.tcteacher_3.setVisibility(View.VISIBLE);
-                holder.tcroom_3.setVisibility(View.VISIBLE);
-                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[1].length() < 3)
-                    holder.tctype_3.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[2].length() < 3)
-                    holder.tcteacher_3.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_3.split("x")[2])[3].length() < 3)
-                    holder.tcroom_3.setVisibility(View.GONE);
-            }
-        } else
-            holder.tcblock_3.setVisibility(View.GONE);
-
-
-        if (viewPagerItemMainPage.name_4 != null) {
-            holder.tcdate.setText(viewPagerItemMainPage.name_1.split("x")[3]);
-            if (viewPagerItemMainPage.name_4.split("x")[2].length() < _limitchars)
-                holder.tcblock_4.setVisibility(View.GONE);
-            else {
-                holder.tctime_4.setText(viewPagerItemMainPage.name_4.split("x")[0]);
-                holder.tcname_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[0]);
-                holder.tctype_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[1]);
-                holder.tcteacher_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[2]);
-                holder.tcroom_4.setText(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[3]);
-                holder.tcblock_4.setVisibility(View.VISIBLE);
-                holder.tctype_4.setVisibility(View.VISIBLE);
-                holder.tcteacher_4.setVisibility(View.VISIBLE);
-                holder.tcroom_4.setVisibility(View.VISIBLE);
-                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[1].length() < 3)
-                    holder.tctype_4.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[2].length() < 3)
-                    holder.tcteacher_4.setVisibility(View.GONE);
-                if(decomposition(viewPagerItemMainPage.name_4.split("x")[2])[3].length() < 3)
-                    holder.tcroom_4.setVisibility(View.GONE);
-            }
-        } else {
-            holder.tcblock_4.setVisibility(View.GONE);
+                }
+            } else
+                holder._tcblocks[i].setVisibility(View.GONE);
         }
 
 
+
+        new CountDownTimer(3600000, 5000){
+            Integer _timepar = 0;
+
+            @Override
+
+            public void onTick(long l) {
+                Date date = new Date();
+                for(int i = 0;i < 4; i++)
+                {
+                    for(int t=0;t<9;t++)
+                    {
+                        if(names[i].contains(timedef_dermo[t]))
+                            _timepar = (thtime_hours[t] * 60) + thtime_min[t];
+
+                    }
+
+
+                    Integer difftime_inmin = _timepar - ((date.getHours() * 60) + date.getMinutes());
+                    String tmp_th = "Через " + (difftime_inmin / 60) + "ч. " + (difftime_inmin%60) + "м.";
+                    Integer abs_difftime_inmin = Math.abs(difftime_inmin);
+                    if(difftime_inmin > 0) {
+                        if(difftime_inmin < 60)
+                            tmp_th = "Через "+ (difftime_inmin%60) + "м.";
+                        if(difftime_inmin % 60 == 0)
+                            tmp_th = "Через " + (difftime_inmin / 60) + "ч.";
+                        if(difftime_inmin < 10) {
+                            holder._tc_th_times[i].setTextColor(Color.RED);
+                        }
+
+                    }
+                    else {
+                        if (abs_difftime_inmin <= 90) {
+                            tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч. " + (abs_difftime_inmin % 60) + "м.";
+                            holder._tc_th_times[i].setTextColor(Color.BLUE);
+                            if (abs_difftime_inmin < 60)
+                                tmp_th = "Идет " + (abs_difftime_inmin % 60) + "м.";
+                            if (abs_difftime_inmin % 60 == 0)
+                                tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч.";
+                        }
+                        if (abs_difftime_inmin > 90) {
+                            tmp_th = " ";
+                        }
+                    }
+                    holder._tc_th_times[i].setText("" + tmp_th);
+                    }
+
+
+
+                }
+
+
+            @Override
+            public void onFinish() {
+
+                start();
+            }
+        }.start();
+
+
+
     }
+
+
+
 
 
     @Override
@@ -149,12 +177,13 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tctime_1, tctime_2, tctime_3, tctime_4;
-        TextView tcname_1, tcname_2, tcname_3, tcname_4;
-        TextView tctype_1, tctype_2, tctype_3, tctype_4;
-        TextView tcteacher_1, tcteacher_2, tcteacher_3, tcteacher_4;
-        TextView tcroom_1, tcroom_2, tcroom_3, tcroom_4;
-        LinearLayout tcblock_1, tcblock_2, tcblock_3, tcblock_4;
+        TextView[] _tctimes = new TextView[4];
+        TextView[] _tc_th_times = new TextView[4];
+        TextView[] _tcnames = new TextView[4];
+        TextView[] _tctypes = new TextView[4];
+        TextView[] _tcteachers = new TextView[4];
+        TextView[] _tcrooms = new TextView[4];
+        LinearLayout[] _tcblocks = new LinearLayout[4];
         TextView tcdate;
 
 
@@ -163,30 +192,34 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             super(itemView);
 
             tcdate = itemView.findViewById(R.id.Date);
-            tcblock_1 = itemView.findViewById(R.id.block_1);
-            tcblock_2 = itemView.findViewById(R.id.block_2);
-            tcblock_3 = itemView.findViewById(R.id.block_3);
-            tcblock_4 = itemView.findViewById(R.id.block_4);
-            tctime_1 = itemView.findViewById(R.id.Time_1);
-            tctime_2 = itemView.findViewById(R.id.Time_2);
-            tctime_3 = itemView.findViewById(R.id.Time_3);
-            tctime_4 = itemView.findViewById(R.id.Time_4);
-            tcname_1 = itemView.findViewById(R.id.Name_1);
-            tcname_2 = itemView.findViewById(R.id.Name_2);
-            tcname_3 = itemView.findViewById(R.id.Name_3);
-            tcname_4 = itemView.findViewById(R.id.Name_4);
-            tctype_1 = itemView.findViewById(R.id.Type_1);
-            tctype_2 = itemView.findViewById(R.id.Type_2);
-            tctype_3 = itemView.findViewById(R.id.Type_3);
-            tctype_4 = itemView.findViewById(R.id.Type_4);
-            tcteacher_1 = itemView.findViewById(R.id.Teacher_1);
-            tcteacher_2 = itemView.findViewById(R.id.Teacher_2);
-            tcteacher_3 = itemView.findViewById(R.id.Teacher_3);
-            tcteacher_4 = itemView.findViewById(R.id.Teacher_4);
-            tcroom_1 = itemView.findViewById(R.id.Room_1);
-            tcroom_2 = itemView.findViewById(R.id.Room_2);
-            tcroom_3 = itemView.findViewById(R.id.Room_3);
-            tcroom_4 = itemView.findViewById(R.id.Room_4);
+            _tc_th_times[0] = itemView.findViewById(R.id.th_Time_1);
+            _tc_th_times[1] = itemView.findViewById(R.id.th_Time_2);
+            _tc_th_times[2] = itemView.findViewById(R.id.th_Time_3);
+            _tc_th_times[3] = itemView.findViewById(R.id.th_Time_4);
+            _tcblocks[0] = itemView.findViewById(R.id.block_1);
+            _tcblocks[1] = itemView.findViewById(R.id.block_2);
+            _tcblocks[2] = itemView.findViewById(R.id.block_3);
+            _tcblocks[3] = itemView.findViewById(R.id.block_4);
+            _tctimes[0] = itemView.findViewById(R.id.Time_1);
+            _tctimes[1] = itemView.findViewById(R.id.Time_2);
+            _tctimes[2] = itemView.findViewById(R.id.Time_3);
+            _tctimes[3] = itemView.findViewById(R.id.Time_4);
+            _tcnames[0] = itemView.findViewById(R.id.Name_1);
+            _tcnames[1] = itemView.findViewById(R.id.Name_2);
+            _tcnames[2] = itemView.findViewById(R.id.Name_3);
+            _tcnames[3] = itemView.findViewById(R.id.Name_4);
+            _tctypes[0] = itemView.findViewById(R.id.Type_1);
+            _tctypes[1] = itemView.findViewById(R.id.Type_2);
+            _tctypes[2] = itemView.findViewById(R.id.Type_3);
+            _tctypes[3] = itemView.findViewById(R.id.Type_4);
+            _tcteachers[0] = itemView.findViewById(R.id.Teacher_1);
+            _tcteachers[1] = itemView.findViewById(R.id.Teacher_2);
+            _tcteachers[2] = itemView.findViewById(R.id.Teacher_3);
+            _tcteachers[3] = itemView.findViewById(R.id.Teacher_4);
+            _tcrooms[0] = itemView.findViewById(R.id.Room_1);
+            _tcrooms[1] = itemView.findViewById(R.id.Room_2);
+            _tcrooms[2] = itemView.findViewById(R.id.Room_3);
+            _tcrooms[3] = itemView.findViewById(R.id.Room_4);
 
 
         }
@@ -247,8 +280,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 tempstring[3] = "";
 
 
-            if(tempstring[2].contains("\n"))
-            {
+            if (tempstring[2].contains("\n")) {
                 tempstring[2] = tempstring[2].substring(1);
             }
         } catch (Exception e) {

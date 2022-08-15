@@ -6,14 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-
-
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
 import android.database.sqlite.SQLiteDatabase;
 
@@ -23,31 +19,19 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.apache.poi.openxml4j.util.ZipSecureFile;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import cz.msebera.android.httpclient.Header;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private final static String FILE_NAME_SELECTION = "selection.txt";
 
     ViewPager2 viewPager2_mainpage;
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
 
     DBHelper dbHelper = new DBHelper(HomeActivity.this);
     ProgressBar progressBar;
-    Integer diff_date_int;
+    Integer diff_date_int, current_epoch_day;
 
     RelativeLayout[] buttons_menu = new RelativeLayout[4];
     RelativeLayout calendarButton, disableCalendar;
@@ -58,12 +42,12 @@ public class HomeActivity extends AppCompatActivity {
 
     Intent[] intents = new Intent[4];
 
-    String[] names_1, names_2, names_3, names_4, date_vp, nameseven;
-    String[] _monthru = {
-            "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"
-    };
+    String[] names_1, names_2, names_3, names_4, date_vp, nameseven, nameswithdate;
+    String[] _monthru = {"Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"};
+    String[] daysofweeks_string = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,14 +60,14 @@ public class HomeActivity extends AppCompatActivity {
         date_end = LocalDate.of(2022, 5, 30);
         date_current = LocalDate.now();
         diff_date_int = (int) (date_end.toEpochDay() - date_start.toEpochDay());
-        int current_epoch_day = (int) (diff_date_int - ((date_end).toEpochDay() - date_current.toEpochDay()));
-
-        names_1 = new String[14 * diff_date_int];
-        names_2 = new String[14 * diff_date_int];
-        names_3 = new String[14 * diff_date_int];
-        names_4 = new String[14 * diff_date_int];
-        date_vp = new String[14 * diff_date_int];
-        nameseven = new String[58 * diff_date_int];
+        current_epoch_day = (int) (diff_date_int - ((date_end).toEpochDay() - date_current.toEpochDay()));
+        names_1 = new String[14*diff_date_int];
+        names_2 = new String[14*diff_date_int];
+        names_3 = new String[14*diff_date_int];
+        names_4 = new String[14*diff_date_int];
+        date_vp = new String[14*diff_date_int];
+        nameseven = new String[56];
+        nameswithdate = new String[56 * diff_date_int];
         current_group_textview = findViewById(R.id.gruppi);
         current_week_textview = findViewById(R.id.current_week_textview);
         calendarButton = findViewById(R.id.calendar_button);
@@ -104,9 +88,9 @@ public class HomeActivity extends AppCompatActivity {
             buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    try{
+                    try {
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         startActivityIfNeeded(intents[finalI], 0);
                     } catch (Exception e) {
                         startActivity(intents[finalI]);
@@ -184,8 +168,24 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
 
 
     private void loaddata() {
@@ -196,54 +196,73 @@ public class HomeActivity extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             int NameIndex = cursor.getColumnIndex(DBHelper.KEY_NAME);
             int TimeIndex = cursor.getColumnIndex(DBHelper.KEY_TIME);
-            int WeekIndex = cursor.getColumnIndex(DBHelper.KEY_WEEK);
-            int DayIndex = cursor.getColumnIndex(DBHelper.KEY_DAY);
-            int MonthIndex = cursor.getColumnIndex(DBHelper.KEY_MONTH);
-            int YearIndex = cursor.getColumnIndex(DBHelper.KEY_YEAR);
-            int i = 0;
-
-            do {
+            for (int i = 0; i < 56; i++) {
 
                 nameseven[i] =
-                                cursor.getString(TimeIndex) + "x" +
-                                cursor.getString(WeekIndex) + "x" +
-                                cursor.getString(NameIndex) + "x" +
-                                cursor.getString(DayIndex) + " " +
-                                _monthru[Integer.parseInt(cursor.getString(MonthIndex)) - 1] + " " +
-                                cursor.getString(YearIndex);
-                i++;
+                        cursor.getString(TimeIndex) + "x" +
+                                cursor.getString(NameIndex);
 
+                cursor.moveToNext();
             }
-            while (cursor.moveToNext());
             cursor.moveToLast();
             current_group_textview.setText(cursor.getString(TimeIndex) + "");
 
         }
 
         cursor.close();
+        for (int i = 0; i < nameswithdate.length; i++)
+            nameswithdate[i] = nameseven[i % 56] +  "x";
 
-        for (int i = 0; i < diff_date_int / 7; i++) {
-            for (int w = 0; w < 7; w++) {
-                int sp = w + (i * 7);
-                if (i % 2 == 0) {
-                    names_1[sp] = nameseven[0 + (8 * sp)];
-                    names_2[sp] = nameseven[2 + (8 * sp)];
-                    names_3[sp] = nameseven[4 + (8 * sp)];
-                    names_4[sp] = nameseven[6 + (8 * sp)];
-                } else {
-                    names_1[sp] = nameseven[1 + (8 * sp)];
-                    names_2[sp] = nameseven[3 + (8 * sp)];
-                    names_3[sp] = nameseven[5 + (8 * sp)];
-                    names_4[sp] = nameseven[7 + (8 * sp)];
-                }
+
+        for (int sp = 0; sp < diff_date_int; sp++) {
+
+            if(sp % 2 == 0)
+            for (int i = 0; i < 7; i++) {
+                int tmp = i + (sp*7);
+                String date_tmp = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + i).getDayOfWeek().getValue() - 1] +
+                        "\n" + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
+                        + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
+                        + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
+                names_1[tmp] = checkweek(nameswithdate[0 + (tmp * 8)] + date_tmp);
+                names_2[tmp] = checkweek(nameswithdate[2 + (tmp * 8)] + date_tmp);
+                names_3[tmp] = checkweek(nameswithdate[4 + (tmp * 8)] + date_tmp);
+                names_4[tmp] = checkweek(nameswithdate[6 + (tmp * 8)] + date_tmp);
+
+            }
+            else
+            for (int i = 0; i < 7; i++) {
+                int tmp = i + (sp*7);
+
+                String date_tmp = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + i).getDayOfWeek().getValue() - 1] +
+                        "\n" +  LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
+                        + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
+                        + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
+                names_1[tmp] = checkweek(nameswithdate[1 + (tmp * 8)] + date_tmp );
+                names_2[tmp] = checkweek(nameswithdate[3 + (tmp * 8)] + date_tmp );
+                names_3[tmp] = checkweek(nameswithdate[5 + (tmp * 8)] + date_tmp );
+                names_4[tmp] = checkweek(nameswithdate[7 + (tmp * 8)] + date_tmp );
             }
         }
+
+
+
 
         viewPagerItemMainPageArrayList = new ArrayList<>();
         for (int i = 0; i < names_1.length; i++) {
             ViewPagerItemMainPage viewPagerItemMainPage = new ViewPagerItemMainPage(names_1[i], names_2[i], names_3[i], names_4[i]);
             viewPagerItemMainPageArrayList.add(viewPagerItemMainPage);
         }
+
+
+
+
+
+
+
+
+
+
+
         VPAdapderMainPage vpAdapderMainPage = new VPAdapderMainPage(viewPagerItemMainPageArrayList);
         viewPager2_mainpage.setAdapter(vpAdapderMainPage);
         viewPager2_mainpage.setClipToPadding(false);
@@ -253,6 +272,26 @@ public class HomeActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
 
 
+    }
+
+
+    private String checkweek(String source)
+    {
+        String returnstring = source;
+        for (Integer w = 8; w < 20; w++) {
+
+            int week = current_epoch_day / 7;
+            String s1 = w.toString() + " н";
+            String s2 = w.toString() + " нед.";
+            String s3 = w.toString() + "н";
+            if (source.contains(s1) | source.contains(s2) | source.contains(s3)) {
+                if (w < week) {
+                  //  returnstring = "nullxnullxnullxnull";                                             Не забыть убрать // *заглушка*
+                }
+
+            }
+        }
+            return returnstring;
     }
 
 

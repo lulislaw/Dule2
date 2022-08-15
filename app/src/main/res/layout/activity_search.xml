@@ -101,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="5dp"
                         android:clickable="false"
                         android:fontFamily="@font/inter_bold_1"
                         android:foregroundGravity="center"

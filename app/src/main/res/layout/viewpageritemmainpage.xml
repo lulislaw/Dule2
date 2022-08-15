@@ -43,16 +43,35 @@
                 android:orientation="vertical"
                 android:tag="block_1_tag">
 
-                <TextView
-                    android:id="@+id/Time_1"
+                <LinearLayout
+                    android:id="@+id/b_time_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Время"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Time_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Время"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/th_Time_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="Через 2ч. 10м."
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/Name_1"
@@ -108,16 +127,35 @@
                 android:background="@drawable/background_block"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/Time_2"
+                <LinearLayout
+                    android:id="@+id/b_time_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Время"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Time_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Время"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/th_Time_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="Через 2ч. 10м."
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/Name_2"
@@ -172,17 +210,35 @@
                 android:layout_marginBottom="@dimen/top_margin_block"
                 android:background="@drawable/background_block"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/Time_3"
+                <LinearLayout
+                    android:id="@+id/b_time_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Время"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Time_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Время"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/th_Time_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="Через 2ч. 10м."
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/Name_3"
@@ -237,16 +293,35 @@
                 android:background="@drawable/background_block"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/Time_4"
+                <LinearLayout
+                    android:id="@+id/b_time_4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
-                    android:fontFamily="@font/inter_semibold"
-                    android:text="Время"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Time_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
+                        android:text="Время"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/th_Time_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:text="Через 2ч. 10м."
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/Name_4"
