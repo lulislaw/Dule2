@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style parent="@android:style/Widget.Spinner" name="SpinnerwithNoArrow">
+        <item name="android:background">@android:drawable/edit_text</item>
+    </style>
+
 
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
         <item name="colorAccent">@color/purple_500</item>

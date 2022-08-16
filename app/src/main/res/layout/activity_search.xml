@@ -6,6 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
 
+    <LinearLayout
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Back_SearchView">
+
+        <Spinner
+            android:id="@+id/type_spinner"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strokecorners"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/week_spinner"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strokecorners"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/time_spinner"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strokecorners"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/day_spinner"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strokecorners"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/course_spinner"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/strokecorners"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
         android:layout_width="match_parent"
@@ -17,7 +70,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Back_SearchView" />
+        app:layout_constraintTop_toBottomOf="@id/category" />
 
     <RelativeLayout
         android:id="@+id/Back_SearchView"

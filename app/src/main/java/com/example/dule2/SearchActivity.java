@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -26,11 +28,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import cz.msebera.android.httpclient.Header;
 
 
 public class SearchActivity extends AppCompatActivity {
 
+    Spinner[] cat_spinner = new Spinner[5];
+    int[] cat_arrays = new int[5];
     String[] tmp_text;
     String check_string = "";
     RecyclerView recyclerView;
@@ -43,9 +48,28 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         downloadtxt();
+
+        cat_spinner[0] = findViewById(R.id.time_spinner);
+        cat_spinner[1] = findViewById(R.id.type_spinner);
+        cat_spinner[2] = findViewById(R.id.week_spinner);
+        cat_spinner[3] = findViewById(R.id.day_spinner);
+        cat_spinner[4] = findViewById(R.id.course_spinner);
+        cat_arrays[0] = R.array.times;
+        cat_arrays[1] = R.array.type;
+        cat_arrays[2] = R.array.week;
+        cat_arrays[3] = R.array.day;
+        cat_arrays[4] = R.array.course;
+
+
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.RecyclerView);
-        String[] items;
+        for(int i = 0 ;i< cat_spinner.length; i++) {
+            ArrayAdapter<CharSequence> adapter_spinner_time = ArrayAdapter.createFromResource(this,cat_arrays[i], android.R.layout.simple_spinner_item);
+            adapter_spinner_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            cat_spinner[i].setAdapter(adapter_spinner_time);
+        }
+
+
         {
             RelativeLayout[] buttons_menu = new RelativeLayout[4];
             Intent[] intents = new Intent[4];
@@ -89,17 +113,22 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                if(s != check_string) {
+                if (s != check_string) {
                     SearchItems.clear();
                     recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
                     recyclerView.setAdapter(adapter);
                     check_string = s;
-                    for (int i = 0; i < tmp_text.length; i++) {
 
-                        if (tmp_text[i].contains(s)) {
+                    String[] strings = s.split(" ");
+                    for (int i = 0; i < tmp_text.length; i++) {
+                        int cheker = 0;
+                        for (int l = 0; l < strings.length; l++) {
+                            if (tmp_text[i].toLowerCase().contains(strings[l].toLowerCase()))
+                                cheker++;
+                        }
+                        if (cheker == strings.length) {
                             SearchItems.add(new SearchItem(tmp_text[i]));
                             adapter.notifyItemInserted(SearchItems.size() - 1);
-
                         }
 
                     }
@@ -119,12 +148,10 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
-    private static final class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-    {
+    private static final class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final List<SearchItem> SearchItems;
 
-        public SearchItemAdapter(List<SearchItem> SearchItems)
-        {
+        public SearchItemAdapter(List<SearchItem> SearchItems) {
 
             this.SearchItems = SearchItems;
         }
@@ -134,7 +161,8 @@ public class SearchActivity extends AppCompatActivity {
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new RecyclerView.ViewHolder(
                     LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_search_item, parent, false)
-            ) {};
+            ) {
+            };
         }
 
         @Override
@@ -162,9 +190,6 @@ public class SearchActivity extends AppCompatActivity {
 
 
     }
-
-
-
 
 
     private void downloadtxt() {
