@@ -43,8 +43,9 @@ public class SettingsActivity extends AppCompatActivity {
                     try{
 
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        overridePendingTransition(0,0);
+
                         startActivityIfNeeded(intents[finalI], 0);
+                        overridePendingTransition(0,0);
                     } catch (Exception e) {
                         startActivity(intents[finalI]);
                         overridePendingTransition(0, 0);

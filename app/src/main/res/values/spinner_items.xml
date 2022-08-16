@@ -14,9 +14,9 @@
     </string-array>
     <string-array name="type">
         <item>Тип</item>
-        <item>Лабораторное занятие</item>
-        <item>Практическое занятие</item>
-        <item>Лекция</item>
+        <item>ЛЗ</item>
+        <item>ПЗ</item>
+        <item>Л</item>
     </string-array>
     <string-array name="week">
         <item>Неделя</item>
@@ -25,18 +25,19 @@
     </string-array>
     <string-array name="day">
         <item>День</item>
-        <item>Понедельник</item>
-        <item>Вторник</item>
-        <item>Среда</item>
-        <item>Четверг</item>
-        <item>Суббота</item>
+        <item>ПН</item>
+        <item>ВТ</item>
+        <item>СР</item>
+        <item>ЧТ</item>
+        <item>ПТ</item>
+        <item>СБ</item>
     </string-array>
     <string-array name="course">
         <item>Курс</item>
-        <item>Курс-1</item>
-        <item>Курс-2</item>
-        <item>Курс-3</item>
-        <item>Курс-4</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 
 </resources>

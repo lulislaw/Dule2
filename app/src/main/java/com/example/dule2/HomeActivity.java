@@ -90,8 +90,8 @@ public class HomeActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     try {
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        overridePendingTransition(0, 0);
                         startActivityIfNeeded(intents[finalI], 0);
+                        overridePendingTransition(0, 0);
                     } catch (Exception e) {
                         startActivity(intents[finalI]);
                         overridePendingTransition(0, 0);
@@ -103,7 +103,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
         try {
-            //dowloaddata(urls[id_workbook]);
             loaddata();
             if (current_epoch_day < diff_date_int && current_epoch_day > 0)
                 viewPager2_mainpage.setCurrentItem(current_epoch_day);

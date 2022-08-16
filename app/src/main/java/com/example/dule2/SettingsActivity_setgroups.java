@@ -35,10 +35,6 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
     XSSFWorkbook workbook;
     ContentValues contentValues = new ContentValues();
     Button BUTTON_SAVE_SELECTION;
-    RelativeLayout[] button_menu = new RelativeLayout[4];
-    RelativeLayout[] menu_settings = new RelativeLayout[4];
-
-
     Sheet SHEET;
     LocalDate date_start, date_end, date_current;
     File file_workbook;
@@ -81,8 +77,8 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                     try{
 
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        overridePendingTransition(0,0);
                         startActivityIfNeeded(intents[finalI], 0);
+                        overridePendingTransition(0,0);
                     } catch (Exception e) {
                         startActivity(intents[finalI]);
                         overridePendingTransition(0, 0);
@@ -293,7 +289,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                     SHEET.getRow(6).getCell(COLLUMN_GROUP_ID+4).toString().substring(0,1).toString()  + " | " +
                     SHEET.getRow(5).getCell(COLLUMN_GROUP_ID + 4).toString());
                     database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-
+                    buttons_menu[3].callOnClick();
                     /////////////////////////////
 
 

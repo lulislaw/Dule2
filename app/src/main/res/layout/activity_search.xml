@@ -11,52 +11,88 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="24dp"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Back_SearchView">
+        app:layout_constraintTop_toBottomOf="@id/Back_SearchView">
 
-        <Spinner
-            android:id="@+id/type_spinner"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/strokecorners"
-            android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/week_spinner"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/strokecorners"
-            android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/type_spinner"
+                android:layout_width="123dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/left_top_corners"
+                android:dropDownWidth="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:spinnerMode="dialog" />
 
-        <Spinner
-            android:id="@+id/time_spinner"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/strokecorners"
-            android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/course_spinner"
+                android:layout_width="123dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:background="@drawable/right_top_corners"
+                android:dropDownWidth="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
 
-        <Spinner
-            android:id="@+id/day_spinner"
-            android:layout_width="75dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/strokecorners"
-            android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/course_spinner"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/strokecorners"
-            android:dropDownWidth="wrap_content"
-            android:spinnerMode="dropdown" />
+            <Spinner
+                android:id="@+id/time_spinner"
+                android:layout_width="80dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/left_bot_corners"
+                android:dropDownWidth="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:spinnerMode="dialog" />
+
+            <Spinner
+                android:id="@+id/day_spinner"
+                android:layout_width="80dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:background="@drawable/center"
+                android:dropDownWidth="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:spinnerMode="dialog" />
+
+            <Spinner
+                android:id="@+id/week_spinner"
+                android:layout_width="80dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="6dp"
+                android:background="@drawable/right_bot_corners"
+                android:dropDownWidth="wrap_content"
+                android:foregroundGravity="center"
+                android:gravity="center"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -70,7 +106,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/category" />
+        app:layout_constraintTop_toBottomOf="@+id/category" />
 
     <RelativeLayout
         android:id="@+id/Back_SearchView"
