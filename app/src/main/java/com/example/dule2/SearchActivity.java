@@ -8,10 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -33,7 +38,8 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class SearchActivity extends AppCompatActivity {
-
+    ImageButton categoryopen_button, clearall_button;
+    LinearLayout categoryll;
     Spinner[] cat_spinner = new Spinner[5];
     int[] cat_arrays = new int[5];
     String[] tmp_text;
@@ -47,8 +53,10 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        downloadtxt();
 
+        categoryopen_button = findViewById(R.id.category_button);
+        clearall_button = findViewById(R.id.search_clear);
+        categoryll = findViewById(R.id.category);
         cat_spinner[0] = findViewById(R.id.time_spinner);
         cat_spinner[1] = findViewById(R.id.type_spinner);
         cat_spinner[2] = findViewById(R.id.week_spinner);
@@ -63,11 +71,35 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.RecyclerView);
-        for(int i = 0 ;i< cat_spinner.length; i++) {
-            ArrayAdapter<CharSequence> adapter_spinner_time = ArrayAdapter.createFromResource(this,cat_arrays[i], android.R.layout.simple_spinner_item);
+        for (int i = 0; i < cat_spinner.length; i++) {
+            ArrayAdapter<CharSequence> adapter_spinner_time = ArrayAdapter.createFromResource(this, cat_arrays[i], android.R.layout.simple_spinner_item);
             adapter_spinner_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             cat_spinner[i].setAdapter(adapter_spinner_time);
         }
+
+        categoryopen_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (categoryll.getVisibility() != View.GONE) {
+                    Animation categoryclose = AnimationUtils.loadAnimation(SearchActivity.this, R.anim.category_close);
+                    categoryll.startAnimation(categoryclose);
+                    categoryll.setVisibility(View.GONE);
+                    for(int i = 0;i<5;i++)
+                    {
+                        cat_spinner[i].setEnabled(false);
+                    }
+                } else {
+                    Animation categoryopen = AnimationUtils.loadAnimation(SearchActivity.this, R.anim.category_open);
+                    categoryll.setVisibility(View.VISIBLE);
+                    categoryll.startAnimation(categoryopen);
+                    for(int i = 0;i<5;i++)
+                    {
+                        cat_spinner[i].setEnabled(true);
+                    }
+
+                }
+            }
+        });
 
 
         {
@@ -111,6 +143,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        downloadtxt();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -200,7 +233,7 @@ public class SearchActivity extends AppCompatActivity {
         client[0].get("https://github.com/lulislaw/excelfilesguu/blob/main/search.txt?raw=true", new FileAsyncHttpResponseHandler(this) {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
-
+                Log.d("mylog", "fail");
             }
 
             @Override

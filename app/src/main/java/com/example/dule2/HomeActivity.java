@@ -20,6 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -53,6 +56,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
+
+
+
+
+
 
         // date start(y,m,d) 2022,02,06
         // date end(y,m,d) 2022,05,29
@@ -100,6 +108,9 @@ public class HomeActivity extends AppCompatActivity {
                 }
             });
         }
+
+
+
 
 
         try {
