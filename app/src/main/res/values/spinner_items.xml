@@ -34,10 +34,10 @@
     </string-array>
     <string-array name="course">
         <item>Курс</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+        <item>Курс-1</item>
+        <item>Курс-2</item>
+        <item>Курс-3</item>
+        <item>Курс-4</item>
     </string-array>
 
 </resources>

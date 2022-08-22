@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -71,11 +72,15 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.RecyclerView);
+
+        searchView.setEnabled(false);
         for (int i = 0; i < cat_spinner.length; i++) {
             ArrayAdapter<CharSequence> adapter_spinner_time = ArrayAdapter.createFromResource(this, cat_arrays[i], android.R.layout.simple_spinner_item);
             adapter_spinner_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             cat_spinner[i].setAdapter(adapter_spinner_time);
         }
+
+
 
         categoryopen_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,30 +148,15 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+
         downloadtxt();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                if (s != check_string) {
-                    SearchItems.clear();
-                    recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
-                    recyclerView.setAdapter(adapter);
-                    check_string = s;
 
-                    String[] strings = s.split(" ");
-                    for (int i = 0; i < tmp_text.length; i++) {
-                        int cheker = 0;
-                        for (int l = 0; l < strings.length; l++) {
-                            if (tmp_text[i].toLowerCase().contains(strings[l].toLowerCase()))
-                                cheker++;
-                        }
-                        if (cheker == strings.length) {
-                            SearchItems.add(new SearchItem(tmp_text[i]));
-                            adapter.notifyItemInserted(SearchItems.size() - 1);
-                        }
+                    searchinfo(s);
 
-                    }
-                }
 
                 return false;
             }
@@ -179,8 +169,60 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
+
+        for(int i =0; i< cat_spinner.length; i++) {
+            cat_spinner[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    try {
+                        searchinfo(searchView.getQuery().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+        }
+
+
+
     }
 
+    private void searchinfo(String s)
+    {
+
+        if (s != check_string) {
+            SearchItems.clear();
+            recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+            recyclerView.setAdapter(adapter);
+            check_string = s;
+
+            for(int i = 0; i < cat_spinner.length; i++)
+            {
+                if(cat_spinner[i].getSelectedItemPosition() != 0)
+                    s = s + " " + cat_spinner[i].getSelectedItem().toString();
+            }
+            String[] strings = s.split(" ");
+            for (int i = 0; i < tmp_text.length; i++) {
+                int cheker = 0;
+                for (int l = 0; l < strings.length; l++) {
+                    if (tmp_text[i].toLowerCase().contains(strings[l].toLowerCase()))
+                        cheker++;
+                }
+                if (cheker == strings.length) {
+                    SearchItems.add(new SearchItem(tmp_text[i]));
+                    adapter.notifyItemInserted(SearchItems.size() - 1);
+                }
+
+            }
+        }
+
+    }
 
     private static final class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private final List<SearchItem> SearchItems;
@@ -238,7 +280,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, File file) {
-
+                        searchView.setEnabled(true);
                 try {
                     FileInputStream fin = new FileInputStream(file);
                     FileReader tfr = new FileReader(file);
