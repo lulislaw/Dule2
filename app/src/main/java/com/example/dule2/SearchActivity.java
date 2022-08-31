@@ -123,7 +123,12 @@ public class SearchActivity extends AppCompatActivity {
                 buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        try {
+
+                        intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivityIfNeeded(intents[finalI], 0);
+
+
+                        /*try {
 
                             intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
@@ -133,7 +138,7 @@ public class SearchActivity extends AppCompatActivity {
                             startActivity(intents[finalI]);
                             overridePendingTransition(0, 0);
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                 });
             }
@@ -191,6 +196,12 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
+    }
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        overridePendingTransition(0,0);
+        //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void searchinfo(String s)
