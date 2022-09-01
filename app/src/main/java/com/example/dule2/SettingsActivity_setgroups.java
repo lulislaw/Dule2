@@ -34,7 +34,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
     FileInputStream fis;
     XSSFWorkbook workbook;
     ContentValues contentValues = new ContentValues();
-    Button BUTTON_SAVE_SELECTION;
+    Button BUTTON_SAVE_SELECTION, BUTTON_BACK;
     Sheet SHEET;
     LocalDate date_start, date_end, date_current;
     File file_workbook;
@@ -42,6 +42,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
     int diff_date_int;
     String name_menu[] = new String[4];
     RelativeLayout[] buttons_menu = new RelativeLayout[5];
+    Intent[] intents = new Intent[5];
 
 
     Spinner SPINNER_SELECT_COURSE, SPINNER_SELECT_GROUP, SPINNER_SELECT_INSTITUTE;
@@ -54,11 +55,11 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_setgroups);
 
+        BUTTON_BACK = findViewById(R.id.BUTTON_BACK);
         date_start = LocalDate.of(2022, 2, 7);
         date_end = LocalDate.of(2022, 5, 30);
         date_current = LocalDate.now();
         diff_date_int = (int) (date_end.toEpochDay() - date_start.toEpochDay());
-        Intent[] intents = new Intent[5];
         buttons_menu[0] = findViewById(R.id.BotNavButton_search);
         buttons_menu[1] = findViewById(R.id.BotNavButton_news);
         buttons_menu[2] = findViewById(R.id.BotNavButton_note);
@@ -66,7 +67,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
         buttons_menu[4] = findViewById(R.id.BotNavButton_settings);
         intents[0] = new Intent(this, SearchActivity.class);
         intents[1] = new Intent(this, NewsActivity.class);
-        intents[2] = new Intent(this, NoteActivity.class);
+        intents[2] = new Intent(this, NotesActivity.class);
         intents[3] = new Intent(this, HomeActivity.class);
         intents[4] = new Intent(this, SettingsActivity.class);
         for (int i = 0; i < 5; i++) {
@@ -102,7 +103,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
     }
 
 
-    private void firstmenu_create() {
+    public void firstmenu_create() {
         SPINNER_SELECT_COURSE = findViewById(R.id.SPINNER_SELECT_COURSE);
         SPINNER_SELECT_GROUP = findViewById(R.id.SPINNER_SELECT_GROUP);
         SPINNER_SELECT_INSTITUTE = findViewById(R.id.SPINNER_SELECT_INSTITUTE);
@@ -299,7 +300,9 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                     SHEET.getRow(6).getCell(COLLUMN_GROUP_ID+4).toString().substring(0,1).toString()  + " | " +
                     SHEET.getRow(5).getCell(COLLUMN_GROUP_ID + 4).toString());
                     database.insert(DBHelper.TABLE_CONTACTS, null, contentValues);
-                    buttons_menu[3].callOnClick();
+                    startActivity(intents[3]);
+                    overridePendingTransition(0, 0);
+                    //buttons_menu[3].callOnClick();
                     /////////////////////////////
 
 
@@ -316,6 +319,13 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        BUTTON_BACK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 

@@ -70,6 +70,8 @@ public class SearchActivity extends AppCompatActivity {
         cat_arrays[4] = R.array.course;
 
 
+
+
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.RecyclerView);
 
@@ -79,6 +81,7 @@ public class SearchActivity extends AppCompatActivity {
             adapter_spinner_time.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             cat_spinner[i].setAdapter(adapter_spinner_time);
         }
+
 
 
 
@@ -93,7 +96,7 @@ public class SearchActivity extends AppCompatActivity {
                     {
                         cat_spinner[i].setEnabled(false);
                     }
-                } else {
+                } else if (categoryll.getVisibility() == View.GONE) {
                     Animation categoryopen = AnimationUtils.loadAnimation(SearchActivity.this, R.anim.category_open);
                     categoryll.setVisibility(View.VISIBLE);
                     categoryll.startAnimation(categoryopen);
@@ -107,6 +110,8 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
+
+
         {
             RelativeLayout[] buttons_menu = new RelativeLayout[4];
             Intent[] intents = new Intent[4];
@@ -116,7 +121,7 @@ public class SearchActivity extends AppCompatActivity {
             buttons_menu[3] = findViewById(R.id.BotNavButton_settings);
             intents[0] = new Intent(this, HomeActivity.class);
             intents[1] = new Intent(this, NewsActivity.class);
-            intents[2] = new Intent(this, NoteActivity.class);
+            intents[2] = new Intent(this, NotesActivity.class);
             intents[3] = new Intent(this, SettingsActivity.class);
             for (int i = 0; i < 4; i++) {
                 int finalI = i;

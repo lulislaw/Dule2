@@ -10,7 +10,6 @@
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
@@ -23,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -98,6 +97,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerView"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
@@ -113,10 +113,10 @@
         android:id="@+id/Back_SearchView"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="49dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/strokecorners"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/background_block"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,31 +128,43 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <SearchView
-                android:id="@+id/searchView"
-                android:layout_width="250dp"
-                android:layout_height="49dp"
-                android:iconifiedByDefault="false"
-                android:inputType="text"
-                android:searchHintIcon="@drawable/ic_search"
-                android:searchIcon="@drawable/ic_search">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            </SearchView>
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="match_parent"
+                    android:iconifiedByDefault="false"
+                    android:inputType="text"
+                    android:searchHintIcon="@drawable/ic_search"
+                    android:searchIcon="@drawable/ic_search">
 
-            <ImageButton
-                android:id="@+id/category_button"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:background="#00FFFFFF"
-                android:scaleType="center"
-                app:srcCompat="@android:drawable/ic_menu_more" />
+                </SearchView>
 
-            <ImageButton
-                android:id="@+id/search_clear"
-                android:layout_width="49dp"
-                android:layout_height="49dp"
-                android:background="#00FFFFFF"
-                app:srcCompat="@android:drawable/ic_menu_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/category_button"
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="center"
+                    app:srcCompat="@android:drawable/ic_menu_more" />
+
+                <ImageButton
+                    android:id="@+id/search_clear"
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    android:background="#00FFFFFF"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -162,9 +174,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="10dp"
+
         android:background="@drawable/backroung_alphagrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

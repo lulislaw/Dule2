@@ -20,9 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -36,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Integer diff_date_int, current_epoch_day;
 
-    RelativeLayout[] buttons_menu = new RelativeLayout[4];
+    RelativeLayout[] buttons_menu = new RelativeLayout[5];
     RelativeLayout calendarButton, disableCalendar;
     CalendarView calendarView;
 
@@ -44,6 +41,8 @@ public class HomeActivity extends AppCompatActivity {
     LocalDate date_start, date_end, date_current;
 
     Intent[] intents = new Intent[4];
+
+    //Intent reloadHome = new Intent(HomeActivity.this, HomeActivity.class);
 
     String[] names_1, names_2, names_3, names_4, date_vp, nameseven, nameswithdate;
     String[] _monthru = {"Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"};
@@ -85,9 +84,12 @@ public class HomeActivity extends AppCompatActivity {
         buttons_menu[1] = findViewById(R.id.BotNavButton_news);
         buttons_menu[2] = findViewById(R.id.BotNavButton_note);
         buttons_menu[3] = findViewById(R.id.BotNavButton_settings);
+
+        buttons_menu[4] = findViewById(R.id.BotNavButton_home);
+
         intents[0] = new Intent(this, SearchActivity.class);
         intents[1] = new Intent(this, NewsActivity.class);
-        intents[2] = new Intent(this, NoteActivity.class);
+        intents[2] = new Intent(this, NotesActivity.class);
         intents[3] = new Intent(this, SettingsActivity.class);
 
 
@@ -113,7 +115,14 @@ public class HomeActivity extends AppCompatActivity {
             });
         }
 
-
+        buttons_menu[4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
 

@@ -33,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         buttons_menu[3] = findViewById(R.id.BotNavButton_home);
         intents[0] = new Intent(this, SearchActivity.class);
         intents[1] = new Intent(this, NewsActivity.class);
-        intents[2] = new Intent(this, NoteActivity.class);
+        intents[2] = new Intent(this, NotesActivity.class);
         intents[3] = new Intent(this, HomeActivity.class);
         for (int i = 0; i < 4; i++) {
             int finalI = i;
@@ -74,7 +74,7 @@ public class SettingsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    intents_settings[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    intents_settings[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     startActivityIfNeeded(intents_settings[finalI], 0);
 
                     /*for (int m = 0; m < 4; m++) {

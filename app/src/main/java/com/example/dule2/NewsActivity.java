@@ -24,7 +24,7 @@ public class NewsActivity extends AppCompatActivity {
             buttons_menu[3] = findViewById(R.id.BotNavButton_settings);
             intents[0] = new Intent(this, SearchActivity.class);
             intents[1] = new Intent(this, HomeActivity.class);
-            intents[2] = new Intent(this, NoteActivity.class);
+            intents[2] = new Intent(this, NotesActivity.class);
             intents[3] = new Intent(this, SettingsActivity.class);
             for(int i = 0;i<4;i++){
                 int finalI = i;

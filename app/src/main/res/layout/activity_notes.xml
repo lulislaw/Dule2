@@ -4,15 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteActivity">
+    tools:context=".NotesActivity">
+
+    <TextView
+        android:id="@+id/textMyNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="9dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:includeFontPadding="false"
+        android:text="Мои заметки"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_20ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<ImageView
+        android:id="@+id/imageBackFromNotes"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/textMyNotes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textMyNotes"
+        app:tint="@color/black" />-->
+
+    <LinearLayout
+        android:id="@+id/layoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="@drawable/background_block"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/textMyNotes">
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_search_2"
+            app:tint="@color/black" />
+
+        <EditText
+            android:id="@+id/inputSearch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:fontFamily="@font/ubuntu_regular"
+            android:hint="Поиск"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/_13ssp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:clipToPadding="false"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSearch"
+        tools:ignore="RtlSymmetry" />
+
+    <!--<LinearLayout
+        android:id="@+id/layoutQuickActions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/block_style"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_15sdp"
+        app:layout_constraintBottom_toTopOf="@id/bot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageAddNote"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_add_outline"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/imageAddImage"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_image"
+            app:tint="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/imageAddWebLink"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_web_link"
+            app:tint="@color/colorPrimary" />
+
+    </LinearLayout>-->
+
+    <ImageView
+        android:id="@+id/imageAddNoteMain"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:background="@drawable/background_add_button"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/onBlack"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+
+        android:layout_marginBottom="@dimen/_30sdp"/>
 
     <RelativeLayout
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="10dp"
+
         android:background="@drawable/backroung_alphagrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,8 +231,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_info"
-                        />
+                        app:srcCompat="@drawable/ic_info" />
 
                     <TextView
                         android:id="@+id/name_button_news"
@@ -137,8 +275,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_home"
-                        />
+                        app:srcCompat="@drawable/ic_home" />
 
                     <TextView
                         android:id="@+id/name_button_home"
@@ -183,8 +320,7 @@
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_note"
-                        app:tint="@color/purple_500"
-                        />
+                        app:tint="@color/purple_500" />
 
                     <TextView
                         android:id="@+id/name_button_note"

@@ -45,7 +45,7 @@
 
                 <LinearLayout
                     android:id="@+id/b_time"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
@@ -73,50 +73,58 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/Name"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/name_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Предмет"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:layout_marginRight="@dimen/left_margin_block">
 
-                <TextView
-                    android:id="@+id/Type_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Тип"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Предмет"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Teacher_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Преподователь"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Type_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Тип"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Room_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:layout_marginBottom="@dimen/room_bot_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Аудитория"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Teacher_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_regular"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:text="Преподователь"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/Room_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Аудитория"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -129,7 +137,7 @@
 
                 <LinearLayout
                     android:id="@+id/b_time_2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
@@ -157,50 +165,56 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/Name_2"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/name_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Предмет"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:layout_marginRight="@dimen/left_margin_block">
 
-                <TextView
-                    android:id="@+id/Type_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Тип"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Name_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Предмет"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Teacher_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Преподователь"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Type_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Тип"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Room_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:layout_marginBottom="@dimen/room_bot_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Аудитория"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Teacher_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Преподователь"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/Room_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Аудитория"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -212,7 +226,7 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/b_time_3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
@@ -240,50 +254,55 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/Name_3"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/name_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Предмет"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:layout_marginRight="@dimen/left_margin_block">
 
-                <TextView
-                    android:id="@+id/Type_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Тип"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Name_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Предмет"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Teacher_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Преподователь"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Type_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Тип"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Room_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:layout_marginBottom="@dimen/room_bot_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Аудитория"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Teacher_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Преподователь"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/Room_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Аудитория"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -295,7 +314,7 @@
 
                 <LinearLayout
                     android:id="@+id/b_time_4"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
@@ -323,50 +342,55 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/Name_4"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/name_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Предмет"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    android:layout_marginRight="@dimen/left_margin_block">
 
-                <TextView
-                    android:id="@+id/Type_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Тип"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Name_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Предмет"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Teacher_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Преподователь"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Type_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Тип"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/Room_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginTop="@dimen/other_top_margin_block"
-                    android:layout_marginBottom="@dimen/room_bot_margin_block"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="Аудитория"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/Teacher_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Преподователь"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/Room_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:fontFamily="@font/inter_regular"
+                        android:text="Аудитория"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <Space

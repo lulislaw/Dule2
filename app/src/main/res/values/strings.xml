@@ -17,4 +17,24 @@
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="mon">Понедельник</string>
+    <string name="tue">Вторник</string>
+    <string name="wed">Среда</string>
+    <string name="thu">Четверг</string>
+    <string name="fri">Пятница</string>
+    <string name="sat">Суббота</string>
+    <string name="search_s">Поиск</string>
+    <string name="my_notes">Мои заметки</string>
+    <string name="search_notes">Search notes</string>
+    <string name="note_subtitle">Note Subtitle</string>
+    <string name="type_note_here">Type note here</string>
+    <string name="add_image">Добавить изображение</string>
+    <string name="miscellaneous">Дополнительно</string>
+    <string name="complete">Готово</string>
+    <string name="delete">Удалить</string>
+    <string name="noteTitle">Название</string>
+    <string name="deleteNote">Удалить заметку</string>
+    <string name="search_notes_ru">Поиск заметок</string>
+
 </resources>

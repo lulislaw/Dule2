@@ -10,9 +10,7 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="10dp"
+
         android:background="@drawable/backroung_alphagrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +91,7 @@
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/ic_info"
-                        app:tint="@color/purple_500"/>
+                        app:tint="@color/purple_500" />
 
                     <TextView
                         android:id="@+id/name_button_news"
@@ -137,8 +135,7 @@
                         android:layout_gravity="center"
                         android:foregroundGravity="center"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/ic_home"
-                         />
+                        app:srcCompat="@drawable/ic_home" />
 
                     <TextView
                         android:id="@+id/name_button_home"
