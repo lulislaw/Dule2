@@ -15,9 +15,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.time.LocalDate;
@@ -41,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
     LocalDate date_start, date_end, date_current;
 
     Intent[] intents = new Intent[4];
+    
+
+    ImageView image_add_note;
 
     //Intent reloadHome = new Intent(HomeActivity.this, HomeActivity.class);
 
@@ -59,7 +64,14 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+        /*image_add_note = findViewById(R.id.image_add_note);
 
+        image_add_note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });*/
 
         // date start(y,m,d) 2022,02,06
         // date end(y,m,d) 2022,05,29
@@ -291,7 +303,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-
         VPAdapderMainPage vpAdapderMainPage = new VPAdapderMainPage(viewPagerItemMainPageArrayList);
         viewPager2_mainpage.setAdapter(vpAdapderMainPage);
         viewPager2_mainpage.setClipToPadding(false);
@@ -299,6 +310,13 @@ public class HomeActivity extends AppCompatActivity {
         viewPager2_mainpage.setOffscreenPageLimit(2);
         viewPager2_mainpage.getChildAt(0).setOverScrollMode(viewPager2_mainpage.OVER_SCROLL_NEVER);
         progressBar.setVisibility(View.GONE);
+        viewPager2_mainpage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(HomeActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
 
 
     }

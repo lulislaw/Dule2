@@ -45,9 +45,10 @@
 
                 <LinearLayout
                     android:id="@+id/b_time"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginRight="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -65,27 +66,38 @@
                         android:id="@+id/th_Time_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginLeft="13dp"
                         android:layout_weight="1"
                         android:text="Через 2ч. 10м."
                         android:textColor="@color/grey"
                         android:textSize="14sp" />
 
+
+
+                    <!--<ImageView
+                        android:id="@+id/image_add_note"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add" />-->
+
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginRight="@dimen/left_margin_block">
+                    android:layout_marginRight="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block">
 
                     <TextView
                         android:id="@+id/Name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/name_top_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Предмет"
                         android:textColor="#000000"
                         android:textSize="20sp" />
@@ -98,28 +110,27 @@
                         android:fontFamily="@font/inter_regular"
                         android:text="Тип"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Teacher_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/inter_regular"
-                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginTop="4dp"
                         android:text="Преподователь"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Room_1"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/inter_semibold"
                         android:layout_marginTop="@dimen/other_top_margin_block"
-                        android:layout_marginBottom="@dimen/room_bot_margin_block"
-                        android:fontFamily="@font/inter_regular"
                         android:text="Аудитория"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -137,9 +148,10 @@
 
                 <LinearLayout
                     android:id="@+id/b_time_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginRight="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -170,17 +182,20 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginRight="@dimen/left_margin_block">
+                    android:layout_marginRight="@dimen/left_margin_block"
+                    android:layout_marginTop="@dimen/name_top_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block">
 
                     <TextView
                         android:id="@+id/Name_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/name_top_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Предмет"
                         android:textColor="#000000"
                         android:textSize="20sp" />
+
+
 
                     <TextView
                         android:id="@+id/Type_2"
@@ -190,28 +205,27 @@
                         android:fontFamily="@font/inter_regular"
                         android:text="Тип"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Teacher_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/inter_regular"
                         android:text="Преподователь"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Room_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/other_top_margin_block"
-                        android:layout_marginBottom="@dimen/room_bot_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Аудитория"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -226,9 +240,10 @@
                 android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/b_time_3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginRight="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -244,7 +259,7 @@
 
                     <TextView
                         android:id="@+id/th_Time_3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
@@ -259,14 +274,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginRight="@dimen/left_margin_block">
+                    android:layout_marginRight="@dimen/left_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block">
 
                     <TextView
                         android:id="@+id/Name_3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/name_top_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Предмет"
                         android:textColor="#000000"
                         android:textSize="20sp" />
@@ -279,28 +295,27 @@
                         android:fontFamily="@font/inter_regular"
                         android:text="Тип"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Teacher_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/inter_regular"
                         android:text="Преподователь"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Room_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/other_top_margin_block"
-                        android:layout_marginBottom="@dimen/room_bot_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Аудитория"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -314,9 +329,10 @@
 
                 <LinearLayout
                     android:id="@+id/b_time_4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/left_margin_block"
+                    android:layout_marginRight="@dimen/left_margin_block"
                     android:layout_marginTop="@dimen/time_top_margin_block"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -332,7 +348,7 @@
 
                     <TextView
                         android:id="@+id/th_Time_4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
@@ -347,14 +363,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginLeft="@dimen/left_margin_block"
-                    android:layout_marginRight="@dimen/left_margin_block">
+                    android:layout_marginRight="@dimen/left_margin_block"
+                    android:layout_marginBottom="@dimen/room_bot_margin_block">
 
                     <TextView
                         android:id="@+id/Name_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/name_top_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Предмет"
                         android:textColor="#000000"
                         android:textSize="20sp" />
@@ -367,28 +384,27 @@
                         android:fontFamily="@font/inter_regular"
                         android:text="Тип"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Teacher_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/other_top_margin_block"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/inter_regular"
                         android:text="Преподователь"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/Room_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/other_top_margin_block"
-                        android:layout_marginBottom="@dimen/room_bot_margin_block"
-                        android:fontFamily="@font/inter_regular"
+                        android:fontFamily="@font/inter_semibold"
                         android:text="Аудитория"
                         android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
             </LinearLayout>

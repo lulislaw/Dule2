@@ -32,7 +32,7 @@
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
         android:elevation="10dp"
         android:theme="@style/CalenderViewCustom"
-        android:visibility="visible"
+        android:visibility="gone"
         android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"

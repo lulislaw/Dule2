@@ -1,5 +1,7 @@
 package com.example.dule2;
 
+import android.widget.LinearLayout;
+
 public class ViewPagerItemMainPage {
 
     String name_1;
@@ -8,12 +10,16 @@ public class ViewPagerItemMainPage {
     String name_4;
 
 
+
+
     public ViewPagerItemMainPage(
 
             String name_1,
             String name_2,
             String name_3,
             String name_4
+
+
     ) {
 
 
