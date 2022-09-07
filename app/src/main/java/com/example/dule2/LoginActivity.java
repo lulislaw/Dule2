@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
+import java.io.FileWriter;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText email_login_edittext, password_login_edittext;
@@ -28,6 +31,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView registration_tv;
     FirebaseAuth mAuth;
     ProgressBar progressbar_login;
+
+    /*Boolean checkIf;
+    SharedPreferences sharedPreferences;
+    String APP_PREFERENCES = "APP_PREFERENCES";
+    String PREF_SOME_TEXT_VALUE = "PREF_SOME_TEXT_VALUE";*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registration_tv.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
         progressbar_login = findViewById(R.id.progressbar_login);
+        /*sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);*/
     }
 
     @Override
@@ -90,6 +99,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user.isEmailVerified()) {
+                        /*checkIf = true;
+                        sharedPreferences.edit().putBoolean(PREF_SOME_TEXT_VALUE, checkIf).apply();*/
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         progressbar_login.setVisibility(View.GONE);
