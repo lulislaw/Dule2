@@ -48,6 +48,10 @@
             android:hint="Email адрес"
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:inputType="text"
+            android:theme="@style/EditTextTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +65,9 @@
             android:inputType="textPassword"
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/black"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:theme="@style/EditTextTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email_login_edittext" />

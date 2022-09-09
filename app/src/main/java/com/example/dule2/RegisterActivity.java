@@ -54,11 +54,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_tv:
-                startActivity(new Intent(this, LoginActivity.class));
+                onBackPressed();
                 break;
 
             case R.id.registration_button:
                 userRegister();
+                break;
         }
     }
 

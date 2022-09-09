@@ -3,6 +3,7 @@ package com.example.dule2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,9 +29,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     EditText email_login_edittext, password_login_edittext;
     Button login_button;
-    TextView registration_tv;
+    TextView registration_tv, forgot_pass_tv;
     FirebaseAuth mAuth;
     ProgressBar progressbar_login;
+
+    public static final String PREFS_NAME = "MY_PREFS";
 
     /*Boolean checkIf;
     SharedPreferences sharedPreferences;
@@ -54,9 +57,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registration_tv.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
         progressbar_login = findViewById(R.id.progressbar_login);
+        forgot_pass_tv = findViewById(R.id.forgot_pass_tv);
+        forgot_pass_tv.setOnClickListener(this);
         /*sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);*/
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -66,6 +72,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.login_button:
                 userLogin();
+                break;
+
+            case R.id.forgot_pass_tv:
+                startActivity(new Intent(this, ResetPasswordActivity.class));
+                break;
         }
     }
 
@@ -99,8 +110,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user.isEmailVerified()) {
-                        /*checkIf = true;
-                        sharedPreferences.edit().putBoolean(PREF_SOME_TEXT_VALUE, checkIf).apply();*/
+                        SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("hasLoggedIn", true);
+                        editor.commit();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     } else {
                         progressbar_login.setVisibility(View.GONE);

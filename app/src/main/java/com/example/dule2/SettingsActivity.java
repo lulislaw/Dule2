@@ -25,7 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
         intents_settings[0] = new Intent(this, SettingsActivity_setgroups.class);
         intents_settings[1] = new Intent(this, SettingsActivity_setgroups.class);
         intents_settings[2] = new Intent(this, SettingsActivity_setgroups.class);
-        intents_settings[3] = new Intent(this, SettingsActivity_setgroups.class);
+        intents_settings[3] = new Intent(this, ProfileActivity.class);
         Intent[] intents = new Intent[4];
         buttons_menu[0] = findViewById(R.id.BotNavButton_search);
         buttons_menu[1] = findViewById(R.id.BotNavButton_news);
