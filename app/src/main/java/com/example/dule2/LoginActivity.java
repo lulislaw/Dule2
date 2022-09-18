@@ -1,25 +1,40 @@
 package com.example.dule2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.BeginSignInResult;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.w3c.dom.Text;
 
@@ -32,6 +47,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     TextView registration_tv, forgot_pass_tv;
     FirebaseAuth mAuth;
     ProgressBar progressbar_login;
+    ImageButton google_login_button;
+
+    GoogleSignInClient googleSignInClient;
 
     public static final String PREFS_NAME = "MY_PREFS";
 
@@ -48,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         init();
     }
 
-    public void init() {
+    private void init() {
         email_login_edittext = findViewById(R.id.email_login_edittext);
         password_login_edittext = findViewById(R.id.password_login_edittext);
         login_button = findViewById(R.id.login_button);
@@ -60,6 +78,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgot_pass_tv = findViewById(R.id.forgot_pass_tv);
         forgot_pass_tv.setOnClickListener(this);
         /*sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);*/
+        google_login_button = findViewById(R.id.google_login_button);
+        google_login_button.setOnClickListener(this);
+        GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+    }
+
+    private void googleLogin() {
+
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -77,6 +104,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.forgot_pass_tv:
                 startActivity(new Intent(this, ResetPasswordActivity.class));
                 break;
+
+            case R.id.google_login_button:
+                Intent intent = googleSignInClient.getSignInIntent();
+                startActivityForResult(intent, 1234);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1234) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount googleSignInAccount = task.getResult(ApiException.class);
+
+                AuthCredential authCredential = GoogleAuthProvider.getCredential(googleSignInAccount.getIdToken(), null);
+                FirebaseAuth.getInstance().signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
         }
     }
 

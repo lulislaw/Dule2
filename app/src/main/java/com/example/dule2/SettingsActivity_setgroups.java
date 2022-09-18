@@ -325,6 +325,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
         BUTTON_BACK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 onBackPressed();
             }
         });

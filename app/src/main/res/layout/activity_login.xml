@@ -112,9 +112,21 @@
 
         </LinearLayout>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageButton
+        android:id="@+id/google_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_google_light_normal_xxxhdpi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:maxHeight="60dp"
+        android:maxWidth="60dp"
+        android:adjustViewBounds="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

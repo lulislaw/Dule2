@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "89949325387",
+    "firebase_url": "https://sumtable2-default-rtdb.firebaseio.com",
+    "project_id": "sumtable2",
+    "storage_bucket": "sumtable2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89949325387:android:e4ec7c9cf4bd88cdfc65ce",
+        "android_client_info": {
+          "package_name": "com.example.dule2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89949325387-h0v3gj3ktefab9b08n5fb82p18im72hd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsQ-NHFhB9qIzEx_9fSuaf7IZ1wcg2SAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89949325387-h0v3gj3ktefab9b08n5fb82p18im72hd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Dule2"
         tools:targetApi="31">
         <activity
-            android:name=".AuthorisedCheckActivity"
+            android:name=".HomeWorkActivity"
             android:exported="false" />
         <activity
             android:name=".ResetPasswordActivity"
@@ -41,7 +41,7 @@
             android:name=".SettingsActivity_setgroups"
             android:exported="false" />
         <activity
-            android:name=".HomeWorkActivity"
+            android:name=".AuthorisedCheckActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>
@@ -51,7 +51,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".HomeActivity"
             android:exported="true" />
         <activity
             android:name=".NotesActivity"
@@ -63,7 +63,7 @@
             android:name=".SearchActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".SettingsActivity"
             android:exported="true" />
         <activity
             android:name=".CreateNoteActivity"
