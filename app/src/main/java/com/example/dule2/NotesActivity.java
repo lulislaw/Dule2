@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -45,10 +46,13 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
     public static final int REQUEST_CODE_SELECT_IMAGE = 4;
     public static final int REQUEST_CODE_STORAGE_PERMISSION = 5;
 
+    Integer notesViewMode = 1;
+
     private RecyclerView notesRecyclerView;
     private List<Note> noteList;
     private NotesAdapter notesAdapter;
     private ImageView imageAddWebLink;
+    ImageButton button_change_notes_view;
 
     private int noteClickedPosition = -1;
     /*Button BUTTON_TO_SELECTION, BUTTON_TO_MAIN, BUTTON_TO_NEWS, BUTTON_TO_SEARCH;
@@ -69,6 +73,13 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
         intents[2] = new Intent(this, HomeActivity.class);
         intents[3] = new Intent(this, SettingsActivity.class);
 
+
+        EditText inputSearch = findViewById(R.id.inputSearch);
+
+        button_change_notes_view = findViewById(R.id.button_change_notes_view);
+
+
+
         //notesAdapter.pushNotes();
 
 
@@ -78,7 +89,7 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
             buttons_menu[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    inputSearch.clearFocus();
                     intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivityIfNeeded(intents[finalI], 0);
 
@@ -114,6 +125,22 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
             }
         });*/
 
+        button_change_notes_view.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onClick(View view) {
+                if (notesViewMode == 2) {
+                    notesViewMode = 1;
+                    button_change_notes_view.setImageResource(R.drawable.ic_dashboard);
+                } else {
+                    notesViewMode = 2;
+                    button_change_notes_view.setImageResource(R.drawable.ic_table_rows);
+                }
+                notesRecyclerView.setLayoutManager(
+                        new StaggeredGridLayoutManager(notesViewMode, StaggeredGridLayoutManager.VERTICAL)
+                );
+            }
+        });
 
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
@@ -129,7 +156,7 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
 
         notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                new StaggeredGridLayoutManager(notesViewMode, StaggeredGridLayoutManager.VERTICAL)
         );
 
         noteList = new ArrayList<>();
@@ -138,7 +165,7 @@ public class NotesActivity extends AppCompatActivity implements NotesListener {
 
         getNotes(REQUEST_CODE_SHOW_NOTES, false);
 
-        EditText inputSearch = findViewById(R.id.inputSearch);
+
         inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -5,8 +5,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/_12sdp"
-    android:layout_marginTop="@dimen/_12sdp"
+    android:layout_marginStart="@dimen/_4sdp"
+    android:layout_marginEnd="@dimen/_4sdp"
+    android:layout_marginTop="@dimen/_8sdp"
     android:background="@drawable/background_note">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -28,7 +29,7 @@
         android:fontFamily="@font/ubuntu_bold"
         android:includeFontPadding="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/_13ssp"/>
+        android:textSize="@dimen/_14ssp"/>
 
     <TextView
         android:id="@+id/textSubtitle"
@@ -41,8 +42,8 @@
         android:fontFamily="@font/ubuntu_regular"
         android:includeFontPadding="false"
         android:textColor="@color/colorNoteSubtitleText"
-        android:textSize="@dimen/_12ssp"
-        android:maxLines="1"/>
+        android:textSize="@dimen/_13ssp"
+        android:maxLines="3"/>
     <TextView
         android:id="@+id/textDateTime"
         android:layout_width="match_parent"
@@ -53,6 +54,6 @@
         android:fontFamily="@font/ubuntu_regular"
         android:includeFontPadding="false"
         android:textColor="@color/colorNoteSubtitleText"
-        android:textSize="@dimen/_7ssp" />
+        android:textSize="@dimen/_8ssp" />
 
 </LinearLayout>

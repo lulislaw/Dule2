@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), LoadingActivity.class);
                             startActivity(intent);
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStart();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            Intent intent = new Intent(this, HomeActivity.class);
+            Intent intent = new Intent(this, LoadingActivity.class);
             startActivity(intent);
         }
     }
@@ -180,8 +180,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putBoolean("hasLoggedIn", true);
-                        editor.commit();
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        editor.apply();
+                        startActivity(new Intent(LoginActivity.this, LoadingActivity.class));
                     } else {
                         progressbar_login.setVisibility(View.GONE);
                         //user.sendEmailVerification();

@@ -22,11 +22,13 @@ public class AuthorisedCheckActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
                 boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
 
-                if (hasLoggedIn) {
+                /*if (hasLoggedIn) {
                     startActivity(new Intent(AuthorisedCheckActivity.this, HomeActivity.class));
                 } else {
                     startActivity(new Intent(AuthorisedCheckActivity.this, LoginActivity.class));
-                }
+                }*/
+
+                startActivity(new Intent(AuthorisedCheckActivity.this, LoadingActivity.class));
             }
         }, LOGO_TIME_OUT);
     }
