@@ -1,4 +1,4 @@
-package com.example.dule2;
+package com.example.dule2.Pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.RelativeLayout;
+
+import com.example.dule2.ProfileActivity;
+import com.example.dule2.R;
+import com.example.dule2.Settings_menu.SettingsActivity_setgroups;
 
 public class SettingsActivity extends AppCompatActivity {
     RelativeLayout[] button_menu = new RelativeLayout[4];

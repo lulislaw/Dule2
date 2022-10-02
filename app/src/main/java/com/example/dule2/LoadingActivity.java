@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.dule2.Pages.HomeActivity;
+import com.example.dule2.Settings_menu.SettingsActivity_setgroups;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class LoadingActivity extends AppCompatActivity {
 

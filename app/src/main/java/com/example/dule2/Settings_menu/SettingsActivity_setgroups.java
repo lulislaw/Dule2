@@ -1,4 +1,4 @@
-package com.example.dule2;
+package com.example.dule2.Settings_menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,8 +11,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+
+import com.example.dule2.DBHelper;
+import com.example.dule2.Pages.HomeActivity;
+import com.example.dule2.Pages.NewsActivity;
+import com.example.dule2.Pages.NotesActivity;
+import com.example.dule2.Pages.SearchActivity;
+import com.example.dule2.Pages.SettingsActivity;
+import com.example.dule2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
@@ -22,9 +31,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;
 
 public class SettingsActivity_setgroups extends AppCompatActivity {
@@ -38,11 +44,11 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
     Sheet SHEET;
     LocalDate date_start, date_end, date_current;
     File file_workbook;
-    String sizefile;
     int diff_date_int;
     String name_menu[] = new String[4];
     RelativeLayout[] buttons_menu = new RelativeLayout[5];
     Intent[] intents = new Intent[5];
+    LinearLayout downloadLL;
 
 
     Spinner SPINNER_SELECT_COURSE, SPINNER_SELECT_GROUP, SPINNER_SELECT_INSTITUTE;
@@ -65,11 +71,13 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
         buttons_menu[2] = findViewById(R.id.BotNavButton_note);
         buttons_menu[3] = findViewById(R.id.BotNavButton_home);
         buttons_menu[4] = findViewById(R.id.BotNavButton_settings);
+        downloadLL = findViewById(R.id.Download_LL);
         intents[0] = new Intent(this, SearchActivity.class);
         intents[1] = new Intent(this, NewsActivity.class);
         intents[2] = new Intent(this, NotesActivity.class);
         intents[3] = new Intent(this, HomeActivity.class);
         intents[4] = new Intent(this, SettingsActivity.class);
+        downloadLL.setVisibility(View.GONE);
         for (int i = 0; i < 5; i++) {
             int finalI = i;
             buttons_menu[i].setOnClickListener(new View.OnClickListener() {
@@ -79,16 +87,6 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                     intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivityIfNeeded(intents[finalI], 0);
 
-                    /*try{
-
-                        intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivityIfNeeded(intents[finalI], 0);
-                        overridePendingTransition(0,0);
-                    } catch (Exception e) {
-                        startActivity(intents[finalI]);
-                        overridePendingTransition(0, 0);
-                        e.printStackTrace();
-                    }*/
 
                 }
             });
@@ -127,7 +125,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                downloadLL.setVisibility(View.VISIBLE);
                 WORKBOOK_COURSE_ID = position;
                 client = new AsyncHttpClient();
                 client.get(url[position], new FileAsyncHttpResponseHandler(SettingsActivity_setgroups.this) {
@@ -144,13 +142,6 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
 
                         if (file != null) {
                             file_workbook = file;
-                            sizefile = "";
-                            try {
-                                BasicFileAttributes attr = Files.readAttributes(Paths.get(file.getPath()), BasicFileAttributes.class);
-                                sizefile = attr.size() + "";
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
                             try {
                                 ZipSecureFile.setMinInflateRatio(0);
                                 fis = new FileInputStream(file);
@@ -168,7 +159,7 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                                 ArrayAdapter<String> ADAPTER_2 = new ArrayAdapter<String>(SettingsActivity_setgroups.this, android.R.layout.simple_spinner_item, ARRAYSPINNER_2);
                                 ADAPTER_2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 SPINNER_SELECT_INSTITUTE.setAdapter(ADAPTER_2);
-
+                                downloadLL.setVisibility(View.GONE);
                             } catch (IOException e) {
                                 e.printStackTrace();
 
@@ -213,8 +204,6 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
                 ArrayAdapter<String> ADAPTER_3 = new ArrayAdapter<String>(SettingsActivity_setgroups.this, android.R.layout.simple_spinner_item, ARRAYSPINNER_3);
                 ADAPTER_3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 SPINNER_SELECT_GROUP.setAdapter(ADAPTER_3);
-
-
 
             }
 

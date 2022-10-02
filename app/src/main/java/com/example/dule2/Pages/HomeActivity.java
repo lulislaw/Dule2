@@ -1,4 +1,4 @@
-package com.example.dule2;
+package com.example.dule2.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +21,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.dule2.DBHelper;
+import com.example.dule2.R;
+import com.example.dule2.VPAdapderMainPage;
+import com.example.dule2.ViewPagerItemMainPage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -75,8 +80,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // date start(y,m,d) 2022,02,06
         // date end(y,m,d) 2022,05,29
-        date_start = LocalDate.of(2022, 2, 7);
-        date_end = LocalDate.of(2022, 5, 30);
+        date_start = LocalDate.of(2022, 8, 29);
+        date_end = LocalDate.of(2022, 11, 30);
         date_current = LocalDate.now();
         diff_date_int = (int) (date_end.toEpochDay() - date_start.toEpochDay());
         current_epoch_day = (int) (diff_date_int - ((date_end).toEpochDay() - date_current.toEpochDay()));
@@ -114,15 +119,6 @@ public class HomeActivity extends AppCompatActivity {
                     intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivityIfNeeded(intents[finalI], 0);
 
-                    /*try {
-                        intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivityIfNeeded(intents[finalI], 0);
-                        overridePendingTransition(0, 0);
-                    } catch (Exception e) {
-                        startActivity(intents[finalI]);
-                        overridePendingTransition(0, 0);
-                        e.printStackTrace();
-                    }*/
                 }
             });
         }
@@ -141,7 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         try {
             loaddata();
             if (current_epoch_day < diff_date_int && current_epoch_day > 0)
-                viewPager2_mainpage.setCurrentItem(current_epoch_day);
+                viewPager2_mainpage.setCurrentItem(current_epoch_day, false);
             else
                 viewPager2_mainpage.setCurrentItem(0);
 
@@ -199,6 +195,7 @@ public class HomeActivity extends AppCompatActivity {
                 int tempdiff = (int) (diff_date_int - ((date_end.toEpochDay() - tempLocalDate.toEpochDay())));
                 if (tempdiff >= 0 && tempdiff <= diff_date_int)
                     viewPager2_mainpage.setCurrentItem(tempdiff);
+
 
             }
         });
@@ -264,10 +261,10 @@ public class HomeActivity extends AppCompatActivity {
                         "\n" + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
                         + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
                         + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
-                names_1[tmp] = checkweek(nameswithdate[0 + (tmp * 8)] + date_tmp);
-                names_2[tmp] = checkweek(nameswithdate[2 + (tmp * 8)] + date_tmp);
-                names_3[tmp] = checkweek(nameswithdate[4 + (tmp * 8)] + date_tmp);
-                names_4[tmp] = checkweek(nameswithdate[6 + (tmp * 8)] + date_tmp);
+                names_1[tmp] = checkweek(nameswithdate[0 + (tmp * 8)] + date_tmp, tmp);
+                names_2[tmp] = checkweek(nameswithdate[2 + (tmp * 8)] + date_tmp, tmp);
+                names_3[tmp] = checkweek(nameswithdate[4 + (tmp * 8)] + date_tmp, tmp);
+                names_4[tmp] = checkweek(nameswithdate[6 + (tmp * 8)] + date_tmp, tmp);
 
             }
             else
@@ -278,10 +275,10 @@ public class HomeActivity extends AppCompatActivity {
                         "\n" +  LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
                         + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
                         + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
-                names_1[tmp] = checkweek(nameswithdate[1 + (tmp * 8)] + date_tmp );
-                names_2[tmp] = checkweek(nameswithdate[3 + (tmp * 8)] + date_tmp );
-                names_3[tmp] = checkweek(nameswithdate[5 + (tmp * 8)] + date_tmp );
-                names_4[tmp] = checkweek(nameswithdate[7 + (tmp * 8)] + date_tmp );
+                names_1[tmp] = checkweek(nameswithdate[1 + (tmp * 8)] + date_tmp, tmp);
+                names_2[tmp] = checkweek(nameswithdate[3 + (tmp * 8)] + date_tmp, tmp);
+                names_3[tmp] = checkweek(nameswithdate[5 + (tmp * 8)] + date_tmp, tmp);
+                names_4[tmp] = checkweek(nameswithdate[7 + (tmp * 8)] + date_tmp, tmp);
             }
         }
 
@@ -322,18 +319,18 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    private String checkweek(String source)
+    private String checkweek(String source, int tmpf)
     {
         String returnstring = source;
         for (Integer w = 8; w < 20; w++) {
 
-            int week = current_epoch_day / 7;
+            int week = tmpf/7;
             String s1 = w.toString() + " н";
             String s2 = w.toString() + " нед.";
             String s3 = w.toString() + "н";
             if (source.contains(s1) | source.contains(s2) | source.contains(s3)) {
                 if (w < week) {
-                  //  returnstring = "nullxnullxnullxnull";                                             Не забыть убрать // *заглушка*
+                  returnstring = "nullxnullxnullxnull";                                            //Не забыть убрать // *заглушка*
                 }
 
             }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity_setgroups">
+    tools:context=".Settings_menu.SettingsActivity_setgroups">
 
     <RelativeLayout
         android:id="@+id/menu_first"
@@ -92,6 +92,30 @@
                 android:scrollbarStyle="insideOverlay"
                 tools:ignore="SpeakableTextPresentCheck" />
 
+            <LinearLayout
+                android:id="@+id/Download_LL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/background_block"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/Download_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+                    android:text="Загрузка" />
+
+                <ProgressBar
+                    android:id="@+id/Download_ProgressBar"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="5dp"
+                    android:theme="@style/CalenderViewCustom" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/BUTTON_SAVE_SELECTION"
                 android:layout_width="wrap_content"
@@ -114,6 +138,7 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -121,8 +146,8 @@
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginBottom="10dp"
-        android:visibility="gone"
         android:background="@drawable/backroung_alphagrey"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

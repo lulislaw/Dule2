@@ -1,4 +1,4 @@
-package com.example.dule2;
+package com.example.dule2.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,8 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.dule2.R;
+import com.example.dule2.SearchItem;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
@@ -37,7 +39,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-
+//очистка фильтров!
 public class SearchActivity extends AppCompatActivity {
     ImageButton categoryopen_button, clearall_button;
     LinearLayout categoryll;
@@ -132,18 +134,6 @@ public class SearchActivity extends AppCompatActivity {
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivityIfNeeded(intents[finalI], 0);
 
-
-                        /*try {
-
-                            intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-
-                            startActivityIfNeeded(intents[finalI], 0);
-                            overridePendingTransition(0, 0);
-                        } catch (Exception e) {
-                            startActivity(intents[finalI]);
-                            overridePendingTransition(0, 0);
-                            e.printStackTrace();
-                        }*/
                     }
                 });
             }
@@ -164,10 +154,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-
-                    searchinfo(s);
-
-
+                searchinfo(s);
                 return false;
             }
 
@@ -180,7 +167,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
 
-        for(int i =0; i< cat_spinner.length; i++) {
+        for(int i = 0; i < cat_spinner.length; i++) {
             cat_spinner[i].setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -199,7 +186,16 @@ public class SearchActivity extends AppCompatActivity {
             });
         }
 
+    clearall_button.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
 
+            for(int i = 0; i < cat_spinner.length; i++)
+            {
+                cat_spinner[i].setSelection(0);
+            }
+        }
+    });
 
     }
 
@@ -222,20 +218,25 @@ public class SearchActivity extends AppCompatActivity {
             {
                 if(cat_spinner[i].getSelectedItemPosition() != 0)
                     s = s + " " + cat_spinner[i].getSelectedItem().toString();
+
             }
-            String[] strings = s.split(" ");
-            for (int i = 0; i < tmp_text.length; i++) {
-                int cheker = 0;
-                for (int l = 0; l < strings.length; l++) {
-                    if (tmp_text[i].toLowerCase().contains(strings[l].toLowerCase()))
-                        cheker++;
-                }
-                if (cheker == strings.length) {
-                    SearchItems.add(new SearchItem(tmp_text[i]));
-                    adapter.notifyItemInserted(SearchItems.size() - 1);
+            if(s.length() >= 3) {
+                String[] strings = s.split(" ");
+                for (int i = 0; i < tmp_text.length; i++) {
+                    int cheker = 0;
+                    for (int l = 0; l < strings.length; l++) {
+                        if (tmp_text[i].toLowerCase().contains(strings[l].toLowerCase()))
+                            cheker++;
+                    }
+                    if (cheker == strings.length) {
+                        SearchItems.add(new SearchItem(tmp_text[i]));
+                        adapter.notifyItemInserted(SearchItems.size() - 1);
+                    }
+
                 }
 
             }
+
         }
 
     }
@@ -259,20 +260,24 @@ public class SearchActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            TextView name = holder.itemView.findViewById(R.id.Name);
-            TextView time = holder.itemView.findViewById(R.id.Time);
-            TextView type = holder.itemView.findViewById(R.id.Type);
-            TextView teacher = holder.itemView.findViewById(R.id.Teacher);
-            TextView room = holder.itemView.findViewById(R.id.Room);
-            TextView dayofweek = holder.itemView.findViewById(R.id.DayOfWeek);
-            TextView course = holder.itemView.findViewById(R.id.Course);
-            name.setText(this.SearchItems.get(position).getName());
-            time.setText(this.SearchItems.get(position).getTime());
-            type.setText(this.SearchItems.get(position).getTypeSubject());
-            teacher.setText(this.SearchItems.get(position).getTeacher());
-            room.setText(this.SearchItems.get(position).getRoom());
-            dayofweek.setText(this.SearchItems.get(position).getDayOfWeek());
-            course.setText(this.SearchItems.get(position).getCourse());
+            try {
+                TextView name = holder.itemView.findViewById(R.id.Name);
+                TextView time = holder.itemView.findViewById(R.id.Time);
+                TextView type = holder.itemView.findViewById(R.id.Type);
+                TextView teacher = holder.itemView.findViewById(R.id.Teacher);
+                TextView room = holder.itemView.findViewById(R.id.Room);
+                TextView dayofweek = holder.itemView.findViewById(R.id.DayOfWeek);
+                TextView course = holder.itemView.findViewById(R.id.Course);
+                name.setText(this.SearchItems.get(position).getName());
+                time.setText(this.SearchItems.get(position).getTime());
+                type.setText(this.SearchItems.get(position).getTypeSubject());
+                teacher.setText(this.SearchItems.get(position).getTeacher());
+                room.setText(this.SearchItems.get(position).getRoom());
+                dayofweek.setText(this.SearchItems.get(position).getDayOfWeek());
+                course.setText(this.SearchItems.get(position).getCourse());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         @Override

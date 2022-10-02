@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".Pages.SearchActivity">
 
     <LinearLayout
         android:id="@+id/category"
@@ -13,7 +13,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/strokecorners"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,17 +20,17 @@
         app:layout_constraintTop_toBottomOf="@id/Back_SearchView">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/type_spinner"
-                android:layout_width="123dp"
+                android:layout_width="179dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
-                android:layout_marginRight="3dp"
+                android:layout_marginRight="2dp"
                 android:background="@drawable/left_top_corners"
                 android:dropDownWidth="wrap_content"
                 android:foregroundGravity="center"
@@ -40,7 +39,7 @@
 
             <Spinner
                 android:id="@+id/course_spinner"
-                android:layout_width="123dp"
+                android:layout_width="179dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="3dp"
@@ -59,7 +58,7 @@
 
             <Spinner
                 android:id="@+id/time_spinner"
-                android:layout_width="80dp"
+                android:layout_width="117dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="6dp"
@@ -71,7 +70,7 @@
 
             <Spinner
                 android:id="@+id/day_spinner"
-                android:layout_width="80dp"
+                android:layout_width="117dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
                 android:background="@drawable/center"
@@ -82,7 +81,7 @@
 
             <Spinner
                 android:id="@+id/week_spinner"
-                android:layout_width="80dp"
+                android:layout_width="117dp"
                 android:layout_height="49dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="6dp"
@@ -113,9 +112,9 @@
         android:id="@+id/Back_SearchView"
         android:layout_width="0dp"
         android:layout_height="64dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="49dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/background_block"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"

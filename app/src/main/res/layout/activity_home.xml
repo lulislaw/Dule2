@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#00FFFFFF"
-    tools:context=".HomeActivity">
+    tools:context=".Pages.HomeActivity">
 
 
     <RelativeLayout
@@ -32,7 +32,6 @@
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
         android:elevation="10dp"
         android:theme="@style/CalenderViewCustom"
-        android:visibility="gone"
         android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"

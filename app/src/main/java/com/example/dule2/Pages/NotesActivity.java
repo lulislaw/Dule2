@@ -1,19 +1,14 @@
-package com.example.dule2;
+package com.example.dule2.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -22,18 +17,20 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.dule2.CreateNoteActivity;
+import com.example.dule2.CreateNoteActivitySecond;
+import com.example.dule2.Note;
 import com.example.dule2.NotesAdapter;
 import com.example.dule2.NotesDatabase;
 import com.example.dule2.NotesListener;
+import com.example.dule2.R;
 
 import java.util.ArrayList;
 import java.util.List;

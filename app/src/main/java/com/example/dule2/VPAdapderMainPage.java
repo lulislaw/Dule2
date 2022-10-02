@@ -43,7 +43,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         ViewPagerItemMainPage viewPagerItemMainPage = viewPagerItemMainPageArrayList.get(position);
 
 
-        Date date = new Date();
+
         String[] names = new String[4];
         names[0] = viewPagerItemMainPage.name_1;
         names[1] = viewPagerItemMainPage.name_2;
@@ -53,10 +53,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 8, 9, 11, 13, 13, 15, 17, 18, 20
         };
         int[] thtime_min = {
-                15, 55, 35, 5, 45, 25, 5, 50, 30
-        };
-        String[] time_normal = {
-                "8:15 - 9:45", "9:55 - 11:25","11:35 - 13:05","13:15 - 14:45", "13:45 - 15:15", "15:25 - 16:55", "17:05 - 18:35","18:50 - 20:20", "20:30 - 22:00"
+                15, 55, 35, 15, 45, 25, 5, 50, 30
         };
         String[] timedef_dermo = {
                 "8.15", "9.55","11.35","13.15", "13.45", "15.25", "17.05","18.50", "20.30"
@@ -69,7 +66,9 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
 
         for (int i = 0; i < 4; i++) {
             if (names[i] != null) {
+                if(names[i].split("x")[2].length() != 4)
                 holder.tcdate.setText(names[i].split("x")[2]);
+
                 if (names[i].split("x")[1].length() < _limitchars)
                     holder._tcblocks[i].setVisibility(View.GONE);
                 else {

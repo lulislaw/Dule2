@@ -38,7 +38,7 @@
             android:name=".LoadingActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity_setgroups"
+            android:name=".Settings_menu.SettingsActivity_setgroups"
             android:exported="false" />
         <activity
             android:name=".AuthorisedCheckActivity"
@@ -51,19 +51,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".Pages.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".NotesActivity"
+            android:name=".Pages.NotesActivity"
             android:exported="true" />
         <activity
-            android:name=".NewsActivity"
+            android:name=".Pages.NewsActivity"
             android:exported="true" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".Pages.SearchActivity"
             android:exported="true" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Pages.SettingsActivity"
             android:exported="true" />
         <activity
             android:name=".CreateNoteActivity"
