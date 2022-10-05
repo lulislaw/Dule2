@@ -50,7 +50,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     SearchView searchView;
     private final List<SearchItem> SearchItems = new ArrayList<>();
-    private final RecyclerView.Adapter adapter = new SearchItemAdapter(this.SearchItems);
+    private final RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = new SearchItemAdapter(this.SearchItems);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

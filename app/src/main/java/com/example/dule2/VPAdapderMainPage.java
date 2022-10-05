@@ -75,15 +75,40 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
 
                     try {
                         holder._tc_th_times[i].setText(names[i].split("x")[3]);
+                        if (holder._tc_th_times[i].getText().toString().equals("") || holder._tc_th_times[i].getText().toString().equals(" ")) {
+                            holder._tc_th_times[i].setVisibility(View.GONE);
+                        }
                     } catch (Exception e) {
 
                     }
 
-                    holder._tctimes[i].setText(names[i].split("x")[0]);
+
+                    String s = names[i].split("x")[0];
+                    s = s.replaceAll("[- ]", " ");
+                    holder._tctimes[i].setText(s);
+                    /*if (holder._tctimes[i].getText().toString().contains("-") || holder._tctimes[i].getText().toString().contains(" ")) {
+                        holder._tctimes[i].setText();
+                    }*/
                     holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0]);
-                    holder._tctypes[i].setText(decomposition(names[i].split("x")[1])[1]);
+
+                    if (decomposition(names[i].split("x")[1])[1].contains("Лекция")) {
+                        holder._tctypes[i].setText("Л");
+                    }
+                    else if (decomposition(names[i].split("x")[1])[1].contains("Практическое занятие")) {
+                        holder._tctypes[i].setText("ПЗ");
+                    }
+                    else if (decomposition(names[i].split("x")[1])[1].contains("Лабораторное занятие")) {
+                        holder._tctypes[i].setText("ЛЗ");
+                    }
+
+                    //holder._tctypes[i].setText(decomposition(names[i].split("x")[1])[1]);
                     holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
-                    holder._tcrooms[i].setText(decomposition(names[i].split("x")[1])[3]);
+
+                    if (decomposition(names[i].split("x")[1])[3].contains("Спортивный комплекс")) {
+                        holder._tcrooms[i].setText("СК");
+                    }
+                    else holder._tcrooms[i].setText(decomposition(names[i].split("x")[1])[3]);
+
                     holder._tcblocks[i].setVisibility(View.VISIBLE);
                     holder._tctypes[i].setVisibility(View.VISIBLE);
                     holder._tcteachers[i].setVisibility(View.VISIBLE);
@@ -133,22 +158,26 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         }
 
                     }
-                    else {
-                        if (abs_difftime_inmin <= 90) {
-                            tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч. " + (abs_difftime_inmin % 60) + "м.";
-                            holder._tc_th_times[i].setTextColor(Color.BLUE);
-                            if (abs_difftime_inmin < 60)
-                                tmp_th = "Идет " + (abs_difftime_inmin % 60) + "м.";
-                            if (abs_difftime_inmin % 60 == 0)
-                                tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч.";
+                        else {
+                            if (abs_difftime_inmin <= 90) {
+                                tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч. " + (abs_difftime_inmin % 60) + "м.";
+                                holder._tc_th_times[i].setTextColor(Color.BLUE);
+                                if (abs_difftime_inmin < 60)
+                                    tmp_th = "Идет " + (abs_difftime_inmin % 60) + "м.";
+                                if (abs_difftime_inmin % 60 == 0)
+                                    tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч.";
+                            }
+                            if (abs_difftime_inmin > 90) {
+                                tmp_th = " ";
+                            }
                         }
-                        if (abs_difftime_inmin > 90) {
-                            tmp_th = " ";
-                        }
-                    }
-                    holder._tc_th_times[i].setText("" + tmp_th);
-                    }
 
+                    holder._tc_th_times[i].setText("" + tmp_th);
+                        if (holder._tc_th_times[i].getText().toString().equals("") || holder._tc_th_times[i].getText().toString().equals(" ")) {
+                            holder._tc_th_times[i].setVisibility(View.GONE);
+                        }
+
+                    }
 
 
                 }
