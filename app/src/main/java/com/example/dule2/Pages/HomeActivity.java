@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import android.os.Environment;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.ImageView;
@@ -26,7 +27,10 @@ import com.example.dule2.DBHelper;
 import com.example.dule2.R;
 import com.example.dule2.VPAdapderMainPage;
 import com.example.dule2.ViewPagerItemMainPage;
+import com.opencsv.CSVReader;
 
+import java.io.File;
+import java.io.FileReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -65,9 +69,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
-
-
-
 
         /*image_add_note = findViewById(R.id.image_add_note);
 

@@ -3,13 +3,23 @@ package com.example.dule2;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.opencsv.CSVReader;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -43,7 +53,6 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         ViewPagerItemMainPage viewPagerItemMainPage = viewPagerItemMainPageArrayList.get(position);
 
 
-
         String[] names = new String[4];
         names[0] = viewPagerItemMainPage.name_1;
         names[1] = viewPagerItemMainPage.name_2;
@@ -67,7 +76,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         for (int i = 0; i < 4; i++) {
             if (names[i] != null) {
                 if(names[i].split("x")[2].length() != 4)
-                holder.tcdate.setText(names[i].split("x")[2]);
+                    holder.tcdate.setText(names[i].split("x")[2]);
 
                 if (names[i].split("x")[1].length() < _limitchars)
                     holder._tcblocks[i].setVisibility(View.GONE);
@@ -86,10 +95,8 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                     String s = names[i].split("x")[0];
                     s = s.replaceAll("[- ]", " ");
                     holder._tctimes[i].setText(s);
-                    /*if (holder._tctimes[i].getText().toString().contains("-") || holder._tctimes[i].getText().toString().contains(" ")) {
-                        holder._tctimes[i].setText();
-                    }*/
-                    holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0]);
+
+                    holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0].replaceAll("[\n]", ""));
 
                     if (decomposition(names[i].split("x")[1])[1].contains("Лекция")) {
                         holder._tctypes[i].setText("Л");
@@ -102,10 +109,23 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                     }
 
                     //holder._tctypes[i].setText(decomposition(names[i].split("x")[1])[1]);
-                    holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
+/////
+                    if (decomposition(names[i].split("x")[1])[2].contains("нед")) {
+                        String new_name = names[i].substring(names[i].lastIndexOf(")") + 1);
+                        String replace_name = names[i].substring(names[i].lastIndexOf(".") + 1);
+                        new_name = new_name.replace(replace_name, "");
+                        new_name = new_name.replace("\n", "");
+                        holder._tcteachers[i].setText(new_name);
+                    }
+                    else
+                        holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
+
+                    char firstCharOf_tcrooms = decomposition(names[i].split("x")[1])[3].charAt(0);
 
                     if (decomposition(names[i].split("x")[1])[3].contains("Спортивный комплекс")) {
                         holder._tcrooms[i].setText("СК");
+                    } else if ((firstCharOf_tcrooms + "").equals("-")) {
+                        holder._tcrooms[i].setText(decomposition(names[i].split("x")[1])[3].substring(1));
                     }
                     else holder._tcrooms[i].setText(decomposition(names[i].split("x")[1])[3]);
 

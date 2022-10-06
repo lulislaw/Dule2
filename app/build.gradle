@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-
+    implementation 'com.opencsv:opencsv:4.6'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '3.17'
