@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@null">
 
     <TextView
         android:id="@+id/Date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:fontFamily="@font/nunito"
+        android:fontFamily="@font/inter_semibold"
         android:textStyle="bold"
         android:text="Понедельник, 1 апреля"
         android:textColor="#000000"
@@ -21,9 +23,8 @@
         android:id="@+id/scrollview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginHorizontal="18dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="24dp"
         android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,559 +35,576 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/block_1"
-                android:layout_marginBottom="@dimen/top_margin_block"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/top_margin_block">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_block"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_block_white"
+                    android:orientation="vertical"
+                    android:tag="block_1_tag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
-                        android:id="@+id/left_ll1"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:background="@drawable/background_layout_on_block"
-                        android:backgroundTint="@color/blue_on_block"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginVertical="4dp">
-
-                            <TextView
-                                android:id="@+id/Type_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="4dp"
-                                android:fontFamily="@font/nunito"
-                                android:textColor="@color/white"
-                                android:layout_marginHorizontal="8dp"
-                                android:paddingVertical="2dp"
-                                android:gravity="center"
-                                android:text="ЛЗ"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Time_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:fontFamily="@font/nunito"
-                                android:textColor="@color/white"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="11.35 13.05"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Room_1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="4dp"
-                                android:fontFamily="@font/nunito"
-                                android:textColor="@color/white"
-                                android:paddingVertical="2dp"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛК-507"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/center_ll1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:layout_marginVertical="6dp"
-                        app:layout_constraintBottom_toTopOf="@id/th_Time_1"
-                        app:layout_constraintStart_toEndOf="@id/left_ll1"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/time_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/Name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
-                            android:maxWidth="210dp"
-                            android:fontFamily="@font/nunito"
-                            android:text="Экономическая теория"
-                            android:textColor="@color/black"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="@font/inter_semibold"
+                            android:layout_marginEnd="70dp"
+                            android:text="Предмет"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/Teacher_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Преподователь"
                             android:textColor="@color/black"
-                            android:fontFamily="@font/nunito"
-                            android:text="Препод"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
-
-
+                        <TextView
+                            android:id="@+id/Room_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Аудитория"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/th_Time_1"
-                        android:layout_width="wrap_content"
+
+
+                    <LinearLayout
+                        android:id="@+id/b_time"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="6dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:text="отсчет времени"
-                        android:fontFamily="@font/nunito"
-                        android:textSize="16sp"
-                        android:paddingHorizontal="8dp"
-                        android:background="@drawable/background_time_to_lesson_tv_on_block"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_note"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        <TextView
+                            android:id="@+id/Time_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Время"
+                            android:textColor="#5ec2ef"
+                            android:textSize="18sp" />
+
+                        <!--<TextView
+                            android:id="@+id/th_Time_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_weight="1"
+                            android:text="Через 2ч. 10м."
+                            android:textColor="@color/grey"
+                            android:textSize="14sp" />-->
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                        <!--<ImageView
+                            android:id="@+id/image_add_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add" />-->
 
-            <LinearLayout
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Type_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_lesson_type_blue"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="Лаба"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/th_Time_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:background="@drawable/background_lesson_time"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="2dp"
+                    android:text="Время"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/block_2"
-                android:layout_marginBottom="@dimen/top_margin_block"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="?android:attr/selectableItemBackground">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_block"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_block_white"
+                    android:orientation="vertical"
+                    android:tag="block_2_tag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+
 
                     <LinearLayout
-                        android:id="@+id/left_ll2"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:backgroundTint="@color/purple_on_block"
-                        android:background="@drawable/background_layout_on_block"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginVertical="4dp">
-
-                            <TextView
-                                android:id="@+id/Type_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛЗ"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Time_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="11.35 13.05"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Room_2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛК-507"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/center_ll2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:layout_marginVertical="6dp"
-                        app:layout_constraintBottom_toTopOf="@id/th_Time_2"
-                        app:layout_constraintStart_toEndOf="@id/left_ll2"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/time_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/Name_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:maxWidth="200dp"
-                            android:text="Экономическая теория"
-                            android:textSize="20sp" />
+                            android:fontFamily="@font/inter_semibold"
+                            android:layout_marginEnd="70dp"
+                            android:text="Предмет"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/Teacher_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Преподователь"
                             android:textColor="@color/black"
-                            android:text="Препод"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
-
-
+                        <TextView
+                            android:id="@+id/Room_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Аудитория"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/th_Time_2"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/b_time_2"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="6dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:text="отсчет времени"
-                        android:textSize="16sp"
-                        android:paddingHorizontal="8dp"
-                        android:background="@drawable/background_time_to_lesson_tv_on_block"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_note"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        <TextView
+                            android:id="@+id/Time_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Время"
+                            android:textColor="#5ec2ef"
+                            android:textSize="18sp" />
+
+                        <!--<TextView
+                            android:id="@+id/th_Time_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_weight="1"
+                            android:text="Через 2ч. 10м."
+                            android:textColor="@color/grey"
+                            android:textSize="14sp" />-->
 
 
-                    <!--<LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent" >
+                        <!--<ImageView
+                            android:id="@+id/image_add_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add" />-->
 
-                    </LinearLayout>-->
+                    </LinearLayout>
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
+                <TextView
+                    android:id="@+id/Type_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_lesson_type_blue"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="Практика"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/th_Time_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:background="@drawable/background_lesson_time"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="2dp"
+                    android:text="Время"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/block_3"
-                android:layout_marginBottom="@dimen/top_margin_block"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="?android:attr/selectableItemBackground">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_block"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/left_ll3"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:backgroundTint="@color/skin_on_block"
-                        android:background="@drawable/background_layout_on_block"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginVertical="4dp" >
-
-                            <TextView
-                                android:id="@+id/Type_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛЗ"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Time_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="11.35 13.05"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Room_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛК-507"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_block_white"
+                    android:orientation="vertical"
+                    android:tag="block_3_tag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
 
-                    </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/center_ll3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:layout_marginVertical="6dp"
-                        app:layout_constraintBottom_toTopOf="@id/th_Time_3"
-                        app:layout_constraintStart_toEndOf="@id/left_ll3"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/time_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/Name_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:maxWidth="200dp"
-                            android:text="Экономическая теория"
-                            android:textSize="20sp" />
+                            android:fontFamily="@font/inter_semibold"
+                            android:layout_marginEnd="70dp"
+                            android:text="Предмет"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/Teacher_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Преподователь"
                             android:textColor="@color/black"
-                            android:text="Препод"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
-
-
+                        <TextView
+                            android:id="@+id/Room_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Аудитория"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/th_Time_3"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/b_time_3"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="6dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:text="отсчет времени"
-                        android:textSize="16sp"
-                        android:paddingHorizontal="8dp"
-                        android:background="@drawable/background_time_to_lesson_tv_on_block"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_note"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        <TextView
+                            android:id="@+id/Time_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Время"
+                            android:textColor="#5ec2ef"
+                            android:textSize="18sp" />
+
+                        <!--<TextView
+                            android:id="@+id/th_Time_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_weight="1"
+                            android:text="Через 2ч. 10м."
+                            android:textColor="@color/grey"
+                            android:textSize="14sp" />-->
 
 
-                    <!--<LinearLayout
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent" >
+                        <!--<ImageView
+                            android:id="@+id/image_add_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add" />-->
 
-                    </LinearLayout>-->
+                    </LinearLayout>
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
+                <TextView
+                    android:id="@+id/Type_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_lesson_type_blue"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="Практика"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/th_Time_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:background="@drawable/background_lesson_time"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="2dp"
+                    android:text="Время"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/block_4"
-                android:layout_marginBottom="@dimen/top_margin_block"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/top_margin_block"
+                android:background="?android:attr/selectableItemBackground">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_block"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/left_ll4"
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:background="@drawable/background_layout_on_block"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginVertical="4dp" >
-
-                            <TextView
-                                android:id="@+id/Type_4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛЗ"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Time_4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="11.35 13.05"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/Room_4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingVertical="2dp"
-                                android:textColor="@color/colorPrimary"
-                                android:layout_marginHorizontal="8dp"
-                                android:gravity="center"
-                                android:text="ЛК-507"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_block_white"
+                    android:orientation="vertical"
+                    android:tag="block_4_tag"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
 
-                    </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/center_ll4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:layout_marginVertical="6dp"
-                        app:layout_constraintBottom_toTopOf="@id/th_Time_4"
-                        app:layout_constraintStart_toEndOf="@id/left_ll4"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/time_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/Name_4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:maxWidth="200dp"
-                            android:text="Экономическая теория"
-                            android:textSize="20sp" />
+                            android:fontFamily="@font/inter_semibold"
+                            android:layout_marginEnd="70dp"
+                            android:text="Предмет"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/Teacher_4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="6dp"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_regular"
+                            android:text="Преподователь"
                             android:textColor="@color/black"
-                            android:text="Препод"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
-
-
+                        <TextView
+                            android:id="@+id/Room_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/other_top_margin_block"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Аудитория"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/th_Time_4"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/b_time_4"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="6dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:text="отсчет времени"
-                        android:textSize="16sp"
-                        android:paddingHorizontal="8dp"
-                        android:background="@drawable/background_time_to_lesson_tv_on_block"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:layout_marginLeft="@dimen/left_margin_block"
+                        android:layout_marginTop="@dimen/name_top_margin_block"
+                        android:layout_marginRight="@dimen/left_margin_block"
+                        android:layout_marginBottom="@dimen/room_bot_margin_block"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/ic_note"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        <TextView
+                            android:id="@+id/Time_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_semibold"
+                            android:text="Время"
+                            android:textColor="#5ec2ef"
+                            android:textSize="18sp" />
+
+                        <!--<TextView
+                            android:id="@+id/th_Time_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_weight="1"
+                            android:text="Через 2ч. 10м."
+                            android:textColor="@color/grey"
+                            android:textSize="14sp" />-->
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                        <!--<ImageView
+                            android:id="@+id/image_add_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_add" />-->
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/Type_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_lesson_type_blue"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="Практика"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/th_Time_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:background="@drawable/background_lesson_time"
+                    android:fontFamily="@font/inter_semibold"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="2dp"
+                    android:text="Время"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="100dp" />
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

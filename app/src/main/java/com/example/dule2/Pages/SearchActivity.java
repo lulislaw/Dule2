@@ -39,7 +39,6 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-//очистка фильтров!
 public class SearchActivity extends AppCompatActivity {
     ImageButton categoryopen_button, clearall_button;
     LinearLayout categoryll;
@@ -70,9 +69,6 @@ public class SearchActivity extends AppCompatActivity {
         cat_arrays[2] = R.array.week;
         cat_arrays[3] = R.array.day;
         cat_arrays[4] = R.array.course;
-
-
-
 
         searchView = findViewById(R.id.searchView);
         recyclerView = findViewById(R.id.RecyclerView);

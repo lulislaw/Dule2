@@ -2,6 +2,7 @@ package com.example.dule2;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.opencsv.CSVReader;
@@ -78,6 +82,8 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 if(names[i].split("x")[2].length() != 4)
                     holder.tcdate.setText(names[i].split("x")[2]);
 
+
+
                 if (names[i].split("x")[1].length() < _limitchars)
                     holder._tcblocks[i].setVisibility(View.GONE);
                 else {
@@ -93,34 +99,100 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
 
 
                     String s = names[i].split("x")[0];
-                    s = s.replaceAll("[- ]", " ");
+                    s = s.replaceAll("[- ]", "-");
+                    if (s.contains("---"))
+                        s = s.replace("--", "");
+                    else if (s.contains("--"))
+                        s = s.replaceFirst("-", "");
                     holder._tctimes[i].setText(s);
 
-                    holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0].replaceAll("[\n]", ""));
+//                    System.out.println(i);
+//                    System.out.println(decomposition(names[i].split("x")[1])[2]);
+
+//                    System.out.println(i);
+//                    System.out.println((names[i].split("x")[1]));
+
+
+                    String new_name_new = (names[i].split("x")[1]);
+
+                    if ((names[i].split("x")[1]).contains("Актовый зал /")) {
+                        new_name_new = new_name_new.substring(new_name_new.indexOf("/") + 1);
+                        new_name_new.trim();
+                    }
+                    else if ((names[i].split("x")[1]).contains("Актовый зал")) {
+                        new_name_new = new_name_new.substring(new_name_new.indexOf("зал") + 3);
+                        new_name_new.trim();
+                    }
+                    System.out.println(i);
+                    System.out.println(new_name_new);
+
+
+                    /*String strung = "the text=text";
+                    String s1 = strung.substring(strung.indexOf("=") + 1);
+                    s1.trim();
+
+                    System.out.println("String s1 = strung.substring(strung.indexOf(\"=\") + 1);");
+                    System.out.println(s1);
+*/
+                    //decomposition(names[i].split("x")[1])[0] - вывод предметов
+                    //decomposition(names[i].split("x")[1])[1] - вывод типа пары
+                    //decomposition(names[i].split("x")[1])[2] - должно выводить имена, но выводит говно в том числе
+
+                    holder._tcnames[i].setText(decomposition(new_name_new)[0].replaceAll("[\n]", ""));
+                    //holder._tcnames[i].setText(decomposition(names[i].split("x")[1])[0].replaceAll("[\n]", ""));
 
                     if (decomposition(names[i].split("x")[1])[1].contains("Лекция")) {
-                        holder._tctypes[i].setText("Л");
+                        holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_red);
+                        holder._tctypes[i].setText("Лекция");
+
                     }
                     else if (decomposition(names[i].split("x")[1])[1].contains("Практическое занятие")) {
-                        holder._tctypes[i].setText("ПЗ");
+                        holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_blue);
+                        holder._tctypes[i].setText("Практика");
+
                     }
                     else if (decomposition(names[i].split("x")[1])[1].contains("Лабораторное занятие")) {
-                        holder._tctypes[i].setText("ЛЗ");
+                        holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_purple);
+                        holder._tctypes[i].setText("Лаба");
+
                     }
 
-                    //holder._tctypes[i].setText(decomposition(names[i].split("x")[1])[1]);
-/////
+                    else {
+                        holder._tctypes[i].setText("Проект");
+                        holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_pink);
+                    }
+
+
                     if (decomposition(names[i].split("x")[1])[2].contains("нед")) {
                         String new_name = names[i].substring(names[i].lastIndexOf(")") + 1);
                         String replace_name = names[i].substring(names[i].lastIndexOf(".") + 1);
                         new_name = new_name.replace(replace_name, "");
                         new_name = new_name.replace("\n", "");
+                        String checkFirstLetter = String.valueOf(new_name.charAt(0));
+                        if (checkFirstLetter.equals(" ")) {
+                            new_name = new_name.replaceFirst(" ", "");
+                        }
                         holder._tcteachers[i].setText(new_name);
                     }
+
+                    if (decomposition(names[i].split("x")[1])[2].matches(".*\\d.*"))
+                        holder._tcteachers[i].setVisibility(View.GONE);
+
                     else
                         holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
 
-                    char firstCharOf_tcrooms = decomposition(names[i].split("x")[1])[3].charAt(0);
+                    /*if (holder._tcteachers[i].getText().toString().contains("Л")
+                            || holder._tcteachers[i].getText().toString().contains("нед")
+                            || holder._tcteachers[i].getText().toString().matches(".*\\d.*")) {
+                        holder._tcteachers[i].setVisibility(View.GONE);
+                    }*/
+
+                    ///Экономика и управление инв. крашит при просмотре четной недели, а именно пн и чт
+                    //char firstCharOf_tcrooms = decomposition(names[i].split("x")[1])[3].charAt(0);
+
+                    //Если изменить, всё рабоатет вроде. Зачем это?
+                    String firstCharOf_tcrooms = decomposition(names[i].split("x")[1])[3];
+
 
                     if (decomposition(names[i].split("x")[1])[3].contains("Спортивный комплекс")) {
                         holder._tcrooms[i].setText("СК");
@@ -133,8 +205,9 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                     holder._tctypes[i].setVisibility(View.VISIBLE);
                     holder._tcteachers[i].setVisibility(View.VISIBLE);
                     holder._tcrooms[i].setVisibility(View.VISIBLE);
-                    if (decomposition(names[i].split("x")[1])[1].length() < 3)
-                        holder._tctypes[i].setVisibility(View.GONE);
+
+                    /*if (decomposition(names[i].split("x")[1])[1].length() < 3)
+                        holder._tctypes[i].setVisibility(View.GONE);*/
                     if (decomposition(names[i].split("x")[1])[2].length() < 3)
                         holder._tcteachers[i].setVisibility(View.GONE);
                     if (decomposition(names[i].split("x")[1])[3].length() < 3)
@@ -144,6 +217,9 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                 }
             } else
                 holder._tcblocks[i].setVisibility(View.GONE);
+
+            holder._tcteachers[i].setVisibility(View.GONE);
+
         }
 
 
@@ -173,7 +249,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                             tmp_th = "Через "+ (difftime_inmin%60) + "м.";
                         if(difftime_inmin % 60 == 0)
                             tmp_th = "Через " + (difftime_inmin / 60) + "ч.";
-                        if(difftime_inmin < 10) {
+                        if(difftime_inmin <= 10) {
                             holder._tc_th_times[i].setTextColor(Color.RED);
                         }
 
@@ -181,7 +257,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         else {
                             if (abs_difftime_inmin <= 90) {
                                 tmp_th = "Идет " + (abs_difftime_inmin / 60) + "ч. " + (abs_difftime_inmin % 60) + "м.";
-                                holder._tc_th_times[i].setTextColor(Color.BLUE);
+                                holder._tc_th_times[i].setTextColor(Color.parseColor("#000000"));
                                 if (abs_difftime_inmin < 60)
                                     tmp_th = "Идет " + (abs_difftime_inmin % 60) + "м.";
                                 if (abs_difftime_inmin % 60 == 0)
@@ -231,7 +307,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         TextView[] _tctypes = new TextView[4];
         TextView[] _tcteachers = new TextView[4];
         TextView[] _tcrooms = new TextView[4];
-        LinearLayout[] _tcblocks = new LinearLayout[4];
+        ConstraintLayout[] _tcblocks = new ConstraintLayout[4];
         TextView tcdate;
 
 

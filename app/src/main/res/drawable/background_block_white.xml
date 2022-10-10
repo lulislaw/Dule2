@@ -3,10 +3,7 @@
 
 
 
-    <solid android:color="@color/alpha3"/>
+    <solid android:color="@color/white"/>
     <corners android:radius="10dp"/>
-
-
-
 
 </shape>
