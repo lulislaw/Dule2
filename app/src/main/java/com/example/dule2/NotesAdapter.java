@@ -99,6 +99,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }
         @SuppressLint("ResourceAsColor")
         void setNote(Note note) {
+            textTitle.setTextColor(Color.parseColor("#000000"));
+            textDataTime.setTextColor(Color.parseColor("#333333"));
+            textSubtitle.setTextColor(Color.parseColor("#333333"));
+
             textTitle.setText(note.getTitle());
             if(note.getNoteText().trim().isEmpty() && note.getSubtitle().trim().isEmpty()) {
                 textSubtitle.setVisibility(View.GONE);

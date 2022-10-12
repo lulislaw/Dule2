@@ -1,6 +1,10 @@
 package com.example.dule2;
 
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class ViewPagerItemMainPage {
 
@@ -11,14 +15,12 @@ public class ViewPagerItemMainPage {
 
 
 
-
     public ViewPagerItemMainPage(
 
             String name_1,
             String name_2,
             String name_3,
             String name_4
-
 
     ) {
 
@@ -28,7 +30,9 @@ public class ViewPagerItemMainPage {
         this.name_3 = name_3;
         this.name_4 = name_4;
 
-
     }
 
+
+
 }
+

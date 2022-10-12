@@ -166,8 +166,6 @@ public class CreateNoteActivity extends AppCompatActivity {
         selectedNoteColor = alreadyAvailableNote.getColor();
         setSubtitleIndicatorColor();
 
-
-
         if (alreadyAvailableNote.getImagePath() != null && !alreadyAvailableNote.getImagePath().trim().isEmpty()) {
             imageNote.setImageBitmap(BitmapFactory.decodeFile(alreadyAvailableNote.getImagePath()));
             imageNote.setVisibility(View.VISIBLE);
@@ -202,6 +200,10 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         if (alreadyAvailableNote != null) {
             note.setId(alreadyAvailableNote.getId());
+        }
+
+        if (inputNoteText.getText().toString().equals("") || inputNoteText.getText().toString().equals(" ")) {
+            inputNoteText.requestFocus();
         }
 
         @SuppressLint("StaticFieldLeak")
@@ -309,6 +311,10 @@ public class CreateNoteActivity extends AppCompatActivity {
                 setSubtitleIndicatorColor();
             }
         });
+
+        if (alreadyAvailableNote == null) {
+            inputNoteText.requestFocus();
+        }
 
         if (alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && alreadyAvailableNote.getColor().trim().isEmpty()) {
             switch (alreadyAvailableNote.getColor()) {

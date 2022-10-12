@@ -1,6 +1,7 @@
 package com.example.dule2;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
@@ -30,7 +31,7 @@ import java.util.Date;
 public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.ViewHolder> {
 
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
-
+    private Context context;
 
 
     public VPAdapderMainPage(ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList) {

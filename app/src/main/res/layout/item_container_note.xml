@@ -8,7 +8,9 @@
     android:layout_marginStart="@dimen/_4sdp"
     android:layout_marginEnd="@dimen/_4sdp"
     android:layout_marginTop="@dimen/_8sdp"
-    android:background="@drawable/background_note">
+    android:background="@drawable/background_note"
+    android:backgroundTint="#FFFFFF"
+    android:elevation="1dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageNote"
@@ -26,10 +28,10 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/inter_semibold"
         android:includeFontPadding="false"
         android:textColor="@color/white"
-        android:textSize="@dimen/_14ssp"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textSubtitle"
@@ -39,10 +41,10 @@
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginBottom="@dimen/_4sdp"
-        android:fontFamily="@font/ubuntu_regular"
+        android:fontFamily="@font/inter_regular"
         android:includeFontPadding="false"
         android:textColor="@color/colorNoteSubtitleText"
-        android:textSize="@dimen/_13ssp"
+        android:textSize="16sp"
         android:maxLines="3"/>
     <TextView
         android:id="@+id/textDateTime"
@@ -51,7 +53,7 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
-        android:fontFamily="@font/ubuntu_regular"
+        android:fontFamily="@font/inter_regular"
         android:includeFontPadding="false"
         android:textColor="@color/colorNoteSubtitleText"
         android:textSize="@dimen/_8ssp" />

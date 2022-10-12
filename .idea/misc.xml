@@ -100,6 +100,13 @@
         <entry key="..\:/gitclonesmutable/Dule2/app/src/main/res/menu/top_nav_menu.xml" value="0.3078125" />
         <entry key="app/src/main/res/drawable/background_layout_on_block.xml" value="0.176" />
         <entry key="app/src/main/res/drawable/background_time_to_lesson_tv_on_block.xml" value="0.176" />
+        <entry key="app/src/main/res/layout/activity_create_note.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_create_note_second.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_home_work.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/activity_notes.xml" value="0.3109375" />
+        <entry key="app/src/main/res/layout/item_container_note.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/viewpageritemmainpage.xml" value="0.25" />
         <entry key="app/src/main/res/layout/viewpageritemmainpage2.xml" value="0.2767210144927536" />
       </map>

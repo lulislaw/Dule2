@@ -72,7 +72,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
-                android:fontFamily="@font/ubuntu"
+                android:fontFamily="@font/inter_regular"
                 android:hint="@string/noteTitle"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
@@ -123,10 +123,9 @@
             <View
                 android:id="@+id/viewSubtitleIndicator"
                 android:layout_width="@dimen/_5sdp"
-                android:layout_height="0dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:background="@drawable/background_subtitle_indicator"
-                app:layout_constraintBottom_toBottomOf="@id/inputNote"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/inputNote" />
 
@@ -140,7 +139,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/inputNote"/>
+                app:layout_constraintTop_toBottomOf="@id/textDateTime"/>
 
             <!--<ImageView
                 android:id="@+id/imageRemoveImage"
@@ -165,19 +164,20 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
-                android:fontFamily="@font/ubuntu"
+                android:fontFamily="@font/inter_regular"
                 android:hint="Содержание"
+                android:gravity="top"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
-                android:minHeight="@dimen/_25sdp"
+                android:minHeight="@dimen/_200sdp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorTextHint"
                 android:textCursorDrawable="@drawable/color_cursor"
                 android:textSize="@dimen/_15ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/viewSubtitleIndicator"
-                app:layout_constraintTop_toBottomOf="@id/textDateTime" />
+                app:layout_constraintTop_toBottomOf="@id/imageNote" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

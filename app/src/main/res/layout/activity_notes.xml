@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Pages.NotesActivity">
+    tools:context=".Pages.NotesActivity"
+    android:background="@color/colorPrimary">
 
     <TextView
         android:id="@+id/textMyNotes"
@@ -13,7 +14,7 @@
         android:layout_marginStart="19dp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="9dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/inter_semibold"
         android:includeFontPadding="false"
         android:text="Мои заметки"
         android:textColor="@color/black"
@@ -40,14 +41,15 @@
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        android:background="@drawable/background_block"
+        android:background="@drawable/background_block_white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textMyNotes">
+        app:layout_constraintTop_toBottomOf="@id/textMyNotes"
+        android:elevation="1dp">
 
         <ImageView
             android:id="@+id/imageView_inputSearch"
@@ -66,7 +68,7 @@
             android:layout_height="@dimen/_35sdp"
             android:background="@null"
             android:cursorVisible="true"
-            android:fontFamily="@font/ubuntu_regular"
+            android:fontFamily="@font/inter_regular"
             android:hint="Поиск"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
