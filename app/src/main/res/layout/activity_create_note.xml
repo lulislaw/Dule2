@@ -126,17 +126,16 @@
                     android:textSize="@dimen/_15ssp"
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/viewSubtitleIndicator"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textDateTime" />
 
-                <View
+                <!--<View
                     android:id="@+id/viewSubtitleIndicator"
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="25dp"
-                    android:layout_marginStart="@dimen/_12sdp"
                     android:background="@drawable/background_subtitle_indicator"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/inputNote" />
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="165dp" />-->
 
                 <ImageView
                     android:id="@+id/imageNote"
@@ -148,7 +147,7 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/textDateTime" />
+                    app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
 
                 <!--<ImageView
                     android:id="@+id/imageRemoveImage"
@@ -169,7 +168,7 @@
                     android:id="@+id/inputNote"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:background="@null"
@@ -179,13 +178,13 @@
                     android:importantForAutofill="no"
                     android:includeFontPadding="false"
                     android:inputType="textMultiLine"
-                    android:minHeight="@dimen/_200sdp"
+                    android:minHeight="100dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorTextHint"
                     android:textCursorDrawable="@drawable/color_cursor"
                     android:textSize="@dimen/_15ssp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/viewSubtitleIndicator"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/imageNote" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -220,6 +219,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+
 
             <View
                 android:layout_width="0dp"
@@ -414,6 +415,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:baselineAligned="false"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -424,8 +426,19 @@
                     android:layout_height="35dp"
                     android:src="@drawable/ic_color" />
 
+                <View
+                    android:id="@+id/viewSubtitleIndicator"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="top"
+                    android:background="@drawable/background_subtitle_indicator" />
 
             </LinearLayout>
+
+
+
+
 
         </LinearLayout>
 

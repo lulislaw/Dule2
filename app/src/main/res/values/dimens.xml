@@ -8,7 +8,7 @@
     <dimen name="left_margin_block">16dp</dimen> <!-- 49 -->
     <dimen name="time_top_margin_block">12dp</dimen>
     <dimen name="name_top_margin_block">9dp</dimen>
-    <dimen name="other_top_margin_block">9dp</dimen>
+    <dimen name="other_top_margin_block">6dp</dimen>
     <dimen name="room_bot_margin_block">12dp</dimen>
     <dimen name="top_margin_block">8dp</dimen>
 </resources>

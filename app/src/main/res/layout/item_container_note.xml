@@ -15,8 +15,10 @@
         android:id="@+id/imageNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxHeight="100dp"
         android:adjustViewBounds="true"
         android:visibility="gone"
+        android:scaleType="centerCrop"
         app:riv_corner_radius_top_left="@dimen/_10sdp"
         app:riv_corner_radius_top_right="@dimen/_10sdp" />
 

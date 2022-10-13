@@ -26,12 +26,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.ViewHolder> {
 
     ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList;
-    private Context context;
 
 
     public VPAdapderMainPage(ArrayList<ViewPagerItemMainPage> viewPagerItemMainPageArrayList) {
@@ -154,7 +154,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                     }
                     else if (decomposition(names[i].split("x")[1])[1].contains("Лабораторное занятие")) {
                         holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_purple);
-                        holder._tctypes[i].setText("Лаба");
+                        holder._tctypes[i].setText("Лабораторная");
 
                     }
 
@@ -219,8 +219,16 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             } else
                 holder._tcblocks[i].setVisibility(View.GONE);
 
-            holder._tcteachers[i].setVisibility(View.GONE);
+            String test = holder._tcteachers[i].getText().toString();
 
+            String trim = test.trim();
+            if (!trim.isEmpty()) {
+                if (trim.split("\\s+").length != 2) {
+                    //holder.borders[i].setVisibility(View.GONE);
+                    holder._tcteachers[i].setVisibility(View.GONE);
+                } else
+                    holder._tcteachers[i].setText(" | " + test);
+            }
         }
 
 
@@ -311,6 +319,8 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
         ConstraintLayout[] _tcblocks = new ConstraintLayout[4];
         TextView tcdate;
 
+        //TextView[] borders = new TextView[4];
+
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -346,6 +356,10 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
             _tcrooms[2] = itemView.findViewById(R.id.Room_3);
             _tcrooms[3] = itemView.findViewById(R.id.Room_4);
 
+//            borders[0] = itemView.findViewById(R.id.border_1);
+//            borders[1] = itemView.findViewById(R.id.border_2);
+//            borders[2] = itemView.findViewById(R.id.border_3);
+//            borders[3] = itemView.findViewById(R.id.border_4);
 
         }
 

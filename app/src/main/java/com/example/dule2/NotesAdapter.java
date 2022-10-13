@@ -3,7 +3,10 @@ package com.example.dule2;
 import android.annotation.SuppressLint;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -16,6 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.dule2.Note;
 import com.example.dule2.NotesListener;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -97,6 +101,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             layoutNote = itemView.findViewById(R.id.layoutNote);
             imageNote = itemView.findViewById(R.id.imageNote);
         }
+
         @SuppressLint("ResourceAsColor")
         void setNote(Note note) {
             if (note.getColor().equals("#FFFFFF")) {
@@ -115,8 +120,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             } else if (!note.getSubtitle().trim().isEmpty()) {
                 textSubtitle.setText(note.getSubtitle());
                 textSubtitle.setTextColor(Color.parseColor("#89CFF0"));
-            } else
-                textSubtitle.setText(note.getNoteText());
+            } else {
+                if (!note.getNoteText().equals("\n") || !note.getNoteText().equals("\n\n") || !note.getNoteText().equals("\n\n\n"))
+                    textSubtitle.setText(note.getNoteText());
+            }
 
 
             textDataTime.setText(note.getDateTime());
@@ -131,6 +138,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             if (note.getImagePath() != null) {
                 imageNote.setImageBitmap(BitmapFactory.decodeFile(note.getImagePath()));
                 imageNote.setVisibility(View.VISIBLE);
+
+
             } else {
                 imageNote.setVisibility(View.GONE);
             }
