@@ -12,6 +12,12 @@
     <color name="red">#FFFF0000</color>
     <color name="onBlack">#FF000000</color>
 
+    <color name="blue_on_block">#adc9ea</color>
+    <color name="purple_on_block">#cfbbeb</color>
+    <color name="pink_on_block">#e5bdd1</color>
+    <color name="skin_on_block">#ebcabb</color>
+    <color name="yellow_on_block">#e8dbbb</color>
+
     <color name="colorPrimary">#292929</color>
     <color name="colorPrimaryDark">#F2F3F4</color>
     <color name="colorAccent">#FDBE3B</color>

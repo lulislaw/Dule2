@@ -8,8 +8,7 @@
     android:layout_marginStart="@dimen/_4sdp"
     android:layout_marginEnd="@dimen/_4sdp"
     android:layout_marginTop="@dimen/_8sdp"
-    android:background="@drawable/background_note"
-    android:backgroundTint="#FFFFFF"
+    android:background="@drawable/background_note_white"
     android:elevation="1dp">
 
     <com.makeramen.roundedimageview.RoundedImageView

@@ -99,9 +99,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }
         @SuppressLint("ResourceAsColor")
         void setNote(Note note) {
-            textTitle.setTextColor(Color.parseColor("#000000"));
-            textDataTime.setTextColor(Color.parseColor("#333333"));
-            textSubtitle.setTextColor(Color.parseColor("#333333"));
+            if (note.getColor().equals("#FFFFFF")) {
+                textTitle.setTextColor(Color.parseColor("#000000"));
+                textDataTime.setTextColor(Color.parseColor("#333333"));
+                textSubtitle.setTextColor(Color.parseColor("#333333"));
+            } else {
+                textTitle.setTextColor(Color.parseColor("#FFFFFF"));
+                textDataTime.setTextColor(Color.parseColor("#FFFFFF"));
+                textSubtitle.setTextColor(Color.parseColor("#FFFFFF"));
+            }
 
             textTitle.setText(note.getTitle());
             if(note.getNoteText().trim().isEmpty() && note.getSubtitle().trim().isEmpty()) {
@@ -111,6 +117,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
                 textSubtitle.setTextColor(Color.parseColor("#89CFF0"));
             } else
                 textSubtitle.setText(note.getNoteText());
+
 
             textDataTime.setText(note.getDateTime());
 

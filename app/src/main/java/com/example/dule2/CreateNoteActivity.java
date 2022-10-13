@@ -104,7 +104,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             }
         });
 
-        selectedNoteColor = "#333333";
+        selectedNoteColor = "#FFFFFF";
         selectedImagePath = "";
 
         if(getIntent().getBooleanExtra("isViewOrUpdate", false)) {
@@ -239,8 +239,8 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private void initMiscellaneous() {
         final ConstraintLayout layoutMiscellaneous = findViewById(R.id.layoutMiscellaneous);
-        final BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
-        layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
+       // final BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior = BottomSheetBehavior.from(layoutMiscellaneous);
+        /*layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_HALF_EXPANDED) {
@@ -249,14 +249,18 @@ public class CreateNoteActivity extends AppCompatActivity {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 }
             }
-        });
+        });*/
         layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (layoutMiscellaneous.findViewById(R.id.layoutNoteColor).getVisibility() == View.GONE)
+                if (layoutMiscellaneous.findViewById(R.id.layoutNoteColor).getVisibility() == View.GONE) {
                     layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.VISIBLE);
-                else
+                    layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.GONE);
+                }
+                else {
                     layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                    layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -269,13 +273,16 @@ public class CreateNoteActivity extends AppCompatActivity {
         layoutMiscellaneous.findViewById(R.id.viewColor1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedNoteColor = "#333333";
+                selectedNoteColor = "#FFFFFF";
                 imageColor1.setImageResource(R.drawable.ic_done);
+                imageColor1.setColorFilter(Color.parseColor("#000000"));
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
                 setSubtitleIndicatorColor();
+                layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
             }
         });
 
@@ -289,6 +296,8 @@ public class CreateNoteActivity extends AppCompatActivity {
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
                 setSubtitleIndicatorColor();
+                layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
             }
         });
 
@@ -302,6 +311,8 @@ public class CreateNoteActivity extends AppCompatActivity {
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(0);
                 setSubtitleIndicatorColor();
+                layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
             }
         });
 
@@ -315,19 +326,24 @@ public class CreateNoteActivity extends AppCompatActivity {
                 imageColor4.setImageResource(R.drawable.ic_done);
                 imageColor5.setImageResource(0);
                 setSubtitleIndicatorColor();
+                layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
             }
         });
 
         layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedNoteColor = "#000000";
+                selectedNoteColor = "#333333";
                 imageColor1.setImageResource(0);
                 imageColor2.setImageResource(0);
                 imageColor3.setImageResource(0);
                 imageColor4.setImageResource(0);
                 imageColor5.setImageResource(R.drawable.ic_done);
                 setSubtitleIndicatorColor();
+                layoutMiscellaneous.findViewById(R.id.layoutNoteColor).setVisibility(View.GONE);
+                layoutMiscellaneous.findViewById(R.id.textMiscellaneous).setVisibility(View.VISIBLE);
             }
         });
 
@@ -346,7 +362,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                 case "#3A52Fc":
                     layoutMiscellaneous.findViewById(R.id.viewColor4).performClick();
                     break;
-                case "#000000":
+                case "#333333":
                     layoutMiscellaneous.findViewById(R.id.viewColor5).performClick();
                     break;
             }
@@ -374,7 +390,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             layoutMiscellaneous.findViewById(R.id.layoutDeleteNote).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    //bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                     showDeleteNoteDialog();
                 }
             });
@@ -436,7 +452,10 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private void setSubtitleIndicatorColor() {
         GradientDrawable gradientDrawable = (GradientDrawable) viewSubtitleIndicator.getBackground();
-        gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
+        if (selectedNoteColor.equals("#FFFFFF"))
+            gradientDrawable.setColor(Color.parseColor("#F2F3F4"));
+        else
+            gradientDrawable.setColor(Color.parseColor(selectedNoteColor));
     }
 
 
