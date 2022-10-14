@@ -1,30 +1,17 @@
 package com.example.dule2;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.opencsv.CSVReader;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -107,12 +94,10 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         s = s.replaceFirst("-", "");
                     holder._tctimes[i].setText(s);
 
-//                    System.out.println(i);
-//                    System.out.println(decomposition(names[i].split("x")[1])[2]);
-
-//                    System.out.println(i);
-//                    System.out.println((names[i].split("x")[1]));
-
+//
+                    /*new_name_new представляет собой строку имени прошедшую проверку на конченое наименование
+                    типа "Физическая культура / Языки и методы программирования" и, если оно таково, переписывает ее
+                     в нормальный вид*/
 
                     String new_name_new = (names[i].split("x")[1]);
 
@@ -124,16 +109,14 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         new_name_new = new_name_new.substring(new_name_new.indexOf("зал") + 3);
                         new_name_new.trim();
                     }
-                    System.out.println(i);
-                    System.out.println(new_name_new);
+
 
 
                     /*String strung = "the text=text";
                     String s1 = strung.substring(strung.indexOf("=") + 1);
                     s1.trim();
 
-                    System.out.println("String s1 = strung.substring(strung.indexOf(\"=\") + 1);");
-                    System.out.println(s1);
+
 */
                     //decomposition(names[i].split("x")[1])[0] - вывод предметов
                     //decomposition(names[i].split("x")[1])[1] - вывод типа пары
@@ -163,7 +146,8 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         holder._tctypes[i].setBackgroundResource(R.drawable.background_lesson_type_pink);
                     }
 
-
+                    /* new_name представляет собой строку, проверяющую нет ли пробела или еще какой-нибудь дичи в начале строки имени
+                    * и если что-то такое есть, то переписывает ее в нормальный вид */
                     if (decomposition(names[i].split("x")[1])[2].contains("нед")) {
                         String new_name = names[i].substring(names[i].lastIndexOf(")") + 1);
                         String replace_name = names[i].substring(names[i].lastIndexOf(".") + 1);
@@ -180,7 +164,7 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
                         holder._tcteachers[i].setVisibility(View.GONE);
 
                     else
-                        holder._tcteachers[i].setText(decomposition(names[i].split("x")[1])[2]);
+                        holder._tcteachers[i].setText(decomposition(new_name_new)[2]);
 
                     /*if (holder._tcteachers[i].getText().toString().contains("Л")
                             || holder._tcteachers[i].getText().toString().contains("нед")
@@ -221,10 +205,10 @@ public class VPAdapderMainPage extends RecyclerView.Adapter<VPAdapderMainPage.Vi
 
             String test = holder._tcteachers[i].getText().toString();
 
+
             String trim = test.trim();
             if (!trim.isEmpty()) {
                 if (trim.split("\\s+").length != 2) {
-                    //holder.borders[i].setVisibility(View.GONE);
                     holder._tcteachers[i].setVisibility(View.GONE);
                 } else
                     holder._tcteachers[i].setText(" | " + test);
