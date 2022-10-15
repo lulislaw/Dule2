@@ -53,6 +53,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
     private String selectedNoteColor;
     private String selectedImagePath;
+    private String selectedImagePath2;
 
     private ImageView imageNote;
 
@@ -106,6 +107,7 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         selectedNoteColor = "#FFFFFF";
         selectedImagePath = "";
+        selectedImagePath2 = "";
 
         if(getIntent().getBooleanExtra("isViewOrUpdate", false)) {
             alreadyAvailableNote = (Note) getIntent().getSerializableExtra("note");
@@ -132,6 +134,19 @@ public class CreateNoteActivity extends AppCompatActivity {
                     imageNote.setVisibility(View.VISIBLE);
                 }
             }
+        }
+
+        if (imageNote.getVisibility() == View.VISIBLE) {
+            imageNote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(CreateNoteActivity.this, FullScreenImageNoteActivity.class);
+                    intent.putExtra("image_2", selectedImagePath);
+
+                    startActivity(intent);
+                }
+            });
+
         }
 
         initMiscellaneous();
