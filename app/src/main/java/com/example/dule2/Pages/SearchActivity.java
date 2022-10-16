@@ -2,12 +2,17 @@ package com.example.dule2.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,13 +41,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 import cz.msebera.android.httpclient.Header;
 
 public class SearchActivity extends AppCompatActivity {
     ImageButton categoryopen_button, clearall_button;
-    LinearLayout categoryll;
+    ConstraintLayout categoryll;
     Spinner[] cat_spinner = new Spinner[5];
     int[] cat_arrays = new int[5];
     String[] tmp_text;
@@ -128,6 +137,7 @@ public class SearchActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         intents[finalI].setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT|Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        searchView.clearFocus();
                         startActivityIfNeeded(intents[finalI], 0);
 
                     }
@@ -137,16 +147,39 @@ public class SearchActivity extends AppCompatActivity {
 
         }
 
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
+        /*searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
-        });
+        });*/
 
 
 
         downloadtxt();
+
+
+        //String stringFromSearchView = searchView.getText().toString();
+
+        /*searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                canselTimerSearch();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (SearchItemsSource.size() != 0) {
+                    searchSearch(s.toString());
+                }
+            }
+        });*/
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -181,19 +214,58 @@ public class SearchActivity extends AppCompatActivity {
                 }
             });
         }
+        clearall_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    clearall_button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-
-            for(int i = 0; i < cat_spinner.length; i++)
-            {
-                cat_spinner[i].setSelection(0);
+                for(int i = 0; i < cat_spinner.length; i++)
+                {
+                    cat_spinner[i].setSelection(0);
+                }
             }
+        });
+
+        if (SearchItems.size() == 0) {
+            searchView.requestFocus();
         }
-    });
 
     }
+
+
+
+    /*private void searchSearch(final String searchKeyword) {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (searchKeyword.trim().isEmpty())
+                    SearchItems = SearchItemsSource;
+                else {
+                    ArrayList<SearchItem> temp = new ArrayList<>();
+                    for (SearchItem searchItem : SearchItemsSource) {
+                        if (searchItem.getName().toLowerCase().contains(searchKeyword.toLowerCase())
+                                || searchItem.getTeacher().toLowerCase().contains(searchKeyword.toLowerCase())
+                                || searchItem.getRoom().toLowerCase().contains(searchKeyword.toLowerCase())
+                                || searchItem.getTime().toLowerCase().contains(searchKeyword.toLowerCase())) {
+                            temp.add(searchItem);
+                        }
+                    }
+                    SearchItems = temp;
+                }
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        notifyAll();
+                    }
+                });
+            }
+        }, 500);
+    }
+
+    private void canselTimerSearch() {
+        if (timer != null)
+            timer.cancel();
+    }*/
 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
