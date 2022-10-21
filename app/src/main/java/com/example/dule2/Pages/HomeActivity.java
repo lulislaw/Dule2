@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
@@ -260,18 +260,18 @@ public class HomeActivity extends AppCompatActivity {
         for (int sp = 0; sp < diff_date_int; sp++) {
 
             if(sp % 2 == 0)
-            for (int i = 0; i < 7; i++) {
-                int tmp = i + (sp*7);
-                String date_tmp = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + i).getDayOfWeek().getValue() - 1] +
-                        "\n" + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
-                        + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
-                        + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
-                names_1[tmp] = checkweek(nameswithdate[0 + (tmp * 8)] + date_tmp, tmp);
-                names_2[tmp] = checkweek(nameswithdate[2 + (tmp * 8)] + date_tmp, tmp);
-                names_3[tmp] = checkweek(nameswithdate[4 + (tmp * 8)] + date_tmp, tmp);
-                names_4[tmp] = checkweek(nameswithdate[6 + (tmp * 8)] + date_tmp, tmp);
+                for (int i = 0; i < 7; i++) {
+                    int tmp = i + (sp*7);
+                    String date_tmp = daysofweeks_string[LocalDate.ofEpochDay(date_start.toEpochDay() + i).getDayOfWeek().getValue() - 1] +
+                            "\n" + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getDayOfMonth()
+                            + " " + _monthru[LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getMonth().getValue()-1]
+                            + " " + LocalDate.ofEpochDay(date_start.toEpochDay() + tmp).getYear() + "x";
+                    names_1[tmp] = checkweek(nameswithdate[0 + (tmp * 8)] + date_tmp, tmp);
+                    names_2[tmp] = checkweek(nameswithdate[2 + (tmp * 8)] + date_tmp, tmp);
+                    names_3[tmp] = checkweek(nameswithdate[4 + (tmp * 8)] + date_tmp, tmp);
+                    names_4[tmp] = checkweek(nameswithdate[6 + (tmp * 8)] + date_tmp, tmp);
 
-            }
+                }
             else
             for (int i = 0; i < 7; i++) {
                 int tmp = i + (sp*7);

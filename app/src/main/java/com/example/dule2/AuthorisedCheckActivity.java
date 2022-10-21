@@ -16,20 +16,23 @@ public class AuthorisedCheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorised_check);
 
-        new Handler().postDelayed(new Runnable() {
+        startActivity(new Intent(AuthorisedCheckActivity.this, LoadingActivity.class));
+        finish();
+
+        /*new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 SharedPreferences sharedPreferences = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
                 boolean hasLoggedIn = sharedPreferences.getBoolean("hasLoggedIn", false);
 
-                /*if (hasLoggedIn) {
+                *//*if (hasLoggedIn) {
                     startActivity(new Intent(AuthorisedCheckActivity.this, HomeActivity.class));
                 } else {
                     startActivity(new Intent(AuthorisedCheckActivity.this, LoginActivity.class));
-                }*/
+                }*//*
 
                 startActivity(new Intent(AuthorisedCheckActivity.this, LoadingActivity.class));
             }
-        }, LOGO_TIME_OUT);
+        }, LOGO_TIME_OUT);*/
     }
 }
