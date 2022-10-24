@@ -30,10 +30,15 @@ import com.example.dule2.VPAdapderMainPage;
 import com.example.dule2.ViewPagerItemMainPage;
 import com.opencsv.CSVReader;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -53,7 +58,6 @@ public class HomeActivity extends AppCompatActivity {
     LocalDate date_start, date_end, date_current;
 
     Intent[] intents = new Intent[4];
-    
 
     ImageView image_add_note;
 
@@ -64,6 +68,7 @@ public class HomeActivity extends AppCompatActivity {
     String[] daysofweeks_string = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
 
 
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +76,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         progressBar = findViewById(R.id.progressBar);
-
-
 
         /*image_add_note = findViewById(R.id.image_add_note);
 
@@ -113,6 +116,8 @@ public class HomeActivity extends AppCompatActivity {
         intents[1] = new Intent(this, NewsActivity.class);
         intents[2] = new Intent(this, NotesActivity.class);
         intents[3] = new Intent(this, SettingsActivity.class);
+
+
 
 
         for (int i = 0; i < 4; i++) {
@@ -206,23 +211,50 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+        InputStream myInputStream = this.getResources().openRawResource(R.raw.file);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(myInputStream));
+
+        String myOutput = "";
+        List<String> arrayList = new ArrayList<>();
 
 
+        if (myInputStream != null) {
+            try {
+                while ((myOutput = reader.readLine()) != null)
+                    arrayList.add(myOutput);
+                //System.out.println(arrayList);
+                myInputStream.close();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }
+    }
+
+    /*public HomeActivity() {
+
+
+        String myOutput = "";
+        arrayList = new ArrayList<>();
+
+
+        if (myInputStream != null) {
+            try {
+                while ((myOutput = reader.readLine()) != null)
+                    arrayList.add(myOutput);
+                System.out.println(arrayList);
+                myInputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }*/
+
+    /*public List<String> getList() {
+        return arrayList;
+    }*/
 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

@@ -19,7 +19,7 @@ public class FullScreenImageNoteActivity extends AppCompatActivity {
 
     SubsamplingScaleImageView fullScreenImageNote;
     String ImageFromNote;
-    String hiddenOrNot;
+    String hiddenOrNot = "HIDDEN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class FullScreenImageNoteActivity extends AppCompatActivity {
         });
     }
 
-    private void hideSystemBars() {
+    protected void hideSystemBars() {
         WindowInsetsControllerCompat windowInsetsController =
                 ViewCompat.getWindowInsetsController(getWindow().getDecorView());
         if (windowInsetsController == null) {
@@ -61,7 +61,7 @@ public class FullScreenImageNoteActivity extends AppCompatActivity {
         hiddenOrNot = "HIDDEN";
     }
 
-    private void showSystemBars() {
+    protected void showSystemBars() {
         WindowInsetsControllerCompat windowInsetsController =
                 ViewCompat.getWindowInsetsController(getWindow().getDecorView());
         if (windowInsetsController == null) {
