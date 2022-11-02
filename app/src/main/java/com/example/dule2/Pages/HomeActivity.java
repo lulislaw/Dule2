@@ -273,9 +273,7 @@ public class HomeActivity extends AppCompatActivity {
             int TimeIndex = cursor.getColumnIndex(DBHelper.KEY_TIME);
             for (int i = 0; i < 56; i++) {
 
-                nameseven[i] =
-                        cursor.getString(TimeIndex) + "x" +
-                                cursor.getString(NameIndex);
+                nameseven[i] = cursor.getString(NameIndex);
 
                 cursor.moveToNext();
             }

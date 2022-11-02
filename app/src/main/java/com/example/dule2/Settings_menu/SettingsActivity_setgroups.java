@@ -106,10 +106,10 @@ public class SettingsActivity_setgroups extends AppCompatActivity {
         SPINNER_SELECT_GROUP = findViewById(R.id.SPINNER_SELECT_GROUP);
         SPINNER_SELECT_INSTITUTE = findViewById(R.id.SPINNER_SELECT_INSTITUTE);
         BUTTON_SAVE_SELECTION = findViewById(R.id.BUTTON_SAVE_SELECTION);
-        url[0] = "https://github.com/lulislaw/excelfilesguu/blob/main/bak1.xlsx?raw=true";
-        url[1] = "https://github.com/lulislaw/excelfilesguu/blob/main/bak2.xlsx?raw=true";
-        url[2] = "https://github.com/lulislaw/excelfilesguu/blob/main/bak3.xlsx?raw=true";
-        url[3] = "https://github.com/lulislaw/excelfilesguu/blob/main/bak4.xlsx?raw=true";
+        url[0] = "https://github.com/lulislaw/SUMTable_sourceXLSX/blob/main/source0.xlsx?raw=true";
+        url[1] = "https://github.com/lulislaw/SUMTable_sourceXLSX/blob/main/source1.xlsx?raw=true";
+        url[2] = "https://github.com/lulislaw/SUMTable_sourceXLSX/blob/main/source2.xlsx?raw=true";
+        url[3] = "https://github.com/lulislaw/SUMTable_sourceXLSX/blob/main/source3.xlsx?raw=true";
 
 
 
